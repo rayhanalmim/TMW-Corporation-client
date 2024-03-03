@@ -60,7 +60,7 @@ const Header = () => {
             </div>
             <p className=" hidden lg:flex  lg:text-2xl  my-auto  ">
               {" "}
-              মেসার্স হুমায়ুন ট্রেডার্স
+              TWS CORPORATION
             </p>
           </Link>
         </div>

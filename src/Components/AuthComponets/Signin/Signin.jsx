@@ -61,14 +61,14 @@ const Signin = () => {
     >
       <div className=" bg-blue-950  w-full  mx-auto max-w-md p-8 pb-16 space-y-3 rounded-xl border my-5  ">
         <Link to="/">
-          <div className="w-24 mx-auto block rounded-full  ">
+          <div className="w-32 mx-auto block rounded-full  ">
             <img src={logo} />
           </div>
         </Link>
 
         <form className="space-y-6 " onSubmit={handleLogin}>
           <div className="space-y-1 text-sm">
-            <label className="block  text-white">ইমেইল</label>
+            <label className="block  text-white">Email</label>
             <input
               type="text"
               name="email"
@@ -78,7 +78,7 @@ const Signin = () => {
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label className="block  text-white ">পাসওয়ার্ড</label>
+            <label className="block  text-white ">Password</label>
             <input
               type="password"
               name="password"
@@ -88,22 +88,10 @@ const Signin = () => {
             />
           </div>
           <button className="block w-full p-3 text-center rounded-xl dark:text-gray-900 dark:bg-violet-400 btn btn-primary">
-            সাইন ইন
+            Sing In
           </button>
         </form>
-        <div className="flex items-center pt-4 space-x-1"></div>
-
-        <p className="text-sm text-center sm:px-6 text-white">
-          এজেন্ট হতে
-          <Link
-            rel="noopener noreferrer"
-            to="/signUp"
-            className="underline px-2 font-semibold"
-          >
-            আবেদন
-          </Link>
-          করুন
-        </p>
+       
       </div>
     </div>
   );

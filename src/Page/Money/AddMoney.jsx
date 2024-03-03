@@ -9,12 +9,12 @@ const AddMoney = () => {
     register,
     handleSubmit,
     formState: { errors },
-    
+
   } = useForm();
 
   const onSubmit = async (data) => {
     try {
- 
+
       const res = await axiosSecure.post("/money", data);
 
       if (res.data.insertedId === null) {
@@ -42,67 +42,77 @@ const AddMoney = () => {
   return (
     <div>
       <div className="rounded-xl bg-base-200 p-8 ">
-        <h3 className="font-bold text-lg">Add a money</h3>
+        <h3 className="font-bold text-lg pb-4">Add Shop</h3>
         <form className="space-y-6 " onSubmit={handleSubmit(onSubmit)}>
-          <div className="space-y-1 text-sm">
-            <div className="space-y-1 text-sm">
-              <label className="block dark-text-gray-400">Money Issues</label>
+          <div className="flex w-full gap-4 flex-col lg:flex-row">
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Shop Name</label>
               <input
-                {...register("costIssues", {
-                  required: "Money Issues is required",
+                {...register("shopName", {
+                  required: "Shop Name is required",
                 })}
                 type="text"
-                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
               />
-              {errors.costIssues && (
-                <p className="text-red-500">{errors.costIssues.message}</p>
+              {errors.shopName && (
+                <p className="text-red-500">{errors.shopName.message}</p>
               )}
             </div>
-            <label className="block dark-text-gray-400">Money (tk)</label>
-            <input
-              {...register("Money", {
-                required: "Money is required",
-              })}
-              type="number"
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
-            />
-            {errors.Money && (
-              <p className="text-red-500">{errors.Money.message}</p>
-            )}
-          </div>
-          <div className="space-y-1 text-sm">
-            <label className="block dark-text-gray-400"> Date</label>
-            <input
-              {...register("costDate", {
-                required: "Date is required",
-              })}
-              type="date"
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
-            />
-            {errors.costDate && (
-              <p className="text-red-500">{errors.costDate.message}</p>
-            )}
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Shop Area</label>
+              <input
+                {...register("shopArea", {
+                  required: "Shop Area is required",
+                })}
+                type="test"
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+              {errors.shopArea && (
+                <p className="text-red-500">{errors.shopArea.message}</p>
+              )}
+            </div>
+
           </div>
 
-          <div className="space-y-1 text-sm">
-            <label className="block dark-text-gray-400">Money Type</label>
 
-            <select
-              {...register("costType", {
-                required: "Money Type is required",
-              })}
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
-            >
-              <option disabled selected>
-                Money Type
-              </option>
-              <option>Daily</option>
-              <option>Month</option>
-            </select>
 
-            {errors.costType && (
-              <p className="text-red-500">{errors.costType.message}</p>
-            )}
+          <div className="flex w-full gap-4 flex-col lg:flex-row">
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Shop Owner Name</label>
+              <input
+                {...register("shopOwner", {
+                  required: "Shop Owner Name is required",
+                })}
+                type="text"
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+              {errors.shopOwner && (
+                <p className="text-red-500">{errors.shopOwner.message}</p>
+              )}
+            </div>
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Contract Number</label>
+
+              <label className="input  flex items-center gap-2">
+                +880
+                <input
+                  {...register("contractNumber", {
+                    required: "Contract Number is required",
+                  })}
+                  type="text"
+                  pattern="[0-9]{10}"
+                  placeholder="1764848007"
+                  className="text-gray-900 w-full px-3 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+                />
+              </label>
+
+              {errors.contractNumber && (
+                <p className="text-red-500">{errors.contractNumber.message}</p>
+              )}
+            </div>
+
+
+
           </div>
 
           {/* ... (other form fields) ... */}
@@ -110,9 +120,9 @@ const AddMoney = () => {
           <div className="flex gap-2 items-end justify-end">
             <button
               type="submit"
-              className="block p-3 btn-success text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn btn-1"
+              className="block p-3 btn-success text-white text-center rounded-xl dark-text-gray-900 dark-bg-violet-400 btn btn-1"
             >
-              Add Money
+              Add Shop
             </button>
             <Link to="/Money">
               <button type="button" className="btn btn-error text-white">
@@ -126,6 +136,6 @@ const AddMoney = () => {
   );
 };
 
- 
+
 
 export default AddMoney;

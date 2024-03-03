@@ -13,54 +13,6 @@ const Analysis = () => {
     },
   });
 
-  const { data: costData = [] } = useQuery({
-    queryKey: ["costData"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/cost");
-      return res.data;
-    },
-  });
-
-  const { data: moneyData = [] } = useQuery({
-    queryKey: ["moneyData"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/money");
-      return res.data;
-    },
-  });
-
-  const dailyCosts = costData.filter(item => item.costType === "Daily");
-  const dailyMoney = moneyData.filter(item => item.costType === "Daily");
-
-
-  const monthlyCosts = costData.reduce((acc, current) => {
-    const monthYear = new Date(current.costDate).toLocaleString('default', { month: 'long', year: 'numeric' });
-    if (!acc[monthYear]) {
-      acc[monthYear] = {
-        monthYear: monthYear,
-        totalCost: 0
-      };
-    }
-    acc[monthYear].totalCost += current.cost;
-    return acc;
-  }, {});
-
-  const monthlyMoney = moneyData.reduce((acc, current) => {
-    const monthYear = new Date(current.costDate).toLocaleString('default', { month: 'long', year: 'numeric' });
-    if (!acc[monthYear]) {
-      acc[monthYear] = {
-        monthYear: monthYear,
-        totalCost: 0
-      };
-    }
-    acc[monthYear].totalCost += parseInt(current.Money);
-    return acc;
-  }, {});
-
-  // Convert the grouped data into an array of objects
-  const monthlyCostsArray = Object.values(monthlyCosts);
-  const monthlyMoneyArray = Object.values(monthlyMoney);
-
   const { totalSellAmmount, monthlySellAmount, yearlySellAmount, dailySellAmmount } = sellData;
 
 
@@ -79,15 +31,7 @@ const Analysis = () => {
     return `${day} ${month} ${year}`;
   };
 
-  const formatDateCost = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
-  };
 
-  const formatDateForMonth = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {  month: 'long', year: 'numeric' });
-  };
 
   return (
     <div className="p-4 text-white">
@@ -150,88 +94,7 @@ const Analysis = () => {
         </table>
       </div>
 
-      <div className="p-4">
-        <div>
-          <h2 className="text-2xl font-bold mb-4">Daily Costs</h2>
-          <table className="table-auto border-collapse w-full">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="px-4 py-2 text-black">Date</th>
-                <th className="px-4 py-2 text-black">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {dailyCosts.map(cost => (
-                <tr key={cost._id}>
-                  <td className="border px-4 py-2">{formatDateCost(cost.costDate)}</td>
-                  <td className="border px-4 py-2">{cost.cost}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-
-        <div className="mt-10">
-          <h2 className="text-2xl font-bold mb-4">Monthly Costs</h2>
-          <table className="table-auto border-collapse w-full">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="px-4 py-2 text-black">Month</th>
-                <th className="px-4 py-2 text-black">Total Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {monthlyCostsArray.map(cost => (
-                <tr key={cost.monthYear}>
-                  <td className="border px-4 py-2">{formatDateForMonth(cost.monthYear)}</td>
-                  <td className="border px-4 py-2">{cost.totalCost}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-10">
-          <h2 className="text-2xl font-bold mb-4">Daily Money</h2>
-          <table className="table-auto border-collapse w-full">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="px-4 py-2 text-black">Date</th>
-                <th className="px-4 py-2 text-black">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {dailyMoney.map(cost => (
-                <tr key={cost._id}>
-                  <td className="border px-4 py-2">{formatDateCost(cost.costDate)}</td>
-                  <td className="border px-4 py-2">{parseInt(cost.Money)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-10">
-          <h2 className="text-2xl font-bold mb-4">Monthly Money</h2>
-          <table className="table-auto border-collapse w-full">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="px-4 py-2 text-black">Month</th>
-                <th className="px-4 py-2 text-black">Total Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {monthlyMoneyArray.map(cost => (
-                <tr key={cost.monthYear}>
-                  <td className="border px-4 py-2">{formatDateForMonth(cost.monthYear)}</td>
-                  <td className="border px-4 py-2">{cost.totalCost}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+    
     </div>
   );
 };

@@ -181,7 +181,7 @@ const SignUp = () => {
             </div>
             <div className="space-y-1 text-sm">
               <label htmlFor="photoURL" className="block text-white">
-                আপনার ছবি 
+                আপনার ছবি
               </label>
               <input
                 type="file"
@@ -224,22 +224,18 @@ const SignUp = () => {
                 আপনার ফোন নাম্বার
               </label>
               <label className="input input-bordered flex items-center gap-2">
-            +880
-              <input type="text"       
+                +880
+                <input type="text"
                   name="PhoneNo"
                   value={phoneNo}
                   onChange={handlePhoneNoChange}
                   pattern="[0-9]{10}"
                   placeholder="1764848007"
                   required
-                  id="PhoneNo" className="grow"   />
-            </label>
-
-
-
-              
+                  id="PhoneNo" className="grow" />
+              </label>
             </div>
-           
+
 
             <div className="space-y-1 text-sm">
               <label htmlFor="nid" className="block text-white">

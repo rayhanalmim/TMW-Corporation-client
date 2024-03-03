@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
 
@@ -44,10 +44,11 @@ const UpdateProduct = () => {
 
     const formData = {
       productName: e.target.productName.value,
-      imageURL: e.target.imageURL.value,
+      wat: e.target.wat.value,
+      discount: e.target.discount.value,
       productQuantity: parseInt(e.target.productQuantity.value), 
       productPrice: parseInt(e.target.productPrice.value),
-      productBuyPrice: e.target.productBuyPrice.value,
+      perCartonQuantity: parseInt(e.target.perCatonQuantity.value),
       productDescription: e.target.productDescription.value,
     };
     try {
@@ -88,15 +89,27 @@ const UpdateProduct = () => {
           />
         </div>
 
-        {/* Image URL */}
-        <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">Image URL</label>
-          <input
-            type="text"
-            name="imageURL"
-            defaultValue={product?.imageURL}
-            className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-          />
+        <div className="flex w-full gap-4 flex-col lg:flex-row">
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">Wat </label>
+            <input
+              type="number"
+              name="wat"
+              defaultValue={product?.wat}
+              className="w-full bg-white text-black px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            />
+          </div>
+          
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">Discount (TK)</label>
+            <input
+              type="number"
+              name="discount"
+              defaultValue={product?.discount}
+              className="w-full bg-white text-black px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            />
+          </div>
+
         </div>
 
         {/* Product Quantity and Product Price */}
@@ -111,18 +124,18 @@ const UpdateProduct = () => {
             />
           </div>
           <div className="space-y-1 text-sm w-full lg:w-1/2">
-            <label className="block dark-text-gray-400">Product buy Price</label>
+            <label className="block dark-text-gray-400">Per Carton Quantity</label>
             <input
               type="number"
-              name="productBuyPrice"
-              defaultValue={product?.productBuyPrice}
+              name="perCatonQuantity"
+              defaultValue={product?.perCartonQuantity}
               className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
             />
           </div>  
           
           
             <div className="space-y-1 text-sm w-full  ">
-            <label className="block dark-text-gray-400">Product Price</label>
+            <label className="block dark-text-gray-400">Unit Price</label>
             <input
               type="number"
               name="productPrice"

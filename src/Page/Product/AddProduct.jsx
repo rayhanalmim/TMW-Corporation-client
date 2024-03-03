@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosPublic from "../../Components/hook/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const {
@@ -15,6 +16,7 @@ const AddProduct = () => {
     mode: "onChange",
   });
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
 
   const { user } = useContext(AuthContext);
 
@@ -34,12 +36,16 @@ const AddProduct = () => {
 
       const productData = {
         productName: data.productName,
-        productBuyPrice: data.productBuyPrice,
+        perCartonQuantity: data.perCartonQuantity,
+        lightColor: data.LightColor,
+        ProductCategory : data.ProductCategory,
+        wat: data.wat,
         productPrice: parseFloat(data.productPrice),
-        productQuantity: parseInt(data.productQuantity),
+        productQuantity: 0,
         productDescription: data.productDescription,
         imageURL: res.data.data.url,
-        ownerEmail: user?.email,
+        addedBy: user?.email,
+        discount: 0
       };
       console.log(productData);
       const productRes = await axiosPublic.post("/product", productData);
@@ -47,6 +53,10 @@ const AddProduct = () => {
       if (productRes.data) {
         reset({
           productName: "",
+          perCartonQuantity: "",
+          LightColor: "",
+          ProductCategory: "",
+          wat: "",
           photoURL: "",
           productQuantity: "",
           productPrice: "",
@@ -59,6 +69,7 @@ const AddProduct = () => {
           text: "You clicked the button!",
           icon: "success",
         });
+        navigate('/manageProduct');
       }
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -69,31 +80,103 @@ const AddProduct = () => {
     <div className="rounded-xl  text-white p-8 ">
       <h1 className="text-2xl font-bold text-center">Add a Product</h1>
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-        <div className="space-y-1 text-sm">
-          <p> </p>
-          <label className="block dark-text-gray-400">Product Name</label>
-          <input
-            {...register("productName", {
-              required: "Product Name is required",
-            })}
-            type="text"
-            className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
-          />
-          {errors.productName && (
-            <p className="text-red-500">{errors.productName.message}</p>
-          )}
+
+        <div className="flex w-full gap-4 flex-col lg:flex-row">
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">Product Name</label>
+            <input
+              {...register("productName", {
+                required: "Product Name is required",
+              })}
+              type="text"
+              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            />
+            {errors.productName && (
+              <p className="text-red-500">{errors.productName.message}</p>
+            )}
+          </div>
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">Per Carton Quantity</label>
+            <input
+              {...register("perCartonQuantity", {
+                required: "Cartion Quantity is required",
+              })}
+              type="number"
+              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            />
+            {errors.perCartonQuantity && (
+              <p className="text-red-500">{errors.perCartonQuantity.message}</p>
+            )}
+          </div>
+
         </div>
 
-        <div className="space-y-1 text-sm">
-          <label className="block dark-text-gray-400">Image </label>
-          <input
-            {...register("photoURL", { required: "Image URL is required" })}
-            type="file"
-            className="w-full bg-white text-black px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-          />
-          {errors.photoURL && (
-            <p className="text-red-500">{errors.photoURL.message}</p>
-          )}
+
+
+        <div className="flex w-full gap-4 flex-col lg:flex-row">
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">Image </label>
+            <input
+              {...register("photoURL", { required: "Image URL is required" })}
+              type="file"
+              className="w-full bg-white text-black px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            />
+            {errors.photoURL && (
+              <p className="text-red-500">{errors.photoURL.message}</p>
+            )}
+          </div>
+          
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">Light Color</label>
+            <select
+              {...register("LightColor", {
+                required: "Light color is required",
+              })}
+              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            >
+              <option value="">Select Light Color</option>
+              <option value="Daylight">Daylight</option>
+              <option value="Warm">Warm</option>
+            </select>
+            {errors.LightColor && (
+              <p className="text-red-500">{errors.LightColor.message}</p>
+            )}
+          </div>
+
+        </div>
+
+        {/* ------------------------productType&Wat------------------- */}
+        <div className="flex w-full gap-4 flex-col lg:flex-row">
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">Product Category</label>
+            <select
+              {...register("ProductCategory", {
+                required: "Category is required",
+              })}
+              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            >
+              <option value="">Select property type</option>
+              <option value="catOne">cat-1</option>
+              <option value="catTwo">cat-2</option>
+            </select>
+            {errors.ProductCategory && (
+              <p className="text-red-500">{errors.ProductCategory.message}</p>
+            )}
+          </div>
+          <div className="space-y-1 text-sm w-full lg:w-1/2">
+            <label className="block dark-text-gray-400">Light Wat</label>
+            <input
+              {...register("wat", {
+                required: "Wat is required",
+              })}
+              type="number"
+              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            />
+            {errors.wat && (
+              <p className="text-red-500">{errors.wat.message}</p>
+            )}
+          </div>
+
         </div>
 
         {/* Product Quantity and Product Price */}
@@ -102,9 +185,10 @@ const AddProduct = () => {
             <label className="block dark-text-gray-400">Product Quantity</label>
             <input
               {...register("productQuantity", {
-                required: "Product Quantity is required",
               })}
               type="number"
+              defaultValue={0}
+              disabled
               className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
             />
             {errors.productQuantity && (
@@ -112,22 +196,7 @@ const AddProduct = () => {
             )}
           </div>
           <div className="space-y-1 text-sm w-full lg:w-1/2">
-            <label className="block dark-text-gray-400">Product buy Price</label>
-            <input
-              {...register("productBuyPrice", {
-                required: "Product buy Price is required",
-              })}
-              type="number"
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-            />
-            {errors.productBuyPrice && (
-              <p className="text-red-500">{errors.productBuyPrice.message}</p>
-            )}
-          </div>
-        </div>
-
-        <div className="space-y-1 text-sm w-full  ">
-            <label className="block dark-text-gray-400">Product sell  Price</label>
+            <label className="block dark-text-gray-400">Product Price</label>
             <input
               {...register("productPrice", {
                 required: "Product Price is required",
@@ -139,6 +208,8 @@ const AddProduct = () => {
               <p className="text-red-500">{errors.productPrice.message}</p>
             )}
           </div>
+        </div>
+
         {/* Product Description */}
         <div className="space-y-1 text-sm">
           <label className="block dark-text-gray-400">

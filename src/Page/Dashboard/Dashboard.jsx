@@ -49,16 +49,16 @@ const Dashboard = () => {
         <div className="container mx-auto">
           <div className=" px-8 lg:p-8">
             <p className="lg:pt-8 pt-3  text-gray-800">
-              স্বাগতম, {user?.displayName}
+              Welcome, {user?.displayName}
             </p>
 
             <h2 className="text-xl lg:text-4xl font-bold py-0 lg:py-4 text-left text-gray-950  capitalize">
               {isAdmin ? (
-                <>অ্যাডমিন ড্যাশবোর্ড,</>
+                <>Admin Dashboard,</>
               ) : isAgent ? (
-                <> এজেন্ট ড্যাশবোর্ড,</>
+                <> Office Admin Dashboard,</>
               ) : (
-                <> ব্যবহারকারী,</>
+                <> Normal User,</>
               )}
             </h2>
           </div>

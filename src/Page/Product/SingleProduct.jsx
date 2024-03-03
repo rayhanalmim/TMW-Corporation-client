@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 import { useContext } from "react";
@@ -46,7 +46,7 @@ const SingleProduct = () => {
       `/card?userEmail=${user.email}`,
       product
     );
-    
+
     if (res.status == 200 || res.status == 201) {
       Swal.fire({
         title: "Success",
@@ -70,7 +70,7 @@ const SingleProduct = () => {
           <img
             src={product?.imageURL}
             alt={product?.productName}
-            className="w-64   mx-auto   "
+            className="w-64 rounded-md pt-7 mx-auto   "
           />
         </div>
         <div className="w-full lg:w-1/2 text-left mt-4 lg:ml-8">
@@ -80,14 +80,34 @@ const SingleProduct = () => {
             {product?.productName}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Product Price: </span>
+            <span className="font-bold text-blue-500">Product Category:</span>
+            {product?.ProductCategory}
+          </p>
+          <p>
+            <span className="font-bold text-blue-500">WAT:</span>
+            {product?.wat}
+          </p>
+          <p>
+            <span className="font-bold text-blue-500">Light Color:</span>
+            {product?.lightColor}
+          </p>
+          <p>
+            <span className="font-bold text-blue-500">Per Carton Quantity:</span>
+            {product?.perCartonQuantity}
+          </p>
+          <p>
+            <span className="font-bold text-blue-500">Unit Price: </span>
             {product?.productPrice} TK
           </p>{" "}
           <p>
             <span className="font-bold text-blue-500">Product Quantity: </span>
             {product?.productQuantity}
           </p>{" "}
-        
+          <p>
+            <span className="font-bold text-blue-500">Discount: </span>
+            {product?.discount}
+          </p>{" "}
+
           <p>
             <span className="font-bold text-blue-500">
               Product Description:{" "}
@@ -95,12 +115,15 @@ const SingleProduct = () => {
             {product?.productDescription}
           </p>
           <div className="flex gap-4 mt-4">
-            <button
-              onClick={() => handleClick(product)}
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Add to cart
-            </button>
+
+
+            <Link to={`/UpdateProduct/${product?._id}`} >
+              <button
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Update Product
+              </button>
+            </Link>
           </div>
         </div>
       </div>

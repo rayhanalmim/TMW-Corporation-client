@@ -73,8 +73,8 @@ const ManageProduct = () => {
               <th>Image</th>
               <th>Name</th>
               <th>Quantity</th>
-              <th>Price (tk)</th>
-              <th>Buy Price(tk)</th>
+              <th>Unit Price (tk)</th>
+              <th>Category</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -91,24 +91,25 @@ const ManageProduct = () => {
                     </div>
                   </div>
                 </td>
-                <Link
-                  className="text-blue-800 font-bold"
-                  to={`/product/${product?._id}`}
-                >
-                  <td>{product?.productName}</td>
-                </Link>
+                
+                <td>{product?.productName}</td>
 
                 <td>{product?.productQuantity}</td>
                 <td>{product?.productPrice} </td>
-                <td className="text-green-500">{product?.productBuyPrice}  </td>
+                <td className="text-green-500">{product?.ProductCategory}  </td>
                
 
                 <td className="   ">
-                  <Link to={`/UpdateProduct/${product?._id}`} className="m-1">
+                  <Link to={`/product/${product?._id}`} className="m-1">
+                    <button className="btn btn-warning btn-sm marker: ">
+                      Details
+                    </button>
+                  </Link>
+                  {/* <Link to={`/UpdateProduct/${product?._id}`} className="m-1">
                     <button className="btn btn-warning btn-sm marker: ">
                       Edit
                     </button>
-                  </Link>
+                  </Link> */}
                   <button
                     className="btn btn-sm btn-error m-1"
                     onClick={() => handleDeleteProduct(product?._id)}

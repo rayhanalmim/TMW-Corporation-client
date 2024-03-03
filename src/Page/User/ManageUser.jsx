@@ -78,8 +78,11 @@ const ManageUser = () => {
       <div className="text-3xl py-2">
         <h2>Manage user</h2>
       </div>
-      <div className="flex w-full  "></div>
-      <h4>Total user : {user?.length}</h4>
+      <div className="flex w-full  ">
+        <Link to="/addMoney">
+          <button className=" btn btn-primary">Add Shop</button>
+        </Link>
+      </div>
 
       <div className="overflow-x-auto">
         <table className="table">

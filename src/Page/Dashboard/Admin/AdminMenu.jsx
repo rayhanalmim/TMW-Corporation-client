@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { FaChartBar, FaBeer, FaMoneyBill, FaUser, FaShoppingCart, FaListUl, FaUsers } from "react-icons/fa";
+import { FaShop } from "react-icons/fa6";
 
 const AdminMenu = () => {
   return (
@@ -14,7 +15,7 @@ const AdminMenu = () => {
         <NavLink to="/addToCard">
           <li className="btn btn-primary text-white w-full">
             <FaShoppingCart className="mr-2" />
-            Shopping Cart
+            DSR Request
           </li>
         </NavLink>
 
@@ -40,14 +41,8 @@ const AdminMenu = () => {
 
         <NavLink to="/money">
           <li className="btn btn-primary text-white w-full">
-            <FaMoneyBill className="mr-2" />
-             Money Management
-          </li>
-        </NavLink>
-        <NavLink to="/cost">
-          <li className="btn btn-primary text-white w-full">
-            <FaMoneyBill className="mr-2" />
-            Cost Management
+            <FaShop className="mr-2" />
+             Shop Management
           </li>
         </NavLink>
 
