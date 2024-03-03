@@ -13,9 +13,16 @@ const AddMoney = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+
+    const shopData = {
+      shopName: data.shopName,
+      shopArea: data.shopArea,
+      shopOwner: data.shopOwnerd,
+      contractNumber: data.contractNumber
+    }
     try {
 
-      const res = await axiosSecure.post("/money", data);
+      const res = await axiosSecure.post("/money", shopData);
 
       if (res.data.insertedId === null) {
         Swal.fire({
