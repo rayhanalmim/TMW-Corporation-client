@@ -163,12 +163,12 @@ const SignUp = () => {
             </div>
           </Link>
           <h1 className="text-2xl font-bold text-center pb-2  text-white">
-            আবেদন ফরম
+            Add User 
           </h1>
           <form onSubmit={handleSignUp} className="space-y-6">
             <div className="space-y-1 text-sm">
               <label htmlFor="displayName" className="block text-white">
-                আপনার নাম
+                User Name
               </label>
               <input
                 type="text"
@@ -181,7 +181,7 @@ const SignUp = () => {
             </div>
             <div className="space-y-1 text-sm">
               <label htmlFor="photoURL" className="block text-white">
-                আপনার ছবি
+                User Image
               </label>
               <input
                 type="file"
@@ -191,7 +191,7 @@ const SignUp = () => {
             </div>
             <div className="space-y-1 text-sm">
               <label htmlFor="email" className="block text-white">
-                আপনার ইমেইল
+                User Email
               </label>
               <input
                 type="email"
@@ -206,7 +206,7 @@ const SignUp = () => {
             </div>
             <div className="space-y-1 text-sm">
               <label htmlFor="address" className="block text-white">
-                আপনার ঠিকানা
+                User Adress
               </label>
               <input
                 type="text"
@@ -221,7 +221,7 @@ const SignUp = () => {
             </div>
             <div className="space-y-1 text-sm">
               <label htmlFor="PhoneNo" className="block text-white">
-                আপনার ফোন নাম্বার
+                User Phone Number
               </label>
               <label className="input input-bordered flex items-center gap-2">
                 +880
@@ -236,25 +236,9 @@ const SignUp = () => {
               </label>
             </div>
 
-
-            <div className="space-y-1 text-sm">
-              <label htmlFor="nid" className="block text-white">
-                আপনার জাতীয় পরিচয় পত্র নং
-              </label>
-              <input
-                type="text"
-                name="nid"
-                value={nid}
-                onChange={handlenidChange}
-                id="nid"
-                placeholder="nid No"
-                className="w-full border px-4 py-3 rounded-md    focus:dark-border-violet-400"
-                required
-              />
-            </div>
             <div className="space-y-1 text-sm">
               <label htmlFor="password" className="block text-white">
-                পাসওয়ার্ড
+                Password
               </label>
               <input
                 value={password}
@@ -276,18 +260,18 @@ const SignUp = () => {
               className="block w-full p-3 text-center rounded-xl dark.text-gray-900 dark.bg-violet-400 btn btn-primary"
               disabled={loading} // Disable the button when loading
             >
-              {loading ? "অপেক্ষা করুন..." : "আবেদন করুন"}
+              {loading ? "Please Wait..." : "Create User"}
             </button>
           </form>
 
           <p className="text-sm text-center sm:px-6 text-white">
-            আপনার একটি অ্যাকাউন্ট আছে?
+            Back To Login Page
             <Link
               rel="noopener noreferrer"
               to="/signIn"
               className="underline px-2 font-semibold"
             >
-              সাইন ইন করুন
+              LogIn
             </Link>
           </p>
         </div>

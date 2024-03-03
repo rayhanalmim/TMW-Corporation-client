@@ -11,7 +11,7 @@ const Info = () => {
       .then((data) => setStatus(data))
       .catch((error) => {
         console.error("Error fetching database status:", error.message);
-        setStatus("! DB not connected , please contact: 01917019619");
+        setStatus("! DB not connected , please contact: 01761322176");
       });
   }, []);
   return (

@@ -79,8 +79,8 @@ const ManageUser = () => {
         <h2>Manage user</h2>
       </div>
       <div className="flex w-full  ">
-        <Link to="/addMoney">
-          <button className=" btn btn-primary">Add Shop</button>
+        <Link to="/signUp">
+          <button className=" btn btn-primary">Add User</button>
         </Link>
       </div>
 
