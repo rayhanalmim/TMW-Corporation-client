@@ -34,6 +34,7 @@ import ManageMoney from "../Page/Money/ManageMoney";
 import AddMoney from "../Page/Money/AddMoney";
 import ManageShop from "../Page/Shop/ManageShop";
 import AddShop from "../Page/Shop/AddShop";
+import SuperAdminRoute from "./SuperAdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -148,9 +149,7 @@ const router = createBrowserRouter([
       {
         path: "/user",
         element: (
-         
-            <ManageUser />
-           
+            <SuperAdminRoute><ManageUser /></SuperAdminRoute>
         ),
       },
       {

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAdmin from "../../Hook/useAdmin";
+import useAgent from "../../Hook/useAgent";
 
 const UpdateProduct = () => {
   const axiosSecure = useAxiosSecure();
@@ -10,6 +12,8 @@ const UpdateProduct = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { id } = useParams();
+  const [isAdmin] = useAdmin();
+  const [isAgent] = useAgent();  //Dsr
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -46,7 +50,7 @@ const UpdateProduct = () => {
       productName: e.target.productName.value,
       wat: e.target.wat.value,
       discount: e.target.discount.value,
-      productQuantity: parseInt(e.target.productQuantity.value), 
+      productQuantity: parseInt(e.target.productQuantity.value),
       productPrice: parseInt(e.target.productPrice.value),
       perCartonQuantity: parseInt(e.target.perCatonQuantity.value),
       productDescription: e.target.productDescription.value,
@@ -99,7 +103,7 @@ const UpdateProduct = () => {
               className="w-full bg-white text-black px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
             />
           </div>
-          
+
           <div className="space-y-1 text-sm w-full lg:w-1/2">
             <label className="block dark-text-gray-400">Discount (TK)</label>
             <input
@@ -113,39 +117,66 @@ const UpdateProduct = () => {
         </div>
 
         {/* Product Quantity and Product Price */}
-        <div className="flex w-full gap-4 flex-col lg:flex-row">
-          <div className="space-y-1 text-sm w-full lg:w-1/2">
-            <label className="block dark-text-gray-400">Product Quantity</label>
-            <input
-              type="number"
-              name="productQuantity"
-              defaultValue={product?.productQuantity}
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-            />
-          </div>
-          <div className="space-y-1 text-sm w-full lg:w-1/2">
-            <label className="block dark-text-gray-400">Per Carton Quantity</label>
-            <input
-              type="number"
-              name="perCatonQuantity"
-              defaultValue={product?.perCartonQuantity}
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-            />
-          </div>  
-          
-          
-            <div className="space-y-1 text-sm w-full  ">
-            <label className="block dark-text-gray-400">Unit Price</label>
-            <input
-              type="number"
-              name="productPrice"
-              defaultValue={product?.productPrice}
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-            />
-          </div>
-        </div>
+        {
+          isAdmin && <div className="flex w-full gap-4 flex-col lg:flex-row">
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Product Quantity</label>
+              <input
+                type="number"
+                name="productQuantity"
+                defaultValue={product?.productQuantity}
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+            </div>
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Per Carton Quantity</label>
+              <input
+                type="number"
+                name="perCatonQuantity"
+                defaultValue={product?.perCartonQuantity}
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+            </div>
 
-     
+
+            <div className="space-y-1 text-sm w-full  ">
+              <label className="block dark-text-gray-400">Unit Price</label>
+              <input
+                type="number"
+                name="productPrice"
+                defaultValue={product?.productPrice}
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+            </div>
+          </div>
+        }
+
+        {
+          isAgent && <div className="flex w-full gap-4 flex-col lg:flex-row">
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Per Carton Quantity</label>
+              <input
+                type="number"
+                name="perCatonQuantity"
+                defaultValue={product?.perCartonQuantity}
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+            </div>
+
+
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Unit Price</label>
+              <input
+                type="number"
+                name="productPrice"
+                defaultValue={product?.productPrice}
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+            </div>
+          </div>
+        }
+
+
 
         {/* Product Description */}
         <div className="space-y-1 text-sm">

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaChartBar, FaBeer, FaUser, FaShoppingCart, FaListUl, FaUsers } from "react-icons/fa";
+import {  FaBeer,  FaShoppingCart, FaListUl, FaUsers } from "react-icons/fa";
 import { FaShop } from "react-icons/fa6";
 
 const AgentMenu = () => {
@@ -44,13 +44,6 @@ const AgentMenu = () => {
           <li className="btn btn-primary text-white w-full">
             <FaShop className="mr-2" />
            Client Shop Management
-          </li>
-        </NavLink>
-
-        <NavLink to="/user">
-          <li className="btn btn-primary text-white w-full">
-            <FaUser className="mr-2" />
-            Employee Management
           </li>
         </NavLink>
     </div>
