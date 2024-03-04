@@ -21,9 +21,6 @@ const AdminMenu = () => {
           </button>
         </NavLink>
 
-        
-
-
         <NavLink to="/sellView">
           <li className="btn btn-primary text-white w-full">
             <FaListUl className="mr-2" />
