@@ -2,12 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const ManageUser = () => {
   const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(true);
+  const { logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const { data: user = [], refetch } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
@@ -72,6 +76,15 @@ const ManageUser = () => {
   if (loading === true) {
     return (<div className="  bg-base-200 p-16 w-full h-full">Loading...</div>);
   }
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+      navigate("/signUp");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   
   return (
     <div className="bg-base-200 p-0 m-0 lg:p-4 lg:m-4 rounded-xl">
@@ -79,9 +92,9 @@ const ManageUser = () => {
         <h2>Manage user</h2>
       </div>
       <div className="flex w-full  ">
-        <Link to="/signUp">
-          <button className=" btn btn-primary">Add User</button>
-        </Link>
+        
+          <button onClick={handleSignOut} className=" btn btn-primary">Add User</button>
+       
       </div>
 
       <div className="overflow-x-auto">
