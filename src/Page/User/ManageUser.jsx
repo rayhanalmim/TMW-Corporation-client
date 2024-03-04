@@ -129,8 +129,9 @@ const ManageUser = () => {
                         className="px-4 py-0  rounded-md text-black"
                       >
                         <option value="isAdmin">Admin</option>
-                        <option value="isAgent">Agent</option>
-                        <option value="user">out service</option>
+                        <option value="isAgent">Desk Admin</option>
+                        <option value="user">DSR</option>
+                        <option value="user">Out Of Services</option>
                       </select>
                       <button type="submit" className="btn btn-sm btn-primary ">
                         Action

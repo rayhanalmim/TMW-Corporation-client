@@ -26,14 +26,14 @@ const SingleProfile = () => {
         <h2 className="text-gray-500  p-4">সে একজন আবেদনকারী</h2>
       )}
       <div className="flex flex-col lg:flex-row w-full">
-        <div className="w-full lg:w-1/2">
+        <div className="w-full mt-7 lg:w-1/2">
           <img
             src={user?.photoURL}
             alt={user?.displayName}
             className="w-32 h-32 mx-auto rounded-full  aspect-square"
           />
 
-          <div>
+          <div className="pt-5"> 
             <Link
               className="text-blue-800 font-bold"
               to={`/EditProfile/${user?._id}`}
@@ -45,14 +45,10 @@ const SingleProfile = () => {
           </div>
         </div>
         <div className="w-full lg:w-1/2 text-left mt-4 lg:ml-8">
-          <p className="text-xl font-bold mb-4">Your Profile</p>
+          <p className="text-xl border-b-2 border-black font-bold mb-4">User Profile</p>
           <p>
             <span className="font-bold text-blue-500">Name:</span>{" "}
             {user?.displayName}
-          </p>
-          <p>
-            <span className="font-bold text-blue-500">Registration Date:</span>{" "}
-            {user?.date && convertToBdTime(user?.date)}
           </p>
           <p>
             <span className="font-bold text-blue-500">Email:</span>{" "}
@@ -67,16 +63,8 @@ const SingleProfile = () => {
             {user?.phoneNo}
           </p>
           <p>
-            <span className="font-bold text-blue-500">NID No:</span> {user?.nid}
-          </p>
-          <p>
-            <span className="font-bold text-blue-500">Role No:</span>
-            {user?.userType}
-          </p>
-          <p>
-            <span className="font-bold text-blue-500">Beach No: </span>
-            {!user?.beach && <span>Beach No select</span>}
-            {user?.beach}
+            <span className="font-bold text-blue-500">User Role: </span>
+             {user?.userType}
           </p>
           <p>
             <span className="font-bold text-green-500">Total Buy Amount:{user?.totalPurchesAmmount} </span>

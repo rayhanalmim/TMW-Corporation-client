@@ -7,19 +7,21 @@ const AdminMenu = () => {
     <div>
       <div className="flex flex-col gap-4">
 
+        <NavLink to="/">
+          <button className="btn btn-primary text-white w-full ">
+            <FaShoppingCart className="mr-2" />
+            Home
+          </button>
+        </NavLink>
+        
         <NavLink to="/addToCard">
           <button className="btn btn-primary text-white w-full ">
             <FaShoppingCart className="mr-2" />
-            DSR Request
+            DSR Order Request
           </button>
         </NavLink>
 
-        <NavLink to="/analysis">
-          <li className="btn btn-primary text-white w-full">
-            <FaChartBar className="mr-2" />
-            Inventory Details
-          </li>
-        </NavLink>
+        
 
 
         <NavLink to="/sellView">
@@ -45,14 +47,21 @@ const AdminMenu = () => {
         <NavLink to="/shop">
           <li className="btn btn-primary text-white w-full">
             <FaShop className="mr-2" />
-            Shop Management
+           Client Shop Management
           </li>
         </NavLink>
 
         <NavLink to="/user">
           <li className="btn btn-primary text-white w-full">
             <FaUser className="mr-2" />
-            User Management
+            Employee Management
+          </li>
+        </NavLink>
+
+        <NavLink to="/analysis">
+          <li className="btn btn-primary text-white w-full">
+            <FaChartBar className="mr-2" />
+            Sell Analysis
           </li>
         </NavLink>
 
