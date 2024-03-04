@@ -80,15 +80,6 @@ const EditProfile = () => {
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label className="block text-yellow-500 ">Beach number</label>
-            <input
-              type="text"
-              name="beach"
-              defaultValue={user?.beach}
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 dark-bg-gray-900 dark-text-gray-100 focus:dark-border-violet-400"
-            />
-          </div>
-          <div className="space-y-1 text-sm">
             <label className="block dark-text-gray-400">user Type/Tags</label>
             <div className=" text-sm flex gap-2">
               <select
