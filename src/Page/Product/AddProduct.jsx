@@ -5,8 +5,12 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosPublic from "../../Components/hook/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
+import useAdmin from "../../Hook/useAdmin";
+import useAgent from "../../Hook/useAgent";
 
 const AddProduct = () => {
+  const [isAdmin] = useAdmin();
+  const [isAgent] = useAgent();  //Dsr
   const {
     register,
     handleSubmit,
@@ -179,36 +183,56 @@ const AddProduct = () => {
 
         </div>
 
-        {/* Product Quantity and Product Price */}
-        <div className="flex w-full gap-4 flex-col lg:flex-row">
-          <div className="space-y-1 text-sm w-full lg:w-1/2">
-            <label className="block dark-text-gray-400">Product Quantity</label>
-            <input
-              {...register("productQuantity", {
-              })}
-              type="number"
-              defaultValue={0}
-              disabled
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-            />
-            {errors.productQuantity && (
-              <p className="text-red-500">{errors.productQuantity.message}</p>
-            )}
+        {
+          isAdmin &&   
+          <div className="flex w-full gap-4 flex-col lg:flex-row">
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Product Quantity</label>
+              <input
+                {...register("productQuantity", {
+                })}
+                type="number"
+                defaultValue={0}
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+              {errors.productQuantity && (
+                <p className="text-red-500">{errors.productQuantity.message}</p>
+              )}
+            </div>
+  
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Product Price</label>
+              <input
+                {...register("productPrice", {
+                  required: "Product Price is required",
+                })}
+                type="number"
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              />
+              {errors.productPrice && (
+                <p className="text-red-500">{errors.productPrice.message}</p>
+              )}
+            </div>
           </div>
-          <div className="space-y-1 text-sm w-full lg:w-1/2">
-            <label className="block dark-text-gray-400">Product Price</label>
-            <input
-              {...register("productPrice", {
-                required: "Product Price is required",
-              })}
-              type="number"
-              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-            />
-            {errors.productPrice && (
-              <p className="text-red-500">{errors.productPrice.message}</p>
-            )}
-          </div>
-        </div>
+        }
+
+      {
+        isAgent &&   <div className="space-y-1 text-sm ">
+        <label className="block dark-text-gray-400">Product Price</label>
+        <input
+          {...register("productPrice", {
+            required: "Product Price is required",
+          })}
+          type="number"
+          className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+        />
+        {errors.productPrice && (
+          <p className="text-red-500">{errors.productPrice.message}</p>
+        )}
+      </div>
+      }
+
+      
 
         {/* Product Description */}
         <div className="space-y-1 text-sm">
