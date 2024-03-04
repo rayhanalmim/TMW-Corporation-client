@@ -6,18 +6,21 @@ const AdminMenu = () => {
   return (
     <div>
       <div className="flex flex-col gap-4">
+
+        <NavLink to="/addToCard">
+          <button className="btn btn-primary text-white w-full ">
+            <FaShoppingCart className="mr-2" />
+            DSR Request
+          </button>
+        </NavLink>
+
         <NavLink to="/analysis">
           <li className="btn btn-primary text-white w-full">
             <FaChartBar className="mr-2" />
-            Analytics
+            Inventory Details
           </li>
         </NavLink>
-        <NavLink to="/addToCard">
-          <li className="btn btn-primary text-white w-full">
-            <FaShoppingCart className="mr-2" />
-            DSR Request
-          </li>
-        </NavLink>
+
 
         <NavLink to="/sellView">
           <li className="btn btn-primary text-white w-full">
@@ -42,7 +45,7 @@ const AdminMenu = () => {
         <NavLink to="/money">
           <li className="btn btn-primary text-white w-full">
             <FaShop className="mr-2" />
-             Shop Management
+            Shop Management
           </li>
         </NavLink>
 
@@ -53,7 +56,7 @@ const AdminMenu = () => {
           </li>
         </NavLink>
 
-        
+
       </div>
     </div>
   );

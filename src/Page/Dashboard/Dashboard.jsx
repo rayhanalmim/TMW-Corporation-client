@@ -37,12 +37,8 @@ const Dashboard = () => {
 
   return (
     <div
-      style={{
-        backgroundImage:
-          "url(https://img.freepik.com/free-vector/abstract-white-tone-memphis-social-background_53876-113860.jpg)",
-        backgroundSize: "cover",
-      }}
-      className="min-h-screen"
+    
+      className="min-h-screen bg-sky-900"
     >
       <Header />
       <div className="lg:h-[300px] md:h-[100px] bg-cover bg-center lg:relative      ">
@@ -52,7 +48,7 @@ const Dashboard = () => {
               Welcome, {user?.displayName}
             </p>
 
-            <h2 className="text-xl lg:text-4xl font-bold py-0 lg:py-4 text-left text-gray-950  capitalize">
+            <h2 className="text-xl lg:text-4xl font-bold py-0 lg:py-4 text-left text-white capitalize">
               {isAdmin ? (
                 <>Admin Dashboard,</>
               ) : isAgent ? (
@@ -66,12 +62,12 @@ const Dashboard = () => {
       </div>
       <div className="flex flex-col lg:flex-row w-full container mx-auto  gap-5 ">
         <div className="w-full lg:w-1/3  p-4  sticky top-10">
-          <div className="justify-around p-4 text-center rounded-lg lg:-mt-32 bg-[#172554] w-full mx-auto flex lg:flex-col gap-4">
+          <div className="justify-around p-4 text-center rounded-3xl lg:-mt-32 bg-sky-800 w-full mx-auto flex lg:flex-col gap-4">
             <div className="">
               <img
                 src={user?.photoURL}
                 alt={user?.displayName}
-                className="   h-28   lg:h-44 mx-auto rounded-full aspect-square"
+                className="   h-28  pt-3 lg:h-36 mx-auto rounded-full aspect-square"
               />
             </div>
 
@@ -108,7 +104,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="w-full lg:w-2/3 p-4  sticky top-10  ">
-          <div className="w-full justify-around p-1 lg:p-8 gap-9 text-center rounded-lg lg:-mt-32 bg-[#172554]  ">
+          <div className="w-full justify-around p-1 lg:p-8 gap-9 text-center rounded-lg lg:-mt-32 bg-[#172554] ">
             <Outlet></Outlet>
           </div>
         </div>
