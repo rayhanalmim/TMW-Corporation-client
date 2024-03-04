@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaChartBar, FaBeer, FaMoneyBill, FaUser, FaShoppingCart, FaListUl, FaUsers } from "react-icons/fa";
+import { FaChartBar, FaBeer, FaUser, FaShoppingCart, FaListUl, FaUsers } from "react-icons/fa";
 import { FaShop } from "react-icons/fa6";
 
 const AdminMenu = () => {

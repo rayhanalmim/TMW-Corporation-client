@@ -34,7 +34,7 @@ const AdminRouter = ({ children }) => {
     );
   }
 
-    if (  userData.userType === "isAdmin") {
+    if (  userData.userType === "isAdmin" || userData.userType === "deskAdmin") {
       return children;
     }
 

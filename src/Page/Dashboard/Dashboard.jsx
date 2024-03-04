@@ -20,10 +20,10 @@ const showSuccessAlert = () => {
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
-  const [isAgent] = useAgent();
+  const [isAgent] = useAgent();  //Dsr
 
   const location = useLocation();
-  const navigate = useNavigate();
+
   const { user, logOut } = useContext(AuthContext);
   const handleSignOut = async () => {
     try {
