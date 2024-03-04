@@ -86,7 +86,7 @@ const ManageShop = () => {
                 <td>{money?.shopName}</td>
                 <td>{money.shopArea}</td>
                 <td>{money.shopOwner}</td>
-                <td>{money.contractNumber}</td>
+                <td>0{money.contractNumber}</td>
                 <td>
                   <button
                     className="btn btn-sm btn-error"
