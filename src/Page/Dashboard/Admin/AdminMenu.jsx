@@ -42,7 +42,7 @@ const AdminMenu = () => {
           </li>
         </NavLink>
 
-        <NavLink to="/money">
+        <NavLink to="/shop">
           <li className="btn btn-primary text-white w-full">
             <FaShop className="mr-2" />
             Shop Management
