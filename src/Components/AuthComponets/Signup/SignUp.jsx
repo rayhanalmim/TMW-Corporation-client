@@ -34,6 +34,10 @@ const SignUp = () => {
   const [phoneNo, setPhoneNo] = useState("");
   const [nid, setNid] = useState("");
   const [loading, setLoading] = useState(false);
+  const [type, setType] = useState('');
+  const [zone, setZone] = useState('');
+  let role = "user";
+  let area = "";
 
   const showSuccessAlert = () => {
     Swal.fire({
@@ -91,17 +95,21 @@ const SignUp = () => {
             photoURL: res.data?.data?.display_url,
           })
             .then(() => {
+
+              if(type == "DRS"){
+                role = type;
+                area = zone;
+              }
+
               const data = {
                 displayName: result.user.displayName,
                 email: result.user.email,
                 photoURL: res.data?.data?.display_url,
-                address,
                 phoneNo: `+880${phoneNo}`,
-                nid,
-                userType: "user",
-                beach: "no select",
+                userType: role,
                 totalDueAmmout: 0,
                 lastSmsSendingDate: "",
+                ifDsrArea: area,
                 totalPurchesAmmount: 0,
                 purchesProductCollection: [],
               };
@@ -142,9 +150,6 @@ const SignUp = () => {
     setPhoneNo(e.target.value);
   };
 
-  const handlenidChange = (e) => {
-    setNid(e.target.value);
-  };
 
   return (
     <div>
@@ -163,12 +168,12 @@ const SignUp = () => {
             </div>
           </Link>
           <h1 className="text-2xl font-bold text-center pb-2  text-white">
-            Add User 
+            Add Employee
           </h1>
           <form onSubmit={handleSignUp} className="space-y-6">
             <div className="space-y-1 text-sm">
               <label htmlFor="displayName" className="block text-white">
-                User Name
+                Employee Name
               </label>
               <input
                 type="text"
@@ -181,7 +186,7 @@ const SignUp = () => {
             </div>
             <div className="space-y-1 text-sm">
               <label htmlFor="photoURL" className="block text-white">
-                User Image
+                Employee Image
               </label>
               <input
                 type="file"
@@ -191,7 +196,7 @@ const SignUp = () => {
             </div>
             <div className="space-y-1 text-sm">
               <label htmlFor="email" className="block text-white">
-                User Email
+                Employee Email
               </label>
               <input
                 type="email"
@@ -204,24 +209,49 @@ const SignUp = () => {
                 required
               />
             </div>
+
+            {/* ------------------------- */}
+
+
             <div className="space-y-1 text-sm">
               <label htmlFor="address" className="block text-white">
-                User Adress
+                Employee Role
               </label>
-              <input
-                type="text"
-                name="address"
-                value={address}
-                onChange={handleAddressChange}
-                id="address"
-                placeholder="Address"
+              <select
+                onChange={(e) => setType(e.target.value)}
+                name="propertyType"
                 className="w-full border px-4 py-3 rounded-md    focus:dark-border-violet-400"
-                required
-              />
+              >
+                <option value="">Select User Role</option>
+                <option value="DRS">DRS</option>
+                <option value="deskAdmin">Office Desk</option>
+              </select>
             </div>
+
+            {
+              type == 'DRS' && <div className="space-y-1 text-sm">
+              <label htmlFor="address" className="block text-white">
+                Select Woking Zone
+              </label>
+              <select
+                onChange={(e) => setZone(e.target.value)}
+                name="propertyType"
+                className="w-full border px-4 py-3 rounded-md    focus:dark-border-violet-400"
+              >
+                <option value="">Select Zone</option>
+                <option value="DRS">Mirpur</option>
+                <option value="deskAdmin">Mohammadpur</option>
+              </select>
+            </div>
+            }
+
+
+
+
+
             <div className="space-y-1 text-sm">
               <label htmlFor="PhoneNo" className="block text-white">
-                User Phone Number
+                Employee Phone Number
               </label>
               <label className="input input-bordered flex items-center gap-2">
                 +880
@@ -260,7 +290,7 @@ const SignUp = () => {
               className="block w-full p-3 text-center rounded-xl dark.text-gray-900 dark.bg-violet-400 btn btn-primary"
               disabled={loading} // Disable the button when loading
             >
-              {loading ? "Please Wait..." : "Create User"}
+              {loading ? "Please Wait..." : "Create Employee"}
             </button>
           </form>
 
