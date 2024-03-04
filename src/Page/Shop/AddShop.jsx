@@ -18,7 +18,7 @@ const AddShop = () => {
         const shopData = {
             shopName: data.shopName,
             shopArea: data.shopArea,
-            shopOwner: data.shopOwnerd,
+            shopOwner: data.shopOwner,
             contractNumber: data.contractNumber
         }
         try {
@@ -34,13 +34,13 @@ const AddShop = () => {
                 });
             } else {
                 Swal.fire({
-                    title: "Money  added Success!",
+                    title: "Shop added Success!",
                     text: "Thanks You!",
                     icon: "success",
                     position: "top-right",
                     timer: 1500,
                 });
-                navigate("/money");
+                navigate("/shop");
             }
         } catch (error) {
             console.error("Error adding property:", error);
@@ -132,7 +132,7 @@ const AddShop = () => {
                         >
                             Add Shop
                         </button>
-                        <Link to="/Money">
+                        <Link to="/shop">
                             <button type="button" className="btn btn-error text-white">
                                 Close
                             </button>

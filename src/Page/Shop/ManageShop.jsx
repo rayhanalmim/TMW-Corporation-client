@@ -73,20 +73,20 @@ const ManageShop = () => {
         <table className="table">
           <thead className="text-sm">
             <th>No</th>
-            <th>Money</th>
-            <th>Issues</th>
-            <th>Date</th>
-            <th>Type</th>
+            <th>Shop Name</th>
+            <th>Shop Area</th>
+            <th>Owner Name</th>
+            <th>Contract</th>
             <th>Action</th>
           </thead>
           <tbody>
             {moneys.map((money, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{money?.Money} tk</td>
-                <td>{money.costIssues}</td>
-                <td>{new Date(money.costDate).toLocaleDateString("en-GB")}</td>
-                <td>{money.costType}</td>
+                <td>{money?.shopName}</td>
+                <td>{money.shopArea}</td>
+                <td>{money.shopOwner}</td>
+                <td>{money.contractNumber}</td>
                 <td>
                   <button
                     className="btn btn-sm btn-error"

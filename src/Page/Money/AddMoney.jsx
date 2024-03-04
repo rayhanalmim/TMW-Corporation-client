@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { Link, useNavigate } from "react-router-dom";
+
 const AddMoney = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
@@ -131,7 +132,7 @@ const AddMoney = () => {
             >
               Add Shop
             </button>
-            <Link to="/Money">
+            <Link to="/shop">
               <button type="button" className="btn btn-error text-white">
                 Close
               </button>

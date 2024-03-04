@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
-import EditProfile from "./EditProfile";
 import { useQuery } from "@tanstack/react-query";
-import Swal from "sweetalert2";
 
 const SingleProfile = () => {
   const { id } = useParams();
@@ -35,8 +32,6 @@ const SingleProfile = () => {
             alt={user?.displayName}
             className="w-32 h-32 mx-auto rounded-full  aspect-square"
           />
-
-          <p className="mt-4 text-center text-gray-500">Id: {user?._id}</p>
 
           <div>
             <Link
