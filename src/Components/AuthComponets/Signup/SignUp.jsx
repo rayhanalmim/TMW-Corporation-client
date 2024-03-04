@@ -100,6 +100,9 @@ const SignUp = () => {
                 role = type;
                 area = zone;
               }
+              else if(type == "deskAdmin"){
+                role = type;
+              }
 
               const data = {
                 displayName: result.user.displayName,
@@ -142,9 +145,7 @@ const SignUp = () => {
     setEmail(e.target.value);
   };
 
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
-  };
+ 
 
   const handlePhoneNoChange = (e) => {
     setPhoneNo(e.target.value);
