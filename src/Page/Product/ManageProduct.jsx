@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import Title from "../../Components/Shared/Title";
 
 const ManageProduct = () => {
   const [products, setProducts] = useState([]);
@@ -56,7 +57,7 @@ const ManageProduct = () => {
   return (
     <div className="bg-base-200 p-0 m-0 lg:p-4 lg:m-4 rounded-xl">
       <div className="text-3xl py-2 ">
-        <h2> Manage Product</h2>
+        <Title title="Manage Product"></Title>
       </div>
       <div className="flex w-full  ">
         <Link to="/AddProduct">
