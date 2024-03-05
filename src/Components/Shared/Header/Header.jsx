@@ -75,7 +75,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="navbar-end">
-        <button onClick={handleSignOut} className="btn mr-5 btn-sm btn-error px-8">
+        <button onClick={handleSignOut} className="btn text-white mr-5 btn-sm btn-error px-8">
                   Log-out
                 </button>
         </div>

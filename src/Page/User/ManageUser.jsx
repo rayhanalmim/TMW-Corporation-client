@@ -5,6 +5,7 @@ import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import TitleTwo from "../../Components/Shared/TitleTwo";
 
 const ManageUser = () => {
   const axiosSecure = useAxiosSecure();
@@ -89,7 +90,7 @@ const ManageUser = () => {
   return (
     <div className="bg-base-200 p-0 m-0 lg:p-4 lg:m-4 rounded-xl">
       <div className="text-3xl py-2">
-        <h2>Manage user</h2>
+        <TitleTwo heading="Manage user"></TitleTwo>
       </div>
       <div className="flex w-full  ">
         

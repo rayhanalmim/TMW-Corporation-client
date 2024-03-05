@@ -114,6 +114,7 @@ const SignUp = () => {
                 lastSmsSendingDate: "",
                 ifDsrArea: area,
                 totalPurchesAmmount: 0,
+                password: password, 
                 purchesProductCollection: [],
               };
               axiosPublic.post("/user", data).then(() => {
@@ -155,14 +156,9 @@ const SignUp = () => {
   return (
     <div>
       <div
-        style={{
-          backgroundImage:
-            "url(https://img.freepik.com/free-vector/abstract-white-tone-memphis-social-background_53876-113860.jpg)",
-          backgroundSize: "cover",
-        }}
-        className="py-8 px-4  min-h-screen"
+        className="py-8 px-4  min-h-screen bg-sky-900"
       >
-        <div className=" bg-blue-950 w-full  mx-auto max-w-md p-8 pb-16 space-y-3 rounded-xl border my-5  ">
+        <div className=" bg-sky-800 w-full  mx-auto max-w-md p-8 pb-16 space-y-3 rounded-xl border my-5  ">
           <Link to="/">
             <div className="w-24 mx-auto block rounded-full  ">
               <img src={logo} />

@@ -42,7 +42,7 @@ const AddProduct = () => {
         productName: data.productName,
         perCartonQuantity: data.perCartonQuantity,
         lightColor: data.LightColor,
-        ProductCategory : data.ProductCategory,
+        ProductCategory: data.ProductCategory,
         wat: data.wat,
         productPrice: parseFloat(data.productPrice),
         productQuantity: 0,
@@ -129,7 +129,7 @@ const AddProduct = () => {
               <p className="text-red-500">{errors.photoURL.message}</p>
             )}
           </div>
-          
+
           <div className="space-y-1 text-sm w-full lg:w-1/2">
             <label className="block dark-text-gray-400">Light Color</label>
             <select
@@ -151,6 +151,7 @@ const AddProduct = () => {
 
         {/* ------------------------productType&Wat------------------- */}
         <div className="flex w-full gap-4 flex-col lg:flex-row">
+
           <div className="space-y-1 text-sm w-full lg:w-1/2">
             <label className="block dark-text-gray-400">Product Category</label>
             <select
@@ -160,13 +161,58 @@ const AddProduct = () => {
               className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
             >
               <option value="">Select property type</option>
-              <option value="catOne">cat-1</option>
-              <option value="catTwo">cat-2</option>
+              <option value="M COB">M COB</option>
+              <option value="LED NIGHT-O COLOR BULB">LED NIGHT-O COLOR BULB</option>
+              <option value="LED GLOBE COLOR BULB">LED GLOBE COLOR BULB</option>
+              <option value="X-PRESS - 1 YEAR">X-PRESS - 1 YEAR</option>
+              <option value="CANDLE CRYSTAL">CANDLE CRYSTAL</option>
+              <option value="SPOT LIGHT-ECO">SPOT LIGHT-ECO</option>
+              <option value="OS-22 (SMD PANEL)">OS-22 (SMD PANEL)</option>
+              <option value="OS-33 (SMD PANEL)">OS-33 (SMD PANEL)</option>
+              <option value="FLAT WHITE PANEL(ROUND/SQUARE)">FLAT WHITE PANEL(ROUND/SQUARE)</option>
+              <option value="SURFACE PANEL">SURFACE PANEL</option>
+              <option value="FLOWER PANEL">FLOWER PANEL</option>
+              <option value="SURFACE FLOWER PANEL">SURFACE FLOWER PANEL</option>
+              <option value="ELIT PANEL">ELIT PANEL</option>
+              <option value="FLEXIBLE PANEL">FLEXIBLE PANEL</option>
+              <option value="ELITE FLEXIBLE PANEL">ELITE FLEXIBLE PANEL</option>
+              <option value="ELITE SURFACE FLEXIBLE PANEL">ELITE SURFACE FLEXIBLE PANEL</option>
+              <option value="NEW FLEXO PANEL">NEW FLEXO PANEL</option>
+              <option value="NEW SURFACE FLEXO PANEL">NEW SURFACE FLEXO PANEL</option>
+              <option value="SLIM PANEL - 1 YEAR">SLIM PANEL - 1 YEAR</option>
+              <option value="V-SERIES PANEL">V-SERIES PANEL</option>
+              <option value="AC/DC BULB">AC/DC BULB</option>
+              <option value="ECO BULB">ECO BULB</option>
+              <option value="COSCO BULB - 1 YEAR">COSCO BULB - 1 YEAR</option>
+              <option value="JET BULB - 1 YEAR">JET BULB - 1 YEAR</option>
+              <option value="LED BULLET BULB">LED BULLET BULB</option>
+              <option value="LED MOON BULB">LED MOON BULB</option>
+              <option value="NEW UFO BULB">NEW UFO BULB</option>
+              <option value="OLD UFO BULB">OLD UFO BULB</option>
+              <option value="HIGH BAY">HIGH BAY</option>
+              <option value="G-SERIES BULB">G-SERIES BULB</option>
+              <option value="BOWLING BULB">BOWLING BULB</option>
+              <option value="2/2 PANEL LIGHT">2/2 PANEL LIGHT</option>
+              <option value="2/2 PANEL LIGHT-BACK LITE">2/2 PANEL LIGHT-BACK LITE</option>
+              <option value="T8 ONLY LIGHT">T8 ONLY LIGHT</option>
+              <option value="T8 TUBE LIGHT (complete)">T8 TUBE LIGHT (complete)</option>
+              <option value="T5 TUBE LIGHT ( SQUARE)">T5 TUBE LIGHT ( SQUARE)</option>
+              <option value="T5 TUBE LIGHT ( MASHROOM)">T5 TUBE LIGHT ( MASHROOM)</option>
+              <option value="T8 GLASS TUBE">T8 GLASS TUBE</option>
+              <option value="SUPPER SMART TUBE SHADE">SUPPER SMART TUBE SHADE</option>
+              <option value="SMART TUBE SHADE">SMART TUBE SHADE</option>
+              <option value="GLAMOUR STREET LIGHT">GLAMOUR STREET LIGHT</option>
+              <option value="LED T5 LINK TUBE">LED T5 LINK TUBE</option>
+              <option value="LED FLOOD LIGHT - APPLE SERIES">LED FLOOD LIGHT - APPLE SERIES</option>
+              <option value="LED FLOOD LIGHT - XPRESS">LED FLOOD LIGHT - XPRESS</option>
+              <option value="LED FLOOD LIGHT (E018E)">LED FLOOD LIGHT (E018E)</option>
             </select>
             {errors.ProductCategory && (
               <p className="text-red-500">{errors.ProductCategory.message}</p>
             )}
           </div>
+
+
           <div className="space-y-1 text-sm w-full lg:w-1/2">
             <label className="block dark-text-gray-400">Light Wat</label>
             <input
@@ -184,7 +230,7 @@ const AddProduct = () => {
         </div>
 
         {
-          isAdmin &&   
+          isAdmin &&
           <div className="flex w-full gap-4 flex-col lg:flex-row">
             <div className="space-y-1 text-sm w-full lg:w-1/2">
               <label className="block dark-text-gray-400">Product Quantity</label>
@@ -199,7 +245,7 @@ const AddProduct = () => {
                 <p className="text-red-500">{errors.productQuantity.message}</p>
               )}
             </div>
-  
+
             <div className="space-y-1 text-sm w-full lg:w-1/2">
               <label className="block dark-text-gray-400">Product Price</label>
               <input
@@ -216,23 +262,23 @@ const AddProduct = () => {
           </div>
         }
 
-      {
-        isAgent &&   <div className="space-y-1 text-sm ">
-        <label className="block dark-text-gray-400">Product Price</label>
-        <input
-          {...register("productPrice", {
-            required: "Product Price is required",
-          })}
-          type="number"
-          className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-        />
-        {errors.productPrice && (
-          <p className="text-red-500">{errors.productPrice.message}</p>
-        )}
-      </div>
-      }
+        {
+          isAgent && <div className="space-y-1 text-sm ">
+            <label className="block dark-text-gray-400">Product Price</label>
+            <input
+              {...register("productPrice", {
+                required: "Product Price is required",
+              })}
+              type="number"
+              className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+            />
+            {errors.productPrice && (
+              <p className="text-red-500">{errors.productPrice.message}</p>
+            )}
+          </div>
+        }
 
-      
+
 
         {/* Product Description */}
         <div className="space-y-1 text-sm">

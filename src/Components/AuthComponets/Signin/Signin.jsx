@@ -52,14 +52,9 @@ const Signin = () => {
 
   return (
     <div
-      style={{
-        backgroundImage:
-          "url(https://img.freepik.com/free-vector/abstract-white-tone-memphis-social-background_53876-113860.jpg)",
-        backgroundSize: "cover",
-      }}
-      className="py-8 px-4 min-h-screen"
+      className="py-8 px-4 min-h-screen bg-sky-900"
     >
-      <div className=" bg-blue-950  w-full  mx-auto max-w-md p-8 pb-16 space-y-3 rounded-xl border my-5  ">
+      <div className=" bg-sky-800  w-full  mx-auto max-w-md p-8 pb-16 space-y-3 rounded-xl border my-5  ">
         <Link to="/">
           <div className="w-32 mx-auto block rounded-full  ">
             <img src={logo} />
@@ -88,7 +83,7 @@ const Signin = () => {
             />
           </div>
           <button className="block w-full p-3 text-center rounded-xl dark:text-gray-900 dark:bg-violet-400 btn btn-primary">
-            Sing In
+            Sign In
           </button>
         </form>
        
