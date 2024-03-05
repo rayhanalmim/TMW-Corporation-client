@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import Title from "../../Components/Shared/Title";
 
 const AddToCard = () => {
   const axiosSecure = useAxiosSecure();
@@ -22,7 +23,7 @@ const AddToCard = () => {
   return (
     <div className="bg-base-200 p-0 m-0 lg:p-4 lg:m-4 rounded-xl">
       <div className="text-3xl py-2">
-        <h2>Sell history </h2>
+      <Title title="DSR Request"></Title>
       </div>
 
       <div className="flex justify-evenly">

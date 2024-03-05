@@ -6,7 +6,7 @@ const AgentMenu = () => {
   return (
     <div className="flex flex-col gap-4">
       <NavLink to="/">
-          <button className="btn btn-primary text-white w-full ">
+          <button className="btn btn-primary text-white w-full hover: ">
             <FaShoppingCart className="mr-2" />
             Home
           </button>
