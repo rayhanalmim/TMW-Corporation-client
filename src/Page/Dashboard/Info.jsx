@@ -6,7 +6,7 @@ const Info = () => {
   const [status, setStatus] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/")
+    fetch("https://tmw-corpo-server.vercel.app/")
       .then((res) => res.text())
       .then((data) => setStatus(data))
       .catch((error) => {
@@ -22,7 +22,6 @@ const Info = () => {
         <p className="p-4">{status}</p>
       </div>
       <hr className="py-4" />
-      <Calculator />
 
      
     </div>

@@ -8,7 +8,7 @@ const ManageProduct = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/product")
+      .get("https://tmw-corpo-server.vercel.app/product")
       .then((response) => {
         setProducts(response.data);
       })
@@ -30,7 +30,7 @@ const ManageProduct = () => {
       if (result.isConfirmed) {
         // Send a request to delete the product
         axios
-          .delete(`http://localhost:5000/product/${productId}`)
+          .delete(`https://tmw-corpo-server.vercel.app/product/${productId}`)
           .then((response) => {
             if (response.status === 200) {
               setProducts((prevProducts) =>

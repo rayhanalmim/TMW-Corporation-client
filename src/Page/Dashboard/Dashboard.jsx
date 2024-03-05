@@ -22,6 +22,7 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const [isAgent] = useAgent();  //Dsr
 
+  const navigate = useNavigate();
   const location = useLocation();
 
   const { user, logOut } = useContext(AuthContext);
@@ -36,15 +37,12 @@ const Dashboard = () => {
   };
 
   return (
-    <div
-    
-      className="min-h-screen bg-sky-900"
-    >
+    <div className="min-h-screen bg-sky-900">
       <Header />
       <div className="lg:h-[300px] md:h-[100px] bg-cover bg-center lg:relative      ">
         <div className="container mx-auto">
           <div className=" px-8 lg:p-8">
-            <p className="lg:pt-8 pt-3  text-gray-800">
+            <p className="lg:pt-8 pt-3  text-white">
               Welcome, {user?.displayName}
             </p>
 
@@ -85,7 +83,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="justify-around p-6 lg:p-8 gap-9 text-center rounded-lg  my-8 bg-[#172554] w-full mx-auto   ">
+          <div className="justify-around p-6 lg:p-8 gap-9 text-center rounded-lg  my-8 bg-sky-800 w-full mx-auto   ">
             <div className=" ">
               {isAdmin ? (
                 <>
@@ -104,7 +102,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="w-full lg:w-2/3 p-4  sticky top-10  ">
-          <div className="w-full justify-around p-1 lg:p-8 gap-9 text-center rounded-lg lg:-mt-32 bg-[#172554] ">
+          <div className="w-full justify-around p-1 lg:p-8 gap-9 text-center rounded-lg lg:-mt-32 bg-sky-800 ">
             <Outlet></Outlet>
           </div>
         </div>

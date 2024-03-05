@@ -19,7 +19,7 @@ const AgentMenu = () => {
           </button>
         </NavLink>
 
-        <NavLink to="/sellView">
+        {/* <NavLink to="/sellView">
           <li className="btn btn-primary text-white w-full">
             <FaListUl className="mr-2" />
             Sell List
@@ -31,7 +31,7 @@ const AgentMenu = () => {
             <FaUsers className="mr-2" />
             List of Due
           </li>
-        </NavLink>
+        </NavLink> */}
 
         <NavLink to="/manageProduct">
           <li className="btn btn-primary text-white w-full">

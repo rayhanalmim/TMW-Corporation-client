@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 // Constant for API URL
-const MONEY_API_URL = "http://localhost:5000/money";
+const MONEY_API_URL = "https://tmw-corpo-server.vercel.app/money";
 
 const ManageShop = () => {
   const [moneys, setMoneys] = useState([]);

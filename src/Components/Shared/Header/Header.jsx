@@ -43,7 +43,7 @@ const Header = () => {
     </>
   );
   return (
-    <div className="bg-blue-950 ">
+    <div className="bg-sky-800 ">
       <div className="navbar  text-white container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -70,7 +70,7 @@ const Header = () => {
             </div>
             <p className=" hidden lg:flex  lg:text-2xl  my-auto  ">
               {" "}
-              TWS CORPORATION
+              TMW CORPORATION
             </p>
           </Link>
         </div>

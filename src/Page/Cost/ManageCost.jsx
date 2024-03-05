@@ -21,7 +21,7 @@ const ManageCost = () => {
       if (result.isConfirmed) {
         // Send a request to delete the product
         axiosSecure
-          .delete(`http://localhost:5000/cost/${costId}`)
+          .delete(`https://tmw-corpo-server.vercel.app/cost/${costId}`)
           .then((response) => {
             if (response.status === 200) {
               setCosts((prevProducts) =>
