@@ -7,7 +7,6 @@ import PrivateRoute from "./PrivateRoute";
 import AddProduct from "../Page/Product/AddProduct";
 import UpdateProduct from "../Page/Product/UpdateProduct";
 import AllProduct from "../Page/Product/AllProduct";
-
 import SingleProduct from "../Page/Product/SingleProduct";
 import ShowCost from "../Page/Cost/ManageCost";
 import ManageProduct from "../Page/Product/ManageProduct";
@@ -47,7 +46,7 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: "/memo/:id",
+    path: "/memo",
     element: <Memo />,
   },
   {

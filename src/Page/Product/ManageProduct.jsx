@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Title from "../../Components/Shared/Title";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 const ManageProduct = () => {
   const [products, setProducts] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     axios
@@ -17,6 +20,14 @@ const ManageProduct = () => {
         console.error("Error fetching data from API:", error);
       });
   }, []);
+
+  const { data: inventory = [], isLoading: inventoryLoading, refetch: inventoryRefetch } = useQuery({
+    queryKey: ["inventory"],
+    queryFn: async () => {
+      const res = await axiosPublic.get('/product/inventory')
+      return res.data;
+    }
+  })
 
   const handleDeleteProduct = (productId) => {
     Swal.fire({
@@ -42,6 +53,7 @@ const ManageProduct = () => {
                 "Your product has been deleted.",
                 "success"
               );
+              inventoryRefetch();
             } else {
               Swal.fire("Error!", "Failed to delete the product.", "error");
             }
@@ -64,10 +76,36 @@ const ManageProduct = () => {
           <button className=" btn btn-primary">Add Product</button>
         </Link>
       </div>
-      <h4>Total Product: {products?.length}</h4>
+
+      <div className="overflow-x-auto my-4">
+        <table className="min-w-full bg-white border border-gray-300">
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="py-2 px-4 border">Inventory</th>
+              <th className="py-2 px-4 border">QUENTITY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="py-2 px-4 border font-bold">Total Product</td>
+              <td className="py-2 px-4 border">{products?.length}</td>
+            </tr>
+            <tr>
+              <td className="py-2 px-4 border font-bold">Total product in stock</td>
+              <td className="py-2 px-4 border">{inventory?.totalItemInStock}</td>
+            </tr>
+            <tr>
+              <td className="py-2 px-4 border font-bold">Total amount of product</td>
+              <td className="py-2 px-4 border">{inventory?.totalAmountOProduct} BDT</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
 
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table border-2 border-gray-700 rounded-xl">
           <thead className=" text-sm">
             <tr>
               <th>No</th>
@@ -92,13 +130,13 @@ const ManageProduct = () => {
                     </div>
                   </div>
                 </td>
-                
+
                 <td>{product?.productName}</td>
 
                 <td>{product?.productQuantity}</td>
                 <td>{product?.productPrice} </td>
                 <td className="text-green-500">{product?.ProductCategory}  </td>
-               
+
 
                 <td className="   ">
                   <Link to={`/product/${product?._id}`} className="m-1">

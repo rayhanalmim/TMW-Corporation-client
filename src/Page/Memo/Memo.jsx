@@ -66,11 +66,11 @@ const Invoice = () => {
               {data?.purchesProducts?.map((product, idx) => (
                 <tr key={idx}>
                   <td className="py-2">Item {idx + 1}</td>
-                  <td className="py-2">{product.productName}</td>
-                  <td className="py-2">{product.quantity}</td>
-                  <td className="py-2">{product.unitPrice}</td>
+                  <td className="py-2">{product?.productName}</td>
+                  <td className="py-2">{product?.quantity}</td>
+                  <td className="py-2">{product?.unitPrice}</td>
                   <td className="py-2">
-                    {product.unitPrice * product.quantity}
+                    {product.unitPrice * product?.quantity}
                   </td>
                 </tr>
               ))}
@@ -85,7 +85,7 @@ const Invoice = () => {
           <p className="text-right">{data?.discount} TK</p>
         )}
         {data.dueAmmount > 0 && (
-          <p className="text-right">Due: {data.dueAmmount} TK</p>
+          <p className="text-right">Due: {data?.dueAmmount} TK</p>
         )}
 
         {user?.totalDueAmmout > 0 && (
