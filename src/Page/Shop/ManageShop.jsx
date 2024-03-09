@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import Title from "../../Components/Shared/Title";
 
 // Constant for API URL
 const MONEY_API_URL = "https://tmw-corpo-server.vercel.app/money";
@@ -56,7 +57,7 @@ const ManageShop = () => {
   return (
     <div className="bg-base-200 p-0 m-0 lg:p-4 lg:m-4 rounded-xl">
       <div className="text-3xl py-2">
-        <h2>Manage Shop</h2>
+        <Title title="Manage Shop"></Title>
       </div>
       <div className="flex w-full  ">
         <Link to="/addShop">
@@ -64,7 +65,6 @@ const ManageShop = () => {
         </Link>
       </div>
       <div className="flex justify-evenly">
-        <h4>Total No: {moneys?.length}</h4>
 
       </div>
       <hr className="py-2" />
@@ -81,21 +81,23 @@ const ManageShop = () => {
           </thead>
           <tbody>
             {moneys.map((money, index) => (
-              <tr key={index}>
+              <tr className="border-b-1 border-gray-300" key={index}>
                 <td>{index + 1}</td>
-                <Link
-                  className="text-blue-800 font-bold"
-                  to={`/singleShopInfo/${money?._id}`}
-                >
-                  <td>{money?.shopName}</td>
-                </Link>
+                <div className="mt-2">
+                  <Link
+                    className="text-blue-800 font-bold"
+                    to={`/singleShopInfo/${money?._id}`}
+                  >
+                    <td>{money?.shopName}</td>
+                  </Link>
+                </div>
 
                 <td>{money.shopArea}</td>
                 <td>{money.shopOwner}</td>
                 <td>0{money.contractNumber}</td>
                 <td>
                   <button
-                    className="btn btn-sm btn-error"
+                    className="btn btn-sm text-white btn-error"
                     onClick={() => handleDeleteProduct(money?._id)}
                   >
                     Delete
