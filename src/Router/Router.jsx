@@ -35,6 +35,7 @@ import AddMoney from "../Page/Money/AddMoney";
 import ManageShop from "../Page/Shop/ManageShop";
 import AddShop from "../Page/Shop/AddShop";
 import SuperAdminRoute from "./SuperAdminRoute";
+import SingleShopInfo from "../Page/Shop/SingleShopInfo";
 
 const router = createBrowserRouter([
   {
@@ -155,6 +156,10 @@ const router = createBrowserRouter([
       {
         path: "/singleUserInfo/:id",
         element: <SingleProfile />,
+      },
+      {
+        path: "/singleShopInfo/:id",
+        element: <SingleShopInfo />,
       },
       {
         path: "/memberlist",

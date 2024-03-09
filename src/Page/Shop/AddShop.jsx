@@ -19,7 +19,10 @@ const AddShop = () => {
             shopName: data.shopName,
             shopArea: data.shopArea,
             shopOwner: data.shopOwner,
-            contractNumber: data.contractNumber
+            contractNumber: data.contractNumber,
+            totalBuyAmout: 0,
+            totalDue: 0,
+            purchesProductCollection: [],
         }
         try {
 

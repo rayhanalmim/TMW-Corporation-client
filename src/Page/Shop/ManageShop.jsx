@@ -83,7 +83,13 @@ const ManageShop = () => {
             {moneys.map((money, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{money?.shopName}</td>
+                <Link
+                      className="text-blue-800 font-bold"
+                      to={`/product/${money?._id}`}
+                    >
+                      <td>{money?.shopName}</td>
+                    </Link>
+                
                 <td>{money.shopArea}</td>
                 <td>{money.shopOwner}</td>
                 <td>0{money.contractNumber}</td>
