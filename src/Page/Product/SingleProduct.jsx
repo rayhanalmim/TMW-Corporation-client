@@ -66,11 +66,11 @@ const SingleProduct = () => {
   return (
     <div className="container mx-auto my-8 text-white  p-2">
       <div className="flex flex-col lg:flex-row w-full">
-        <div className="w-full lg:w-1/2">
+        <div className="w-full rounded-lg lg:w-1/2">
           <img
             src={product?.imageURL}
             alt={product?.productName}
-            className="w-64 rounded-md pt-7 mx-auto   "
+            className="w-64 rounded-lg mx-auto"
           />
         </div>
         <div className="w-full lg:w-1/2 text-left mt-4 lg:ml-8">
@@ -124,6 +124,54 @@ const SingleProduct = () => {
                 Update Product
               </button>
             </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-10">
+        <div className="rounded-xl">
+          <div className="text-3xl py-2 ">
+            <h2 className="font-semibold">Sell History</h2>
+          </div>
+          <div className="flex w-full  "></div>
+
+          <div className="overflow-x-auto">
+            <table className="table">
+              <thead className=" text-sm text-white">
+                <tr>
+                  <th>Date</th>
+                  <th>To</th>
+                  <th>Quentity</th>
+                  <th>via</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {product?.purchesProductCollection?.map((product, index) => (
+                  <tr className="  border-gray-300" key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle w-12 h-12">
+                            <img src={product?.imageURL} alt="Product Image" />
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <Link
+                      className="text-blue-800 font-bold"
+                      to={`/product/${product?._id}`}
+                    >
+                      <td>{product?.productName}</td>
+                    </Link>
+
+                    <td>{product?.productQuantity}</td>
+                    <td>{product?.productPrice}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
