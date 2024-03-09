@@ -131,7 +131,12 @@ const ManageProduct = () => {
                   </div>
                 </td>
 
-                <td>{product?.productName}</td>
+
+                <div className="flex justify-center items-center mt-3">
+                  <Link to={`/product/${product?._id}`} className="">
+                    <td><span className="text-blue-800 font-semibold hover:text-lg">{product?.productName}</span></td>
+                  </Link>
+                </div>
 
                 <td>{product?.productQuantity}</td>
                 <td>{product?.productPrice} </td>
@@ -139,11 +144,7 @@ const ManageProduct = () => {
 
 
                 <td className="   ">
-                  <Link to={`/product/${product?._id}`} className="m-1">
-                    <button className="btn btn-warning btn-sm marker: ">
-                      Details
-                    </button>
-                  </Link>
+
                   {/* <Link to={`/UpdateProduct/${product?._id}`} className="m-1">
                     <button className="btn btn-warning btn-sm marker: ">
                       Edit
