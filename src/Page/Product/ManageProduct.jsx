@@ -10,16 +10,33 @@ const ManageProduct = () => {
   const [products, setProducts] = useState([]);
   const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    axios
-      .get("https://tmw-corpo-server.vercel.app/product")
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data from API:", error);
-      });
-  }, []);
+
+  const { data: productData = [], isLoading: productLoading, refetch: productRefetch } = useQuery({
+    queryKey: ["product"],
+    queryFn: async () => {
+      const res = await axiosPublic.get('/product')
+      setProducts(res.data);
+      return res.data;
+    }
+  })
+
+
+
+  const handleFilterChange = (event) => {
+
+    console.log(event);
+
+    if (event === '') {
+      productRefetch();
+    } else {
+      const regex = new RegExp(event, 'i'); 
+      const filteredResults = products.filter((product) => regex.test(product.productName));
+
+      filteredResults.sort((a, b) => a.productName.localeCompare(b.productName));
+
+      setProducts(filteredResults);
+    }
+  };
 
   const { data: inventory = [], isLoading: inventoryLoading, refetch: inventoryRefetch } = useQuery({
     queryKey: ["inventory"],
@@ -28,6 +45,13 @@ const ManageProduct = () => {
       return res.data;
     }
   })
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Backspace') {
+      handleFilterChange(e.target.value);
+      productRefetch();
+    }
+  };
 
   const handleDeleteProduct = (productId) => {
     Swal.fire({
@@ -76,6 +100,15 @@ const ManageProduct = () => {
           <button className=" btn btn-primary">Add Product</button>
         </Link>
       </div>
+
+      <input
+        type="text"
+        placeholder="Search by product name"
+        onChange={(e) => handleFilterChange(e.target.value)}
+        onKeyDown={(e) => handleKeyDown(e)}
+        className="w-1/2 mx-auto px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
+      />
+
 
       <div className="overflow-x-auto my-4">
         <table className="min-w-full bg-white border border-gray-300">
