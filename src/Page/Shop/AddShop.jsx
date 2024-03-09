@@ -21,6 +21,7 @@ const AddShop = () => {
             shopOwner: data.shopOwner,
             contractNumber: data.contractNumber,
             totalBuyAmout: 0,
+            totalPay: 0,
             totalDue: 0,
             purchesProductCollection: [],
         }

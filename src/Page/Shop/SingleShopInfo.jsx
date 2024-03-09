@@ -6,10 +6,10 @@ const SingleShopInfo = () => {
     const { id } = useParams();
 
   const axiosSecure = useAxiosSecure();
-  const { data: user = [] } = useQuery({
-    queryKey: ["user"],
+  const { data: shop = [] } = useQuery({
+    queryKey: ["shop"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/user/${id}`);
+      const res = await axiosSecure.get(`/money/singleShop?id=${id}`);
       return res.data;
     },
   });
@@ -22,60 +22,37 @@ const SingleShopInfo = () => {
 
   return (
     <div className="bg-base-300   p-8 rounded-lg shadow-md">
-      {user?.userType === "user" && (
-        <h2 className="text-gray-500  p-4">সে একজন আবেদনকারী</h2>
-      )}
+    
       <div className="flex flex-col lg:flex-row w-full">
-        <div className="w-full mt-7 lg:w-1/2">
-          <img
-            src={user?.photoURL}
-            alt={user?.displayName}
-            className="w-32 h-32 mx-auto rounded-full  aspect-square"
-          />
-
-          <div className="pt-5"> 
-            <Link
-              className="text-blue-800 font-bold"
-              to={`/EditProfile/${user?._id}`}
-            >
-              <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Edit User info
-              </button>
-            </Link>
-          </div>
-        </div>
+       
         <div className="w-full lg:w-1/2 text-left mt-4 lg:ml-8">
-          <p className="text-xl border-b-2 border-black font-bold mb-4">User Profile</p>
+          <p className="text-xl border-b-2 border-black font-bold mb-4">Shop Details</p>
           <p>
-            <span className="font-bold text-blue-500">Name:</span>{" "}
-            {user?.displayName}
+            <span className="font-bold text-blue-500">Shop Name:</span>{" "}
+            {shop?.shopName}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Email:</span>{" "}
-            {user?.email}
+            <span className="font-bold text-blue-500">Shop Area:</span>{" "}
+            {shop?.shopArea}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Address:</span>{" "}
-            {user?.address}
+            <span className="font-bold text-blue-500">Owner Name:</span>{" "}
+            {shop?.shopOwner}
           </p>
           <p>
             <span className="font-bold text-blue-500">Phone No:</span>{" "}
-            {user?.phoneNo}
+            {shop?.contractNumber}
           </p>
           <p>
-            <span className="font-bold text-blue-500">User Role: </span>
-             {user?.userType}
-          </p>
-          <p>
-            <span className="font-bold text-green-500">Total Buy Amount:{user?.totalPurchesAmmount} </span>
+            <span className="font-bold text-green-500">Total Buy Amount:{shop?.totalBuyAmout} </span>
           </p> 
           <p>
-            <span className="font-bold text-info">Total given :{user?.totalSellPrice} </span>{" "}
+            <span className="font-bold text-info">Total given :{shop?.totalPay} </span>{" "}
           
           </p>
           <p>
             <span className="font-bold text-red-500">
-              Total Duo: {user?.totalDueAmmout}
+              Total Duo: {shop?.totalDue}
             </span>
           </p>
           <div className="flex gap-4 mt-4 justify-end"></div>
@@ -85,10 +62,10 @@ const SingleShopInfo = () => {
       <div className="bg-base-300">
         <div className="bg-base-200  rounded-xl">
           <div className="text-3xl py-2 ">
-            <h2>History</h2>
+            <h2>Purches History</h2>
           </div>
           <div className="flex w-full  "></div>
-          <h4>Total Product: {user.purchesProductCollection?.length}</h4>
+          <h4>Total Product: {shop.purchesProductCollection?.length}</h4>
 
           <div className="overflow-x-auto">
             <table className="table">
@@ -102,7 +79,7 @@ const SingleShopInfo = () => {
                 </tr>
               </thead>
               <tbody>
-                {user?.purchesProductCollection?.map((product, index) => (
+                {shop?.purchesProductCollection?.map((product, index) => (
                   <tr className="  border-gray-300" key={index}>
                     <td>{index + 1}</td>
                     <td>

@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
@@ -65,7 +65,7 @@ const ManageShop = () => {
       </div>
       <div className="flex justify-evenly">
         <h4>Total No: {moneys?.length}</h4>
-    
+
       </div>
       <hr className="py-2" />
 
@@ -84,12 +84,12 @@ const ManageShop = () => {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <Link
-                      className="text-blue-800 font-bold"
-                      to={`/product/${money?._id}`}
-                    >
-                      <td>{money?.shopName}</td>
-                    </Link>
-                
+                  className="text-blue-800 font-bold"
+                  to={`/singleShopInfo/${money?._id}`}
+                >
+                  <td>{money?.shopName}</td>
+                </Link>
+
                 <td>{money.shopArea}</td>
                 <td>{money.shopOwner}</td>
                 <td>0{money.contractNumber}</td>
@@ -110,6 +110,6 @@ const ManageShop = () => {
   );
 };
 
- 
+
 
 export default ManageShop;
