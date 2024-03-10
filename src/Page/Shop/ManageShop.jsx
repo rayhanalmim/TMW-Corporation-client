@@ -52,18 +52,6 @@ const ManageShop = () => {
     });
   };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axiosSecure.get(MONEY_API_URL);
-  //       setMoneys(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching entries:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [axiosSecure]);
 
 
   return (
@@ -76,6 +64,16 @@ const ManageShop = () => {
           <button className=" btn btn-primary">Add Shop</button>
         </Link>
       </div>
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search by shop name"
+          // onChange={(e) => handleFilterChange(e.target.value)}
+          // onKeyDown={(e) => handleKeyDown(e)}
+          className="w-1/2 mx-auto px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
+        />
+      </div>
+
       <div className="flex justify-evenly">
 
       </div>
