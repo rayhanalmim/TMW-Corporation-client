@@ -29,37 +29,45 @@ const Invoice = () => {
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-md">
       <div className="text-center">
-        <h1 className="text-3xl font-semibold">Humayun Traders</h1>
-        <p className="text-gray-500">
-          Address: Danmohol, College Road, Kendua, Netrokona
-        </p>
-        <p className="text-gray-500">Contact no: +8801713513659, 01973513659</p>
-        <p className="text-gray-500">Date: {data?.date}</p>
-      </div>
-      <div className="flex justify-between mt-6">
-        <div className="pr-4">
-          <h2 className="text-xl font-semibold mb-2 w-full">
-            Customer Details
-          </h2>
-          <p>Customer Name: {data?.agetName}</p>
-          <p className="flex">
-            <span>Customer address:</span>
-            <span> {data?.address}</span>
-          </p>
-          <p className="w-full">Mobile no: {data?.phoneNo}</p>
+        <h1 className="text-3xl text-red-600 font-black font-mono">TMW Corporation</h1>
+        <div className="flex justify-end">
+          <p className="pr-32 mt-3 font-extrabold">T. Ch. No: </p>
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold">Bill</h2>
+          <div className="border-dashed border-2 border-orange-800">
+            <h3 className="text-2xl text-blue-800 font-semibold">Zahid Hasan</h3>
+          </div>
+        </div>
+
+        <div className="flex mt-6 font-semibold">
+          <div className="w-1/2 flex">
+            <div>
+              <h3 className="text-start">Bill No : </h3>
+              <h3>Customer ID: </h3>
+            </div>
+          </div>
+          <div className="w-1/2 flex">
+            <div >
+              <h3>Invoice Date:</h3>
+              <h3 className="text-start">Order No:</h3>
+            </div>
+
+          </div>
         </div>
       </div>
+
+     
       <div className="mt-6">
-        <h2 className="text-xl font-semibold mb-4">Invoice Items</h2>
         <div className="overflow-x-auto">
           <table className="w-full table-auto">
             <thead>
               <tr className="bg-gray-200">
-                <th className="py-2">Item</th>
-                <th className="py-2">Description</th>
-                <th className="py-2">Quantity</th>
+                <th className="py-2">Product Name</th>
+                <th className="py-2">Qty</th>
+                <th className="py-2">Ctn</th>
                 <th className="py-2">Price</th>
-                <th className="py-2">Total</th>
+                <th className="py-2">Amount</th>
               </tr>
             </thead>
             <tbody>
