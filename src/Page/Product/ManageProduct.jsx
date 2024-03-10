@@ -141,10 +141,12 @@ const ManageProduct = () => {
             <tr>
               <th>No</th>
               <th>Image</th>
-              <th className="pl-16">Name</th>
+              <th className="pl-8">Name</th>
               <th>Quantity</th>
               <th>Unit Price (tk)</th>
               <th>Category</th>
+              <th>Color</th>
+              <th>Type</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -165,13 +167,15 @@ const ManageProduct = () => {
 
                 <div className="flex justify-center items-center mt-3">
                   <Link to={`/product/${product?._id}`} className="">
-                    <td><span className="text-blue-800 font-semibold hover:text-lg">{product?.productName}</span></td>
+                    <td><span className="text-blue-800 font-semibold hover:text-base">{product?.productName}</span></td>
                   </Link>
                 </div>
 
                 <td>{product?.productQuantity}</td>
                 <td>{product?.productPrice} </td>
                 <td className="text-green-500">{product?.ProductCategory}  </td>
+                <td className="">{product?.lightColor}  </td>
+                <td className="">{product?.productType}  </td>
 
 
                 <td className="   ">
