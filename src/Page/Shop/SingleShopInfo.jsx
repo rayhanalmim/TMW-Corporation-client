@@ -41,7 +41,7 @@ const SingleShopInfo = () => {
           </p>
           <p>
             <span className="font-bold text-blue-500">Phone No:</span>{" "}
-            {shop?.contractNumber}
+            +880{shop?.contractNumber}
           </p>
           <p>
             <span className="font-bold text-green-500">Total Buy Amount:{shop?.totalBuyAmout} </span>
