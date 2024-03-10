@@ -30,9 +30,9 @@ const Invoice = () => {
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-md">
       <div className="text-center">
         <h1 className="text-3xl text-red-600 font-black font-mono">TMW Corporation</h1>
-        <div className="flex justify-end">
+        {/* <div className="flex justify-end">
           <p className="pr-32 mt-3 font-extrabold">T. Ch. No: </p>
-        </div>
+        </div> */}
         <div>
           <h2 className="text-xl font-semibold">Bill</h2>
           <div className="border-dashed border-2 border-orange-800">

@@ -144,7 +144,7 @@ const ManageProduct = () => {
               <th className="pl-8">Name</th>
               <th>Quantity</th>
               <th>Unit Price (tk)</th>
-              <th>Category</th>
+              {/* <th>Category</th> */}
               <th>Color</th>
               <th>Type</th>
               <th>Action</th>
@@ -173,7 +173,7 @@ const ManageProduct = () => {
 
                 <td>{product?.productQuantity}</td>
                 <td>{product?.productPrice} </td>
-                <td className="text-green-500">{product?.ProductCategory}  </td>
+                {/* <td className="text-green-500">{product?.ProductCategory}  </td> */}
                 <td className="">{product?.lightColor}  </td>
                 <td className="">{product?.productType}  </td>
 
