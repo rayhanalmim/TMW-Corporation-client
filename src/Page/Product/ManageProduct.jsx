@@ -5,10 +5,12 @@ import Swal from "sweetalert2";
 import Title from "../../Components/Shared/Title";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+import useAdmin from "../../Hook/useAdmin";
 
 const ManageProduct = () => {
   const [products, setProducts] = useState([]);
   const axiosPublic = useAxiosPublic();
+  const [isAdmin] = useAdmin();
 
 
   const { data: productData = [], isLoading: productLoading, refetch: productRefetch } = useQuery({
@@ -125,10 +127,13 @@ const ManageProduct = () => {
               <td className="py-2 px-4 border font-bold">Total product in stock</td>
               <td className="py-2 px-4 border">{inventory?.totalItemInStock}</td>
             </tr>
-            <tr>
+            {
+              isAdmin && <tr>
               <td className="py-2 px-4 border font-bold">Total amount of product</td>
               <td className="py-2 px-4 border">{inventory?.totalAmountOProduct} BDT</td>
             </tr>
+            }
+            
           </tbody>
         </table>
       </div>
