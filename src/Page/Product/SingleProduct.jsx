@@ -100,7 +100,11 @@ const SingleProduct = () => {
             {product?.perCartonQuantity}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Unit Price: </span>
+            <span className="font-bold text-blue-500">Orginal Price: </span>
+            {product?.orginalPrice} TK
+          </p>{" "}
+          <p>
+            <span className="font-bold text-blue-500">Current Price: </span>
             {product?.productPrice} TK
           </p>{" "}
           <p>

@@ -45,6 +45,7 @@ const AddProduct = () => {
         productType: data.type,
         ProductCategory: data.ProductCategory,
         wat: data.wat,
+        orginalPrice: parseFloat(data.productPrice),
         productPrice: parseFloat(data.productPrice),
         productQuantity: 0,
         productDescription: data.productDescription,

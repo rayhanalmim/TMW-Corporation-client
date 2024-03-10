@@ -20,8 +20,6 @@ const ManageProduct = () => {
     }
   })
 
-
-
   const handleFilterChange = (event) => {
 
     console.log(event);
@@ -139,11 +137,11 @@ const ManageProduct = () => {
 
       <div className="overflow-x-auto">
         <table className="table border-2 border-gray-700 rounded-xl">
-          <thead className=" text-sm">
+          <thead className="text-sm">
             <tr>
               <th>No</th>
               <th>Image</th>
-              <th>Name</th>
+              <th className="pl-16">Name</th>
               <th>Quantity</th>
               <th>Unit Price (tk)</th>
               <th>Category</th>

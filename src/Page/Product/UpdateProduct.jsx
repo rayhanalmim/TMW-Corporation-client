@@ -52,7 +52,7 @@ const UpdateProduct = () => {
       productType: e.target.type.value,
       discount: e.target.discount.value,
       productQuantity: parseInt(e.target.productQuantity.value),
-      productPrice: parseInt(e.target.productPrice.value),
+      productPrice: parseInt(e.target.productPrice.value) - parseInt(e.target.discount.value),
       perCartonQuantity: parseInt(e.target.perCatonQuantity.value),
       productDescription: e.target.productDescription.value,
     };
