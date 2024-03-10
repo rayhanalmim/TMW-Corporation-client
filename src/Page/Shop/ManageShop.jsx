@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Title from "../../Components/Shared/Title";
+import { useQuery } from "@tanstack/react-query";
 
 // Constant for API URL
 const MONEY_API_URL = "https://tmw-corpo-server.vercel.app/money";
@@ -10,6 +11,15 @@ const MONEY_API_URL = "https://tmw-corpo-server.vercel.app/money";
 const ManageShop = () => {
   const [moneys, setMoneys] = useState([]);
   const axiosSecure = useAxiosSecure();
+
+  const { data: shopData = [], isLoading: shopLoading, refetch: shopRefetch } = useQuery({
+    queryKey: ["shop"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(MONEY_API_URL)
+      setMoneys(res.data);
+      return res.data;
+    }
+  })
 
   const handleDeleteProduct = (moneyId) => {
     Swal.fire({
@@ -42,18 +52,20 @@ const ManageShop = () => {
     });
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosSecure.get(MONEY_API_URL);
-        setMoneys(response.data);
-      } catch (error) {
-        console.error("Error fetching entries:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axiosSecure.get(MONEY_API_URL);
+  //       setMoneys(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching entries:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, [axiosSecure]);
+  //   fetchData();
+  // }, [axiosSecure]);
+
+
   return (
     <div className="bg-base-200 p-0 m-0 lg:p-4 lg:m-4 rounded-xl">
       <div className="text-3xl py-2">
