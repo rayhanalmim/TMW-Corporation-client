@@ -167,7 +167,7 @@ const ManageProduct = () => {
 
                 <div className="flex justify-center items-center mt-3">
                   <Link to={`/product/${product?._id}`} className="">
-                    <td><span className="text-blue-800 font-semibold hover:text-base">{product?.productName}</span></td>
+                    <td><span className="text-blue-800 font-semibold hover:text-rose-500">{product?.productName}</span></td>
                   </Link>
                 </div>
 
