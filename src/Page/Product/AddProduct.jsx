@@ -42,6 +42,7 @@ const AddProduct = () => {
         productName: data.productName,
         perCartonQuantity: data.perCartonQuantity,
         lightColor: data.LightColor,
+        productType: data.type,
         ProductCategory: data.ProductCategory,
         wat: data.wat,
         productPrice: parseFloat(data.productPrice),
@@ -61,6 +62,7 @@ const AddProduct = () => {
           LightColor: "",
           ProductCategory: "",
           wat: "",
+          type: "",
           photoURL: "",
           productQuantity: "",
           productPrice: "",
@@ -141,6 +143,9 @@ const AddProduct = () => {
               <option value="">Select Light Color</option>
               <option value="Daylight">Daylight</option>
               <option value="Warm">Warm</option>
+              <option value="Green">Green</option>
+              <option value="Blue">Blue</option>
+              <option value="Red">Red</option>
             </select>
             {errors.LightColor && (
               <p className="text-red-500">{errors.LightColor.message}</p>
@@ -229,6 +234,8 @@ const AddProduct = () => {
 
         </div>
 
+
+
         {
           isAdmin &&
           <div className="flex w-full gap-4 flex-col lg:flex-row">
@@ -257,6 +264,26 @@ const AddProduct = () => {
               />
               {errors.productPrice && (
                 <p className="text-red-500">{errors.productPrice.message}</p>
+              )}
+            </div>
+
+            <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Product Type</label>
+              <select
+                {...register("type", {
+                  required: "Type is required",
+                })}
+                className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              >
+                <option value="">Select Type</option>
+                <option value="B22">B22</option>
+                <option value="E27">E27</option>
+                <option value="E14">E14</option>
+                <option value="Round">Round</option>
+                <option value="Squre">Squre</option>
+              </select>
+              {errors.type && (
+                <p className="text-red-500">{errors.type.message}</p>
               )}
             </div>
           </div>

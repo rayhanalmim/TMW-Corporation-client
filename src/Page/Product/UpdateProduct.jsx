@@ -49,6 +49,7 @@ const UpdateProduct = () => {
     const formData = {
       productName: e.target.productName.value,
       wat: e.target.wat.value,
+      productType: e.target.type.value,
       discount: e.target.discount.value,
       productQuantity: parseInt(e.target.productQuantity.value),
       productPrice: parseInt(e.target.productPrice.value),
@@ -94,6 +95,24 @@ const UpdateProduct = () => {
         </div>
 
         <div className="flex w-full gap-4 flex-col lg:flex-row">
+
+        <div className="space-y-1 text-sm w-full lg:w-1/2">
+              <label className="block dark-text-gray-400">Product Type</label>
+              <select
+              type="text"
+              defaultValue={product?.productType}
+              name="type"
+                className="text-gray-900 w-full px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+              >
+                <option value="">Select Type</option>
+                <option value="B22">B22</option>
+                <option value="E27">E27</option>
+                <option value="E14">E14</option>
+                <option value="Round">Round</option>
+                <option value="Squre">Squre</option>
+              </select>
+            </div>
+
           <div className="space-y-1 text-sm w-full lg:w-1/2">
             <label className="block dark-text-gray-400">Wat </label>
             <input
@@ -118,7 +137,8 @@ const UpdateProduct = () => {
 
         {/* Product Quantity and Product Price */}
         {
-          isAdmin && <div className="flex w-full gap-4 flex-col lg:flex-row">
+          isAdmin &&
+          <div className="flex w-full gap-4 flex-col lg:flex-row">
             <div className="space-y-1 text-sm w-full lg:w-1/2">
               <label className="block dark-text-gray-400">Product Quantity</label>
               <input

@@ -76,23 +76,27 @@ const SingleProduct = () => {
         <div className="w-full lg:w-1/2 text-left mt-4 lg:ml-8">
           <p className="text-xl font-bold mb-4">Product Info: </p>
           <p>
-            <span className="font-bold text-blue-500">Name:</span>
+            <span className="font-bold text-blue-500">Name: </span>
             {product?.productName}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Product Category:</span>
+            <span className="font-bold text-blue-500">Product Category: </span>
             {product?.ProductCategory}
           </p>
           <p>
-            <span className="font-bold text-blue-500">WAT:</span>
+            <span className="font-bold text-blue-500">WAT: </span>
             {product?.wat}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Light Color:</span>
+            <span className="font-bold text-blue-500">Product Type: </span>
+            {product?.productType}
+          </p>
+          <p>
+            <span className="font-bold text-blue-500">Light Color: </span>
             {product?.lightColor}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Per Carton Quantity:</span>
+            <span className="font-bold text-blue-500">Per Carton Quantity: </span>
             {product?.perCartonQuantity}
           </p>
           <p>
