@@ -27,7 +27,7 @@ const SingleShopInfo = () => {
        
         <div className="w-full lg:w-1/2 text-left mt-4 lg:ml-8">
           <p className="text-xl border-b-2 border-black font-bold mb-4">Shop Details</p>
-          <p>
+          <p className="">
             <span className="font-bold text-blue-500">Shop Name:</span>{" "}
             {shop?.shopName}
           </p>

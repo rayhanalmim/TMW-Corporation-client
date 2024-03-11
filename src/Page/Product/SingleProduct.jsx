@@ -70,7 +70,7 @@ const SingleProduct = () => {
           <img
             src={product?.imageURL}
             alt={product?.productName}
-            className="w-64 rounded-lg mx-auto"
+            className="w-64 mt-5 rounded-lg mx-auto"
           />
         </div>
         <div className="w-full lg:w-1/2 text-left mt-4 lg:ml-8">

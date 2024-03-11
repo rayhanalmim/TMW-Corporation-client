@@ -121,9 +121,9 @@ const ManageShop = () => {
             {moneys.map((money, index) => (
               <tr className="border-b-1 border-gray-300" key={index}>
                 <td>{index + 1}</td>
-                <div className="mt-2">
+                <div className="mt-2 ">
                   <Link
-                    className="text-blue-800 font-bold"
+                    className="text-blue-800 hover:text-rose-400 font-bold"
                     to={`/singleShopInfo/${money?._id}`}
                   >
                     <td>{money?.shopName}</td>
