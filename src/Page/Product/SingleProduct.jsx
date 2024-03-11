@@ -65,7 +65,7 @@ const SingleProduct = () => {
 
   return (
     <div className="container mx-auto my-8 text-white  p-2">
-      <div className="flex flex-col lg:flex-row w-full">
+      <div className="flex flex-col lg:flex-row-reverse w-full">
         <div className="w-full rounded-lg lg:w-1/2">
           <img
             src={product?.imageURL}
@@ -76,48 +76,48 @@ const SingleProduct = () => {
         <div className="w-full lg:w-1/2 text-left mt-4 lg:ml-8">
           <p className="text-xl font-bold mb-4">Product Info: </p>
           <p>
-            <span className="font-bold text-blue-500">Name: </span>
+            <span className="font-bold text-teal-300">Name: </span>
             {product?.productName}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Product Category: </span>
+            <span className="font-bold text-teal-300">Product Category: </span>
             {product?.ProductCategory}
           </p>
           <p>
-            <span className="font-bold text-blue-500">WAT: </span>
+            <span className="font-bold text-teal-300">WAT: </span>
             {product?.wat}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Product Type: </span>
+            <span className="font-bold text-teal-300">Product Type: </span>
             {product?.productType}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Light Color: </span>
+            <span className="font-bold text-teal-300">Light Color: </span>
             {product?.lightColor}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Per Carton Quantity: </span>
+            <span className="font-bold text-teal-300">Per Carton Quantity: </span>
             {product?.perCartonQuantity}
           </p>
           <p>
-            <span className="font-bold text-blue-500">Orginal Price: </span>
+            <span className="font-bold text-teal-300">Orginal Price: </span>
             {product?.orginalPrice} TK
           </p>{" "}
           <p>
-            <span className="font-bold text-blue-500">Current Price: </span>
+            <span className="font-bold text-teal-300">Current Price: </span>
             {product?.productPrice} TK
           </p>{" "}
           <p>
-            <span className="font-bold text-blue-500">Product Quantity: </span>
+            <span className="font-bold text-teal-300">Product Quantity: </span>
             {product?.productQuantity}
           </p>{" "}
           <p>
-            <span className="font-bold text-blue-500">Discount: </span>
+            <span className="font-bold text-teal-300">Discount: </span>
             {product?.discount}
           </p>{" "}
 
           <p>
-            <span className="font-bold text-blue-500">
+            <span className="font-bold text-teal-300">
               Product Description:{" "}
             </span>
             {product?.productDescription}

@@ -21,6 +21,34 @@ const ManageShop = () => {
     }
   })
 
+  // --------------------------------------------------------search
+
+  const handleFilterChange = (event) => {
+
+    console.log(event);
+
+    if (event === '') {
+      shopRefetch();
+    } else {
+      const regex = new RegExp(event, 'i'); 
+      const filteredResults = moneys.filter((product) => regex.test(product.shopName));
+
+      console.log(filteredResults);
+
+      filteredResults.sort((a, b) => a.shopName.localeCompare(b.shopName));
+
+      setMoneys(filteredResults);
+    }
+  };
+
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Backspace') {
+      handleFilterChange(e.target.value);
+      shopRefetch();
+    }
+  };
+
   const handleDeleteProduct = (moneyId) => {
     Swal.fire({
       title: "Are you sure?",
@@ -68,8 +96,8 @@ const ManageShop = () => {
         <input
           type="text"
           placeholder="Search by shop name"
-          // onChange={(e) => handleFilterChange(e.target.value)}
-          // onKeyDown={(e) => handleKeyDown(e)}
+          onChange={(e) => handleFilterChange(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e)}
           className="w-1/2 mx-auto px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500 transition duration-300"
         />
       </div>

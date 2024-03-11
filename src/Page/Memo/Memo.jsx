@@ -2,32 +2,34 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 
+
 const Invoice = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
   const axiosSecure = useAxiosSecure();
 
-  const { data = [] } = useQuery({
-    queryKey: ["memo", id],
+  // const { data = [] } = useQuery({
+  //   queryKey: ["memo", id],
+  //   queryFn: async () => {
+  //     const res = await axiosSecure.get(`/sell/memo?memoId=${id}`);
+  //     return res.data;
+  //   },
+  // });
+
+  const { data: demoData } = useQuery({
+    queryKey: ["demoData"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/sell/memo?memoId=${id}`);
+      const res = await axiosSecure.get(`/dsrRequ/order`);
       return res.data;
+
     },
+    // enabled: !!data?.agentEmail, // Enable the query only if agentEmail is available
   });
 
-  const { data: user } = useQuery({
-    queryKey: [data?.email, "user"],
-    queryFn: async () => {
-      if (data?.agentEmail) {
-        const res = await axiosSecure.get(`user/email/${data?.agentEmail}`);
-        return res.data;
-      }
-      return null;
-    },
-    enabled: !!data?.agentEmail, // Enable the query only if agentEmail is available
-  });
+  console.log(demoData);
+
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-md">
+    <div className="max-w-4xl mx-auto p-6 bg-white  rounded-md">
       <div className="text-center">
         <h1 className="text-3xl text-red-600 font-black font-mono">TMW Corporation</h1>
         {/* <div className="flex justify-end">
@@ -57,36 +59,50 @@ const Invoice = () => {
         </div>
       </div>
 
-     
+
       <div className="mt-6">
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="py-2">Product Name</th>
-                <th className="py-2">Qty</th>
-                <th className="py-2">Ctn</th>
-                <th className="py-2">Price</th>
-                <th className="py-2">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.purchesProducts?.map((product, idx) => (
-                <tr key={idx}>
-                  <td className="py-2">Item {idx + 1}</td>
-                  <td className="py-2">{product?.productName}</td>
-                  <td className="py-2">{product?.quantity}</td>
-                  <td className="py-2">{product?.unitPrice}</td>
-                  <td className="py-2">
-                    {product.unitPrice * product?.quantity}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div className="pl-4 mt-6 border-t border-gray-300">
+  <div className="overflow-x-auto">
+    <table className="w-full table-auto  border-dotted border-4 border-collapse">
+      <thead>
+        <tr className="bg-gray-200">
+          <th className="py-2 border text-center">Product Name</th>
+          <th className="py-2 border text-center">Qty</th>
+          <th className="py-2 border text-center">Ctn</th>
+          <th className="py-2 border text-center">Price</th>
+          <th className="py-2 border text-center">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {demoData?.map((product, idx) => (
+          <tr key={idx}>
+            <td className="py-2 border-dotted border-4 text-center">{product?.productName}</td>
+            <td className="py-2 border-dotted border-4 text-center">{product?.Qty}</td>
+            <td className="py-2 border-dotted border-4 text-center">{product?.Ctn}</td>
+            <td className="py-2 border-dotted border-4 text-center">
+              {product?.Price}
+            </td>
+            <td className="py-2 border-dotted border-4 text-center">
+              {product?.Amount}
+            </td>
+          </tr>
+        ))}
+        {/* Total row */}
+        <tr>
+          <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
+          <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total:</td>
+          <td className="py-2 border-dotted border-4 text-center font-bold">
+            {demoData?.reduce((total, product) => total + (product.Amount || 0), 0)}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+      {/* <div className="pl-4 mt-6 border-t border-gray-300">
         <p className="text-right mt-4">Total Amount: {data.totalCost} TK</p>
         <p className="text-right">Total Paid: {data.paid} TK</p>
         {data.dueAmmount > 0 && (
@@ -99,7 +115,7 @@ const Invoice = () => {
         {user?.totalDueAmmout > 0 && (
           <p className="text-right">Total Due: {user?.totalDueAmmout} TK</p>
         )}
-      </div>
+      </div> */}
       <p className="text-left mt-4">Received by -----------------</p>
       <div className="text-center mt-6 italic text-gray-600">
         <p>Thank you for your business!</p>

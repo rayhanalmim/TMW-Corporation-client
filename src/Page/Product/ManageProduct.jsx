@@ -120,16 +120,16 @@ const ManageProduct = () => {
           </thead>
           <tbody>
             <tr>
-              <td className="py-2 px-4 border font-bold">Total Product</td>
+              <td className="py-2 px-4 border font-bold">Total item of products</td>
               <td className="py-2 px-4 border">{products?.length}</td>
             </tr>
             <tr>
-              <td className="py-2 px-4 border font-bold">Total product in stock</td>
+              <td className="py-2 px-4 border font-bold">Gross product in stock</td>
               <td className="py-2 px-4 border">{inventory?.totalItemInStock}</td>
             </tr>
             {
               isAdmin && <tr>
-              <td className="py-2 px-4 border font-bold">Total amount of product</td>
+              <td className="py-2 px-4 border font-bold">Net value of productssi</td>
               <td className="py-2 px-4 border">{inventory?.totalAmountOProduct} BDT</td>
             </tr>
             }

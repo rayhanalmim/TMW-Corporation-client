@@ -62,7 +62,7 @@ const SingleShopInfo = () => {
       <div className="bg-base-300">
         <div className="bg-base-200  rounded-xl">
           <div className="text-3xl py-2 ">
-            <h2>Purches History</h2>
+            <h2>Purchase History</h2>
           </div>
           <div className="flex w-full  "></div>
           <h4>Total Product: {shop.purchesProductCollection?.length}</h4>
