@@ -24,15 +24,13 @@ const apiKey = "ce962703e172614d7c982b1ffcc21721";
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${apiKey}`;
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, logOut } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [address, setAddress] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
-  const [nid, setNid] = useState("");
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState('');
   const [zone, setZone] = useState('');
@@ -43,7 +41,7 @@ const SignUp = () => {
     Swal.fire({
       icon: "success",
       title: "Success...",
-      text: "Sign up success",
+      text: "User created successfully",
     });
   };
 
@@ -59,6 +57,16 @@ const SignUp = () => {
       title: "Error",
       text: errorMessage,
     });
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+      showSuccessAlert();
+      navigate(location?.state?.from ? location.state.from : "/");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleSignUp = async (e) => {
@@ -96,7 +104,7 @@ const SignUp = () => {
           })
             .then(() => {
 
-              if(type == "DRS"){
+              if(type == "DSR"){
                 role = type;
                 area = zone;
               }
@@ -120,7 +128,8 @@ const SignUp = () => {
               axiosPublic.post("/user", data).then(() => {
                 setLoading(false);
                 showSuccessAlert();
-                navigate("/");
+                handleSignOut();
+                navigate("/signIn");
               });
             })
             .catch((error) => {
@@ -220,13 +229,13 @@ const SignUp = () => {
                 className="w-full border px-4 py-3 rounded-md    focus:dark-border-violet-400"
               >
                 <option value="">Select User Role</option>
-                <option value="DRS">DRS</option>
+                <option value="DSR">DSR</option>
                 <option value="deskAdmin">Office Desk</option>
               </select>
             </div>
 
             {
-              type == 'DRS' && <div className="space-y-1 text-sm">
+              type == 'DSR' && <div className="space-y-1 text-sm">
               <label htmlFor="address" className="block text-white">
                 Select Woking Zone
               </label>
@@ -236,8 +245,8 @@ const SignUp = () => {
                 className="w-full border px-4 py-3 rounded-md    focus:dark-border-violet-400"
               >
                 <option value="">Select Zone</option>
-                <option value="DRS">Mirpur</option>
-                <option value="deskAdmin">Mohammadpur</option>
+                <option value="mirpur">Mirpur</option>
+                <option value="Mohammadpur">Mohammadpur</option>
               </select>
             </div>
             }
