@@ -104,11 +104,11 @@ const SignUp = () => {
           })
             .then(() => {
 
-              if(type == "DSR"){
+              if (type == "DSR") {
                 role = type;
                 area = zone;
               }
-              else if(type == "deskAdmin"){
+              else if (type == "deskAdmin") {
                 role = type;
               }
 
@@ -122,7 +122,7 @@ const SignUp = () => {
                 lastSmsSendingDate: "",
                 ifDsrArea: area,
                 totalPurchesAmmount: 0,
-                password: password, 
+                password: password,
                 purchesProductCollection: [],
               };
               axiosPublic.post("/user", data).then(() => {
@@ -155,7 +155,7 @@ const SignUp = () => {
     setEmail(e.target.value);
   };
 
- 
+
 
   const handlePhoneNoChange = (e) => {
     setPhoneNo(e.target.value);
@@ -236,28 +236,24 @@ const SignUp = () => {
 
             {
               type == 'DSR' && <div className="space-y-1 text-sm">
-              <label htmlFor="address" className="block text-white">
-                Select Woking Zone
-              </label>
-              <select
-                onChange={(e) => setZone(e.target.value)}
-                name="propertyType"
-                className="w-full border px-4 py-3 rounded-md    focus:dark-border-violet-400"
-              >
-                <option value="">Select Zone</option>
-                <option value="mirpur">Mirpur</option>
-                <option value="Mohammadpur">Mohammadpur</option>
-                <option value="Uttora">Uttora</option>
-                <option value="Saver">Saver</option>
-                <option value="Himayatpur">Himayatpur</option>
-                <option value="Nobinogor">Nobinogor</option>
-              </select>
-            </div>
+                <label htmlFor="address" className="block text-white">
+                  Select Woking Zone
+                </label>
+                <select
+                  onChange={(e) => setZone(e.target.value)}
+                  name="propertyType"
+                  className="w-full border px-4 py-3 rounded-md    focus:dark-border-violet-400"
+                >
+                  <option value="">Select Zone</option>
+                  <option value="mirpur">Mirpur</option>
+                  <option value="Mohammadpur">Mohammadpur</option>
+                  <option value="Uttora">Uttora</option>
+                  <option value="Saver">Saver</option>
+                  <option value="Himayatpur">Himayatpur</option>
+                  <option value="Nobinogor">Nobinogor</option>
+                </select>
+              </div>
             }
-
-
-
-
 
             <div className="space-y-1 text-sm">
               <label htmlFor="PhoneNo" className="block text-white">
