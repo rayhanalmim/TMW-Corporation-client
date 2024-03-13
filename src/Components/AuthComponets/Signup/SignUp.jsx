@@ -247,6 +247,10 @@ const SignUp = () => {
                 <option value="">Select Zone</option>
                 <option value="mirpur">Mirpur</option>
                 <option value="Mohammadpur">Mohammadpur</option>
+                <option value="Uttora">Uttora</option>
+                <option value="Saver">Saver</option>
+                <option value="Himayatpur">Himayatpur</option>
+                <option value="Nobinogor">Nobinogor</option>
               </select>
             </div>
             }

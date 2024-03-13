@@ -118,7 +118,7 @@ const ManageShop = () => {
             <th>Action</th>
           </thead>
           <tbody>
-            {moneys.map((money, index) => (
+            {moneys?.map((money, index) => (
               <tr className="border-b-1 border-gray-300" key={index}>
                 <td>{index + 1}</td>
                 <div className="mt-2 ">
@@ -130,9 +130,9 @@ const ManageShop = () => {
                   </Link>
                 </div>
 
-                <td>{money.shopArea}</td>
-                <td>{money.shopOwner}</td>
-                <td>0{money.contractNumber}</td>
+                <td>{money?.shopArea}</td>
+                <td>{money?.shopOwner}</td>
+                <td>0{money?.contractNumber}</td>
                 <td>
                   <button
                     className="btn btn-sm text-white btn-error"
