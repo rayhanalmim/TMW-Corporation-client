@@ -35,6 +35,7 @@ const Invoice = () => {
         {/* <div className="flex justify-end">
           <p className="pr-32 mt-3 font-extrabold">T. Ch. No: </p>
         </div> */}
+        <h2 className="text-center py-3 font-semibold">112 south bishil,Mirpur 1, Dhaka, Bangladesh</h2>
         <div>
           <h2 className="text-xl font-semibold">Bill</h2>
           <div className="border-dashed border-2 border-orange-800">
