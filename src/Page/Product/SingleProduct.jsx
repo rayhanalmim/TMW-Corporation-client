@@ -1,67 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
-import Swal from "sweetalert2";
 
 const SingleProduct = () => {
   const axiosSecure = useAxiosSecure();
   const [product, setProduct] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const { id } = useParams();
-  const { user } = useContext(AuthContext);
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await axiosSecure.get(`/product/${id}`);
-        setProduct(response.data);
-      } catch (error) {
-        console.error("Error fetching product data: ", error);
-        setError("Error fetching product data");
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    fetchProduct();
-  }, [axiosSecure, id]);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return (
-      <div className="container mx-auto my-8">
-        <p className="text-red-500">{error}</p>
-      </div>
-    );
-  }
-
-  const handleClick = async (product) => {
-    const res = await axiosSecure.post(
-      `/card?userEmail=${user.email}`,
-      product
-    );
-
-    if (res.status == 200 || res.status == 201) {
-      Swal.fire({
-        title: "Success",
-        text: "Congratulations! your product added successfully",
-        icon: "success",
-      });
+  const { data: dsrReq = [], isLoading: reqLoading, refetch: reqRefetch } = useQuery({
+    queryKey: ["dsrReq", id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/dsrRequ/findOne?reqId=${id}`)
+      setProduct(res.data);
+      return res.data;
     }
-    if (res.status == 202) {
-      Swal.fire({
-        title: "Error",
-        text: "Item Already added!",
-        icon: "error",
-      });
-    }
-  };
+  })
 
   return (
     <div className="container mx-auto my-8 text-white  p-2">
