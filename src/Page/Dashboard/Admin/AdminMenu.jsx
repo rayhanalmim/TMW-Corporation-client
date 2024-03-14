@@ -14,7 +14,7 @@ const AdminMenu = () => {
           </button>
         </Link>
 
-        <Link to="/addToCard">
+        <Link to="/dsr">
           <button className="btn bg-sky-800  hover:text-black text-white w-full ">
             <FaShoppingCart className="mr-2" />
             DSR Order Request
