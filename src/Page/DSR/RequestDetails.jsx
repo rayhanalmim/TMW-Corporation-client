@@ -19,7 +19,7 @@ const RequestDetails = () => {
         }
     })
 
-    const handleDelete = () =>{
+    const handleDelete = () => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -28,18 +28,18 @@ const RequestDetails = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then(async(result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
-           const res = await axiosSecure.post(`/dsrRequ/reject?reqId=${id}`)
-           console.log(res);
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-              });
-              navigate('/dsr')
+                const res = await axiosSecure.post(`/dsrRequ/reject?reqId=${id}`)
+                console.log(res);
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+                navigate('/dsr')
             }
-          });
+        });
     }
 
     return (
@@ -118,7 +118,9 @@ const RequestDetails = () => {
                     </div>
                     <div className="flex justify-end mt-6">
                         <div className="flex gap-4">
-                            <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">CheckOut</button>
+                            <Link to={`/checkOut/${id}`}>
+                                <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">CheckOut</button>
+                            </Link>
                             <button onClick={handleDelete} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reject</button>
                         </div>
                     </div>

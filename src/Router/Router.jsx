@@ -10,8 +10,7 @@ import AllProduct from "../Page/Product/AllProduct";
 import SingleProduct from "../Page/Product/SingleProduct";
 import ShowCost from "../Page/Cost/ManageCost";
 import ManageProduct from "../Page/Product/ManageProduct";
-import AddCost from "../Page/Cost/AddCost";
-import AddToCard from "../Page/Card/AddToCard";
+import AddCost from "../Page/Cost/AddCost";;
 import CheckOut from "../Page/CheckOut/CheckOut";
 import ManageUser from "../Page/User/ManageUser";
 import Profile from "../Page/Profile/Profile";
@@ -23,14 +22,11 @@ import AdminRouter from "./AdminRouter";
 import AgentAnalysis from "../Page/Analysis/AgentAnalysis";
 import AgentRouter from "./AgentRouter";
 import BuyList from "../Page/Dashboard/Agent/BuyList";
-import OrderList from "../Page/Dashboard/Agent/OrderList";
 import EditProfile from "../Page/Profile/EditProfile";
 import SellView from "../Page/Sell/SellView";
 import Memo from "../Page/Memo/Memo";
 import Accounts from "../Page/Profile/Accounts";
 import AllProducts from "../Page/Product/AllProduct";
-import ManageMoney from "../Page/Money/ManageMoney";
-import AddMoney from "../Page/Money/AddMoney";
 import ManageShop from "../Page/Shop/ManageShop";
 import AddShop from "../Page/Shop/AddShop";
 import SuperAdminRoute from "./SuperAdminRoute";
@@ -144,7 +140,7 @@ const router = createBrowserRouter([
         element: <RequestDetails/>,
       },
       {
-        path: "/checkOut",
+        path: "/checkOut/:id",
         element: (
           <AdminRouter> 
             <CheckOut></CheckOut>
