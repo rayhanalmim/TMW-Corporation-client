@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ const RequestDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [product, setProduct] = useState({});
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const { data: dsrReq = [], isLoading: reqLoading, refetch: reqRefetch } = useQuery({
         queryKey: ["dsrReq", id],
@@ -29,12 +30,14 @@ const RequestDetails = () => {
             confirmButtonText: "Yes, delete it!"
           }).then(async(result) => {
             if (result.isConfirmed) {
-            // await axiosSecure.delete(`/dsrRequ/deleteOne?reqId=${id}`)
+           const res = await axiosSecure.post(`/dsrRequ/reject?reqId=${id}`)
+           console.log(res);
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
                 icon: "success"
               });
+              navigate('/dsr')
             }
           });
     }
@@ -116,7 +119,7 @@ const RequestDetails = () => {
                     <div className="flex justify-end mt-6">
                         <div className="flex gap-4">
                             <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">CheckOut</button>
-                            <button onClick={()=>handleDelete()} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reject</button>
+                            <button onClick={handleDelete} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reject</button>
                         </div>
                     </div>
                 </div>
