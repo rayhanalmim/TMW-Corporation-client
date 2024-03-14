@@ -46,7 +46,7 @@ const RequestDetails = () => {
         <div className="container mx-auto my-8 text-white  p-2">
             <div className="flex flex-col gap-10 lg:flex-row-reverse w-full">
                 <div className="w-full rounded-lg lg:w-1/2">
-                    <h1 className="text-center font-semibold text-2xl border-b-2 border-white mb-2">Requested Shop Info: </h1>
+                    <h1 className="text-center font-semibold text-2xl border-b-2 text-amber-500 border-white mb-2">Requested Shop Info: </h1>
                     <p>
                         <span className="font-bold text-teal-300">Shop Name: </span>
                         {product?.shopInfo?.shopName}
@@ -65,7 +65,7 @@ const RequestDetails = () => {
                     </p>
                 </div>
                 <div className="w-full lg:w-1/2 lg:ml-8 text-center">
-                    <h1 className="text-center font-semibold text-2xl border-b-2 border-white mb-2 ">DSR Info: </h1>
+                    <h1 className="text-center font-semibold text-2xl border-b-2 border-white text-amber-500 mb-2 ">DSR Info: </h1>
                     <p>
                         <span className="font-bold text-teal-300">DSR Name: </span>
                         {product?.dsrInfo?.displayName}
@@ -84,7 +84,7 @@ const RequestDetails = () => {
             <div className="mt-10">
                 <div className="rounded-xl">
                     <div className="text-3xl py-2 ">
-                        <h2 className="font-semibold">Requested Products</h2>
+                        <h2 className="font-semibold text-lime-500">Requested Products</h2>
                     </div>
                     <div className="flex w-full  "></div>
 
