@@ -76,19 +76,33 @@ const CheckOut = () => {
     };
 
     const deleteProduct = async (productId) => {
-        setProducts((prevProducts) =>
-            prevProducts.filter((item) => item?.product?._id !== productId)
-        );
-        const res = await axiosPublic.post(`/card/admindelete?productId=${productId}&cardId=${id}`);
-
-        console.log(res.data);
-
         Swal.fire({
-            title: "Deleted!",
-            text: "Your product has been removed.",
-            icon: "success"
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                setProducts((prevProducts) =>
+                prevProducts.filter((item) => item?.product?._id !== productId)
+            );
+            const res = await axiosPublic.post(`/card/admindelete?productId=${productId}&cardId=${id}`);
+    
+            console.log(res.data);
+    
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your product has been removed.",
+                icon: "success"
+            });
+            productDataRefrtch();
+            }
         });
-        productDataRefrtch();
+       
     };
 
     const handleCheckout = async () => {
