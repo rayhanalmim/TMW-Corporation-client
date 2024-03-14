@@ -10,7 +10,7 @@ const DsrRequest = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosSecure.get("/sell");
+        const response = await axiosSecure.get("/dsrRequ");
         setInfo(response.data);
       } catch (error) {
         console.error("Error fetching costs:", error);
@@ -27,36 +27,32 @@ const DsrRequest = () => {
       </div>
 
       <div className="flex justify-evenly">
-        <h4>Total No: {infos?.length}</h4>
       </div>
       <hr className="py-2" />
 
       <div className="overflow-x-auto">
         <table className="table">
-          <thead className="text-sm">
+          <thead className="text-sm text-center">
             <th>No</th>
-            <th>Date</th>
-            <th>Name</th>
-            <th>product </th>
-            <th>Bill</th>
-            <th>Due BIll</th>
-            <th>Action</th>
+            <th>Req Date</th>
+            <th>Req time</th>
+            <th>DSR Name</th>
+            <th>ShopName </th>
+            <th>Details</th>
           </thead>
           <tbody>
             {infos.map((info, index) => (
-              <tr key={index}>
+              <tr className="text-center" key={index}>
                 <td>{index + 1}</td>
-                <td>{info.date}</td>
-                <Link to={`/singleUserInfo/${info?.agentId}`}>
-                  <td className="text-blue-600">{info?.agetName}</td>
-                </Link>
-
-                <td>{info?.purchesProducts.length}</td>
-                <td className="text-success">{info?.totalCost}</td>
-                <td className="text-error">{info?.dueAmmount}</td>
-                <td className="flex gap-2">
+                <td>{info.orderDate}</td>
+                <td>{info.orderTime}</td>
+                
+                <td className="text-success">{info?.dsrInfo?.displayName}</td>
+                <td>{info?.shopInfo?.shopName}</td>
+                
+                <td className="flex gap-2 pl-14">
                   <NavLink to={`/memo/${info._id}`}>
-                    <button className="btn btn-sm btn-info">Invoice</button>
+                    <button className="btn btn-sm btn-info">Details</button>
                   </NavLink>
                 </td>
               </tr>
