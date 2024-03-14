@@ -79,7 +79,9 @@ const CheckOut = () => {
         setProducts((prevProducts) =>
             prevProducts.filter((item) => item?.product?._id !== productId)
         );
-        const res = await axiosPublic.delete(`/card/delete?id=${productId}&user=${user.email}`);
+        const res = await axiosPublic.post(`/card/admindelete?productId=${productId}&cardId=${id}`);
+
+        console.log(res.data);
 
         Swal.fire({
             title: "Deleted!",
@@ -214,7 +216,7 @@ const CheckOut = () => {
                                                     <div className="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
                                                         <button
                                                             type="button"
-                                                            onClick={() => deleteProduct(item?._id)}
+                                                            onClick={() => deleteProduct(item?.product?._id)}
                                                             className="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900"
                                                         >
                                                             <svg
