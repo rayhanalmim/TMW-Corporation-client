@@ -36,6 +36,7 @@ import AddShop from "../Page/Shop/AddShop";
 import SuperAdminRoute from "./SuperAdminRoute";
 import SingleShopInfo from "../Page/Shop/SingleShopInfo";
 import DsrRequest from "../Page/DSR/DsrRequest";
+import RequestDetails from "../Page/DSR/RequestDetails";
 
 const router = createBrowserRouter([
   {
@@ -137,6 +138,10 @@ const router = createBrowserRouter([
       {
         path: "/dsr",
         element: <DsrRequest/>,
+      },
+      {
+        path: "/dsrReqDetails/:id",
+        element: <RequestDetails/>,
       },
       {
         path: "/checkOut",

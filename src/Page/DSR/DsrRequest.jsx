@@ -51,7 +51,7 @@ const DsrRequest = () => {
                 <td>{info?.shopInfo?.shopName}</td>
                 
                 <td className="flex gap-2 pl-14">
-                  <NavLink to={`/memo/${info._id}`}>
+                  <NavLink to={`/dsrReqDetails/${info._id}`}>
                     <button className="btn btn-sm btn-info">Details</button>
                   </NavLink>
                 </td>
