@@ -42,7 +42,16 @@ const RequestDetails = () => {
         });
     }
 
-    const handleDue = () =>{
+    const handleDue = async() =>{
+        const res = await axiosSecure.post(`/dsrRequ/acceptDue?reqId=${id}`);
+        if(res.data){
+            Swal.fire({
+                title: "Accepted!",
+                text: "Accept due request",
+                icon: "success"
+            });
+            navigate('/dsr');
+        }
         
     }
 
