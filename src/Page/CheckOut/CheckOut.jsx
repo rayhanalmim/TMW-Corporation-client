@@ -31,12 +31,12 @@ const CheckOut = () => {
         }
     })
 
-    console.log(product);
+  
     console.log(products);
 
     useEffect(() => {
         if (!productLoading && product) {
-            setProducts(product?.requestedItems?.map((item) => ({ ...item, quantity: item.product.productQuantity })));
+            setProducts(product?.requestedItems?.map((item) => ({ ...item, quantity: item.productQuentity })));
         }
     }, [productLoading, product]);
 
@@ -108,37 +108,40 @@ const CheckOut = () => {
     };
 
     const handleCheckout = async () => {
-        setLoading(true);
-        products.forEach((item) => {
 
-        });
-        const res = await axiosPublic.post(`/sell?sellerEmail=${user.email}&buyerId=${selectedUserId}&discount=${discount}&due=${due}&totalPrice=${subtotal}`, products);
+        console.log(products);
+        console.log(discount, due, subtotal);
+        // setLoading(true);
+        // products.forEach((item) => {
+
+        // });
+        // const res = await axiosPublic.post(`/sell?sellerEmail=${user.email}&buyerId=${selectedUserId}&discount=${discount}&due=${due}&totalPrice=${subtotal}`, products);
         //   console.log(res);
 
-        if (res.status === 201) {
-            Swal.fire({
-                title: "Error",
-                text: "Please select a valid agent!",
-                icon: "error",
-            }); setLoading(false);
-        }
-        if (res.status === 202) {
-            Swal.fire({
-                title: "Error",
-                text: `${res?.data?.message}`,
-                icon: "error",
-            }); setLoading(false);
-        }
-        if (res.status === 200) {
-            const res = await axiosPublic.delete(`/card/deleteAllCard?user=${user.email}`);
-            console.log(res);
-            Swal.fire({
-                title: "Success",
-                text: "Products sell successfully",
-                icon: "success",
-            });
-            navigate('/'); setLoading(false);
-        }
+        // if (res.status === 201) {
+        //     Swal.fire({
+        //         title: "Error",
+        //         text: "Please select a valid agent!",
+        //         icon: "error",
+        //     }); setLoading(false);
+        // }
+        // if (res.status === 202) {
+        //     Swal.fire({
+        //         title: "Error",
+        //         text: `${res?.data?.message}`,
+        //         icon: "error",
+        //     }); setLoading(false);
+        // }
+        // if (res.status === 200) {
+        //     const res = await axiosPublic.delete(`/card/deleteAllCard?user=${user.email}`);
+        //     console.log(res);
+        //     Swal.fire({
+        //         title: "Success",
+        //         text: "Products sell successfully",
+        //         icon: "success",
+        //     });
+        //     navigate('/'); setLoading(false);
+    // }
     };
 
     const subtotal = products?.reduce(
