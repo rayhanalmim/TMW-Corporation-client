@@ -75,9 +75,26 @@ const Header = () => {
           </Link>
         </div>
         <div className="navbar-end">
-        <button onClick={handleSignOut} className="btn text-white mr-5 btn-sm btn-error px-8">
-                  Log-out
-                </button>
+          <div className="hidden md:block">
+            {
+              user && <a className="btn btn-ghost normal-case text-xl">{user.displayName}</a>
+            }
+          </div>
+          <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
+            <div className="w-10 rounded-full">
+              {
+                user ? <img src={user.photoURL} alt="" /> : <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />
+              }
+            </div>
+          </label>
+          {
+            user ?  <button onClick={handleSignOut} className="btn text-white bg-gray-900 border-black mr-5 btn-sm btn-error px-8">
+            Log-out
+          </button> : <Link to='/login' > <button  className="btn text-white mr-5 btn-sm btn-error px-8">
+                  Log-In
+                </button></Link>
+          }
+
         </div>
       </div>
     </div>

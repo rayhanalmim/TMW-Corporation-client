@@ -1,109 +1,35 @@
-import { useContext } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import { Outlet } from "react-router-dom";
 import Header from "../../components/Shared/Header/Header";
-import { AuthContext } from "../../providers/AuthProvider";
 import AdminMenu from "./Admin/AdminMenu";
 import AgentMenu from "./Agent/AgentMenu";
 import UserMenu from "./User/UserMenu";
-
 import useAdmin from "../../Hook/useAdmin.jsx";
 import useAgent from "../../Hook/useAgent.jsx";
 
-const showSuccessAlert = () => {
-  Swal.fire({
-    icon: "success",
-    title: "Log out",
-    text: "Successfully logged out",
-  });
-};
-
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
-  const [isAgent] = useAgent();  //Dsr
-
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const { user, logOut } = useContext(AuthContext);
-  const handleSignOut = async () => {
-    try {
-      await logOut();
-      showSuccessAlert();
-      navigate(location?.state?.from ? location.state.from : "/");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [isAgent] = useAgent();
 
   return (
-    <div className="min-h-screen bg-sky-900">
+    <div className="bg-sky-900 min-h-screen">
       <Header />
-      <div className="lg:h-[300px] md:h-[100px] bg-cover bg-center lg:relative      ">
-        <div className="container mx-auto">
-          <div className=" px-8 lg:p-8">
-            <p className="lg:pt-8 pt-3  text-white">
-              Welcome, {user?.displayName}
-            </p>
-
-            <h2 className="text-xl lg:text-4xl font-bold py-0 lg:py-4 text-left text-white capitalize">
+      <div className="flex flex-col lg:flex-row w-full  mx-auto gap-5 relative">
+        <div className="w-full lg:w-1/3 p-4 ">
+          <div className="justify-around  top-6 sticky p-6 lg:p-8 gap-9 text-center rounded-lg my-8 bg-sky-800 w-full mx-auto">
+            <div>
               {isAdmin ? (
-                <>Admin Dashboard,</>
+                <AdminMenu />
               ) : isAgent ? (
-                <> Office Admin Dashboard,</>
+                <AgentMenu />
               ) : (
-                <> Normal User,</>
-              )}
-            </h2>
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-col lg:flex-row w-full container mx-auto  gap-5 ">
-        <div className="w-full lg:w-1/3  p-4  sticky top-10">
-          <div className="justify-around p-4 text-center rounded-3xl lg:-mt-32 bg-sky-800 w-full mx-auto flex lg:flex-col gap-4">
-            <div className="">
-              <img
-                src={user?.photoURL}
-                alt={user?.displayName}
-                className="   h-28  pt-3 lg:h-36 mx-auto rounded-full aspect-square"
-              />
-            </div>
-
-            <div className="space-y-2 text-center divide-y  ">
-              <h4 className="text-white lg:pt-4">Name: {user?.displayName}</h4>
-
-              <div className="flex gap-4 justify-center pt-3   ">
-                <Link to="/profile">
-                  <button className="btn btn-info  px-8">Profile</button>
-                </Link>
-
-                <button onClick={handleSignOut} className="btn btn-error px-8">
-                  Log-out
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="justify-around p-6 lg:p-8 gap-9 text-center rounded-lg  my-8 bg-sky-800 w-full mx-auto   ">
-            <div className=" ">
-              {isAdmin ? (
-                <>
-                  <AdminMenu />
-                </>
-              ) : isAgent ? (
-                <>
-                  <AgentMenu />
-                </>
-              ) : (
-                <>
-                  <UserMenu />
-                </>
+                <UserMenu />
               )}
             </div>
           </div>
         </div>
-        <div className="w-full lg:w-2/3 p-4  sticky top-10  ">
-          <div className="w-full justify-around p-1 lg:p-8 gap-9 text-center rounded-lg lg:-mt-32 bg-sky-800 ">
-            <Outlet></Outlet>
+        <div className="w-full lg:w-2/3 p-4 pt-44 sticky top-0">
+          <div className="w-full justify-around p-1 lg:p-8 gap-9 text-center rounded-lg lg:-mt-32 bg-sky-800">
+            <Outlet />
           </div>
         </div>
       </div>
