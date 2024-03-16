@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { FaCartArrowDown } from "react-icons/fa";
 import Title from '../../Components/Shared/Title';
+import { FaDownload } from "react-icons/fa";
 
 const DsrRequest = () => {
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const [infos, setInfo] = useState([]);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const DsrRequest = () => {
   return (
     <div className="bg-base-200 p-0 m-0 lg:p-4 lg:m-4 rounded-xl">
       <div className="text-3xl py-2">
-      <Title title="DSR Request"></Title>
+        <Title title="DSR Request"></Title>
       </div>
 
       <div className="flex justify-evenly">
@@ -46,14 +48,25 @@ const DsrRequest = () => {
                 <td>{index + 1}</td>
                 <td>{info.orderDate}</td>
                 <td>{info.orderTime}</td>
-                
+
                 <td className="text-success">{info?.dsrInfo?.displayName}</td>
                 <td>{info?.shopInfo?.shopName}</td>
-                
+
                 <td className="flex gap-2 pl-14">
-                  <NavLink to={`/dsrReqDetails/${info._id}`}>
-                    <button className="btn btn-sm btn-info">Details</button>
-                  </NavLink>
+                  {
+                    info?.orderStatus === "pending" ? <NavLink to={`/dsrReqDetails/${info._id}`}>
+                      <button className="btn btn-sm btn-info">Details</button>
+                    </NavLink>
+                      :
+                      <div className="flex gap-10">
+
+                        <FaDownload className="text-xl cursor-pointer hover:text-rose-700"></FaDownload>
+                        <Link to={`/checkOut/${info._id}`}>
+                          <FaCartArrowDown className="text-2xl hover:text-blue-700 cursor-pointer"></FaCartArrowDown>
+                        </Link>
+                      </div>
+                  }
+
                 </td>
               </tr>
             ))}
