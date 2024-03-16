@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -6,18 +6,65 @@ import Swal from "sweetalert2";
 
 const RequestDetails = () => {
     const axiosSecure = useAxiosSecure();
-    const [product, setProduct] = useState({});
+    // const [product, setProduct] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
+    const [products, setProducts] = useState([]);
 
-    const { data: dsrReq = [], isLoading: reqLoading, refetch: reqRefetch } = useQuery({
+    const { data: product = [], isLoading: productLoading } = useQuery({
         queryKey: ["dsrReq", id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/dsrRequ/findOne?reqId=${id}`)
-            setProduct(res.data);
             return res.data;
         }
     })
+
+  
+    console.log("products : ",products);
+    console.log("product : ",product);
+
+    useEffect(() => {
+        if (!productLoading && product) {
+            setProducts(product?.requestedItems?.map((item) => ({ ...item, quantity: item.productQuentity })));
+        }
+    }, [productLoading, product]);
+
+    const handleQuantityChange = (event, productId) => {
+        console.log(productId);
+        const newQuantity = parseInt(event.target.value);
+        if (!isNaN(newQuantity)) {
+            setProducts((prevProducts) =>
+                prevProducts.map((item) => {
+                    if (item.product._id === productId) {
+                        return { ...item, quantity: newQuantity };
+                    }
+                    return item;
+                })
+            );
+        }
+    };
+
+    const incrementQuantity = (productId) => {
+        setProducts((prevProducts) =>
+            prevProducts.map((item) => {
+                if (item.product._id === productId) {
+                    return { ...item, quantity: item.quantity + 1 };
+                }
+                return item;
+            })
+        );
+    };
+
+    const decrementQuantity = (productId) => {
+        setProducts((prevProducts) =>
+            prevProducts.map((item) => {
+                if (item.product._id === productId && item?.quantity > 1) {
+                    return { ...item, quantity: item?.quantity - 1 };
+                }
+                return item;
+            })
+        );
+    };
 
     const handleDelete = () => {
         Swal.fire({
@@ -42,9 +89,9 @@ const RequestDetails = () => {
         });
     }
 
-    const handleDue = async() =>{
+    const handleDue = async () => {
         const res = await axiosSecure.post(`/dsrRequ/acceptDue?reqId=${id}`);
-        if(res.data){
+        if (res.data) {
             Swal.fire({
                 title: "Accepted!",
                 text: "Accept due request",
@@ -52,7 +99,7 @@ const RequestDetails = () => {
             });
             navigate('/dsr');
         }
-        
+
     }
 
     return (
@@ -114,12 +161,52 @@ const RequestDetails = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {product?.requestedItems?.map((pro, index) => (
+                                {products?.map((pro, index) => (
                                     <tr className="border-b-1 border-gray-300" key={index}>
                                         <td className="text-center">{index + 1}</td>
 
                                         <td>{pro?.product?.productName}</td>
-                                        <td className="text-center">{pro?.product?.productQuantity}</td>
+                                        <td className="text-center">
+
+                                            <div className="sm:order-1">
+                                                <div className="mx-auto flex h-8 items-stretch text-gray-600">
+                                                    <button
+                                                           onClick={() => decrementQuantity(pro.product?._id)}
+                                                        className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
+                                                    >
+                                                        -
+                                                    </button>
+                                                    <input
+                                                        type="number"
+                                                        value={pro?.quantity}
+                                                           onChange={(e) =>
+                                                               handleQuantityChange(e, pro.product?._id)
+                                                           }
+                                                        className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase"
+                                                        style={{
+                                                            "-moz-appearance": "textfield",
+                                                            appearance: "textfield",
+                                                            width: "100%",
+                                                            border: "none",
+                                                            outline: "none",
+                                                            resize: "none",
+                                                            padding: "0",
+                                                            textAlign: "center",
+                                                        }}
+                                                    />
+                                                    <button
+                                                           onClick={() => incrementQuantity(pro?.product?._id)}
+                                                        className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
+                                                    >
+                                                        +
+                                                    </button>
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </td>
                                         <td className="text-center">{pro?.product?.productPrice} </td>
                                         {/* <td className="text-green-500">{product?.ProductCategory}  </td> */}
                                         <td className="text-center">{pro?.product?.lightColor}  </td>
@@ -129,6 +216,13 @@ const RequestDetails = () => {
                             </tbody>
                         </table>
                     </div>
+
+
+                    {/* {product?.requestedItems?.map((item, idx) => (
+                        
+                    ))} */}
+
+
                     <div className="flex justify-end mt-6">
                         <div className="flex gap-4">
                             <button type="button" onClick={handleDue} className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Accept due</button>
