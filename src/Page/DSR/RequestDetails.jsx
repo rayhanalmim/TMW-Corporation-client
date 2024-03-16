@@ -90,7 +90,8 @@ const RequestDetails = () => {
     }
 
     const handleDue = async () => {
-        const res = await axiosSecure.post(`/dsrRequ/acceptDue?reqId=${id}`);
+        const res = await axiosSecure.post(`/dsrRequ/acceptDue?reqId=${id}`, products);
+        console.log(res.data);
         if (res.data) {
             Swal.fire({
                 title: "Accepted!",
