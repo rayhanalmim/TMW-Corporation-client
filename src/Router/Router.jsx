@@ -33,6 +33,7 @@ import SuperAdminRoute from "./SuperAdminRoute";
 import SingleShopInfo from "../Page/Shop/SingleShopInfo";
 import DsrRequest from "../Page/DSR/DsrRequest";
 import RequestDetails from "../Page/DSR/RequestDetails";
+import Due from "../Page/Memo/Due";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/memo",
     element: <Memo />,
+  },
+  {
+    path: "/due/:id",
+    element: <Due />,
   },
   {
     path: "/",

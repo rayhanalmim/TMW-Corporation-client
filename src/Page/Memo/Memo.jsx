@@ -20,7 +20,6 @@ const Invoice = () => {
     queryFn: async () => {
       const res = await axiosSecure.get(`/dsrRequ/order`);
       return res.data;
-
     },
     // enabled: !!data?.agentEmail, // Enable the query only if agentEmail is available
   });

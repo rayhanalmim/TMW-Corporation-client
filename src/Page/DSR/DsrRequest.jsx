@@ -59,8 +59,10 @@ const DsrRequest = () => {
                     </NavLink>
                       :
                       <div className="flex gap-10">
+                        <Link to={`/due/${info._id}`}>
+                          <FaDownload className="text-xl cursor-pointer hover:text-rose-700"></FaDownload>
+                        </Link>
 
-                        <FaDownload className="text-xl cursor-pointer hover:text-rose-700"></FaDownload>
                         <Link to={`/checkOut/${info._id}`}>
                           <FaCartArrowDown className="text-2xl hover:text-blue-700 cursor-pointer"></FaCartArrowDown>
                         </Link>
