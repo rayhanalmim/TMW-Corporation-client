@@ -4,6 +4,8 @@ import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { FaCartArrowDown } from "react-icons/fa";
 import Title from '../../Components/Shared/Title';
 import { FaDownload } from "react-icons/fa";
+import { AiFillFileUnknown } from "react-icons/ai";
+import { AiFillEye } from "react-icons/ai";
 
 const DsrRequest = () => {
   const axiosSecure = useAxiosSecure();
@@ -55,7 +57,7 @@ const DsrRequest = () => {
                 <td className="flex gap-2 pl-14">
                   {
                     info?.orderStatus === "pending" ? <NavLink to={`/dsrReqDetails/${info._id}`}>
-                      <button className="btn btn-sm btn-info">Details</button>
+                      <AiFillEye className="text-2xl cursor-pointer hover:text-rose-700"></AiFillEye>
                     </NavLink>
                       :
                       <div className="flex gap-10">
