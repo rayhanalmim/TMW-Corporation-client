@@ -6,6 +6,8 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import Title from "../../Components/Shared/Title";
+import TitleTwo from "../../Components/Shared/TitleTwo";
 
 
 const CheckOut = () => {
@@ -149,12 +151,11 @@ const CheckOut = () => {
 
     return (
         <div>
+             <Title title="Confirm Order Request"></Title>
             <section className="py-12 sm:py-16 lg:pb-20 lg:pt-9">
                 <div className="mx-auto px-4 sm:px-6 ">
                     <div className="flex items-center justify-center">
-                        <h1 className="text-2xl font-semibold text-white">
-                            Confirm Purchase
-                        </h1>
+                   
                     </div>
                     <div className="mx-auto mt-8 max-w-2xl md:mt-12">
                         <div className="bg-white shadow">
