@@ -383,7 +383,7 @@ const CheckOut = () => {
                                                                             className="group inline-flex w-full items-center justify-center rounded-md bg-gray-900 px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
                                                                         >
 
-                                                                            {loading ? "processing..." : "Checkout"}
+                                                                            {loading ? "processing..." : "Confirm Billing"}
 
                                                                             <svg
                                                                                 xmlns="http://www.w3.org/2000/svg"

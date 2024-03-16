@@ -24,13 +24,20 @@ const Due = () => {
             return res.data;
         }
     })
+    const { data: allData = [] } = useQuery({
+        queryKey: ["allrequ", id],
+        queryFn: async () => {
+            const response = await axiosSecure.get("/dsrRequ");
+            return response.data;
+        }
+    })
 
     const res = data.requestedItems?.map((item)=>{
         totalCtn = totalCtn + item.product.perCartonQuantity;
         totalQty = totalQty + item.productQuentity;
     })
 
-    console.log(data);
+    console.log(allData.length);
 
 
 
@@ -49,7 +56,7 @@ const Due = () => {
                 <div className="flex mt-4 font-semibold">
                     <div className="w-1/2 flex">
                         <div>
-                            <h3 className="text-start">Do No : {data?.length} </h3>
+                            <h3 className="text-start">Do No : {allData?.length} </h3>
                         </div>
                     </div>
                     <div className="w-1/2 flex">
@@ -85,7 +92,7 @@ const Due = () => {
                             {/* Total row */}
                             <tr>
                                 <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
-                                <td colSpan="1" className="py-2 border-dotted border-4 font-bold text-center">Total:</td>
+                                <td colSpan="1" className="py-2 border-dotted border-4 font-bold text-center">Total Qty & Ctn</td>
                                 <td className="py-2 border-dotted border-4 text-center font-bold">
                                     {totalQty}
                                 </td>
@@ -100,10 +107,12 @@ const Due = () => {
 
 
 
-            <p className="text-left mt-4">Received by -----------------</p>
-            <div className="text-center mt-6 italic text-gray-600">
-                <p>Thank you for your business!</p>
+            <div className="grid grid-cols-3 justify-items-center mt-16">
+            <p className="text-left mt-4 border-t-2 border-dotted">Receiver <br /> Signature</p>
+            <p className="text-left mt-4 border-t-2 border-dotted">Prepared By <br /> Signature</p>
+            <p className="text-left mt-4 border-t-2 border-dotted">Checking <br /> Signature</p>
             </div>
+           
         </div>
     );
 };
