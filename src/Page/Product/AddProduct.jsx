@@ -51,7 +51,8 @@ const AddProduct = () => {
         productDescription: data.productDescription,
         imageURL: res.data.data.url,
         addedBy: user?.email,
-        discount: 0
+        discount: 0,
+        sellCollections: [],
       };
       console.log(productData);
       const productRes = await axiosPublic.post("/product", productData);
