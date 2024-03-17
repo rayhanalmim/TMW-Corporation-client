@@ -18,7 +18,7 @@ const Invoice = () => {
   const { data: demoData } = useQuery({
     queryKey: ["memoData"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/bill?billId=${id}`);
+      const res = await axiosSecure.get(`/bill/findOne?billId=${id}`);
       return res.data;
     },
     // enabled: !!data?.agentEmail, // Enable the query only if agentEmail is available
@@ -38,21 +38,21 @@ const Invoice = () => {
         <div>
           <h2 className="text-xl font-semibold">Bill</h2>
           <div className="border-dashed border-2 border-orange-800">
-            <h3 className="text-2xl text-blue-800 font-semibold">Zahid Hasan</h3>
+            <h3 className="text-2xl text-blue-800 font-semibold">{demoData?.shopInfo?.shopOwner}</h3>
           </div>
         </div>
 
         <div className="flex mt-6 font-semibold">
           <div className="w-1/2 flex">
             <div>
-              <h3 className="text-start">Bill No : </h3>
-              <h3>Customer ID: </h3>
+              <h3 className="text-start">Bill No : {demoData?.orderNo}</h3>
+              {/* <h3>Customer ID: </h3> */}
             </div>
           </div>
           <div className="w-1/2 flex">
             <div >
-              <h3>Invoice Date:</h3>
-              <h3 className="text-start">Order No:</h3>
+              <h3>Invoice Date: {demoData?.orderDate}</h3>
+              {/* <h3 className="text-start">Order No:</h3> */}
             </div>
 
           </div>
@@ -73,16 +73,15 @@ const Invoice = () => {
         </tr>
       </thead>
       <tbody>
-        {demoData?.map((product, idx) => (
+        {demoData?.requestedItems?.map((product, idx) => (
           <tr key={idx}>
-            <td className="py-2 border-dotted border-4 text-center">{product?.productName}</td>
-            <td className="py-2 border-dotted border-4 text-center">{product?.Qty}</td>
-            <td className="py-2 border-dotted border-4 text-center">{product?.Ctn}</td>
+            <td className="py-2 border-dotted border-4 text-center">{product?.product?.productName}</td>
+            <td className="py-2 border-dotted border-4 text-center">{product?.quantity}</td>
+            <td className="py-2 border-dotted border-4 text-center">{product?.product?.perCartonQuantity}</td>
+            <td className="py-2 border-dotted border-4 text-center">{product?.product?.productPrice}</td>
+          
             <td className="py-2 border-dotted border-4 text-center">
-              {product?.Price}
-            </td>
-            <td className="py-2 border-dotted border-4 text-center">
-              {product?.Amount}
+              {product?.product?.perCartonQuantity + product?.product?.productPrice}
             </td>
           </tr>
         ))}
@@ -91,7 +90,7 @@ const Invoice = () => {
           <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
           <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total:</td>
           <td className="py-2 border-dotted border-4 text-center font-bold">
-            {demoData?.reduce((total, product) => total + (product.Amount || 0), 0)}
+            {demoData?.totalPrice}
           </td>
         </tr>
       </tbody>
@@ -116,9 +115,9 @@ const Invoice = () => {
           <p className="text-right">Total Due: {user?.totalDueAmmout} TK</p>
         )}
       </div> */}
-      <p className="text-left mt-4">Received by -----------------</p>
-      <div className="text-center mt-6 italic text-gray-600">
-        <p>Thank you for your business!</p>
+      <div className="flex justify-between mx-8 mt-24t">
+      <p className="text-left mt-4 border-t-2 border-dotted">Received by</p>
+      <p className="text-left mt-4 border-t-2 border-dotted">TMW Corporation</p>
       </div>
     </div>
   );
