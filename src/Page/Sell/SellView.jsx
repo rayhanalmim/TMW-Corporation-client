@@ -1,61 +1,49 @@
-import { useEffect, useState } from "react";
+
 import { Link, NavLink } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import Title from "../../Components/Shared/Title";
 
 const SellView = () => {
   const axiosSecure = useAxiosSecure();
-  const [infos, setInfo] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosSecure.get("/sell");
-        setInfo(response.data);
-      } catch (error) {
-        console.error("Error fetching costs:", error);
-      }
-    };
-
-    fetchData();
-  }, [axiosSecure]);
-
+  const { data: billData } = useQuery({
+    queryKey: ["billData"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/bill`);
+      return res.data;
+    },
+  });
+ console.log(billData);
 
   return (
     <div className="bg-base-200 p-0 m-0 lg:p-4 lg:m-4 rounded-xl">
       <div className="text-3xl py-2">
-        <h2>Sell history </h2>
+        <Title title="Bill History"></Title>
       </div>
 
       <div className="flex justify-evenly">
-        <h4>Total No: {infos?.length}</h4>
       </div>
       <hr className="py-2" />
 
       <div className="overflow-x-auto">
         <table className="table">
-          <thead className="text-sm">
-            <th>No</th>
+          <thead className="text-sm text-center">
+            <th>Bill No</th>
+            <th>Shop</th>
+            <th>DSR </th>
             <th>Date</th>
-            <th>Name</th>
-            <th>product </th>
-            <th>Bill</th>
-            <th>Due BIll</th>
-            <th>Action</th>
+            <th>Download</th>
           </thead>
           <tbody>
-            {infos.map((info, index) => (
-              <tr key={index}>
+            {billData?.map((info, index) => (
+              <tr className="text-center" key={index}>
                 <td>{index + 1}</td>
-                <td>{info.date}</td>
-                <Link to={`/singleUserInfo/${info?.agentId}`}>
-                  <td className="text-blue-600">{info?.agetName}</td>
-                </Link>
-
-                <td>{info?.purchesProducts.length}</td>
-                <td className="text-success">{info?.totalCost}</td>
-                <td className="text-error">{info?.dueAmmount}</td>
-                <td className="flex gap-2">
-                  <NavLink to={`/memo/${info._id}`}>
+                <td>{info?.shopInfo?.shopName}</td>
+                <td>{info?.dsrInfo?.displayName}</td>
+                <td className="text-success">{info?.orderDate}</td>
+                <td className="">
+                  <NavLink to={`/memo/${info?._id}`}>
                     <button className="btn btn-sm btn-info">Invoice</button>
                   </NavLink>
                 </td>

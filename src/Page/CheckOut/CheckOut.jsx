@@ -31,7 +31,7 @@ const CheckOut = () => {
         }
     })
 
-  
+
     console.log(products);
 
     useEffect(() => {
@@ -90,35 +90,43 @@ const CheckOut = () => {
             if (result.isConfirmed) {
 
                 setProducts((prevProducts) =>
-                prevProducts.filter((item) => item?.product?._id !== productId)
-            );
-            const res = await axiosPublic.post(`/card/admindelete?productId=${productId}&cardId=${id}`);
-    
-            console.log(res.data);
-    
-            Swal.fire({
-                title: "Deleted!",
-                text: "Your product has been removed.",
-                icon: "success"
-            });
-            productDataRefrtch();
+                    prevProducts.filter((item) => item?.product?._id !== productId)
+                );
+                const res = await axiosPublic.post(`/card/admindelete?productId=${productId}&cardId=${id}`);
+
+                console.log(res.data);
+
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your product has been removed.",
+                    icon: "success"
+                });
+                productDataRefrtch();
             }
         });
-       
+
     };
 
     const handleCheckout = async () => {
 
-      
+
         product.requestedItems = products;
         console.log(discount, due, subtotal);
         console.log(product);
 
         setLoading(true);
         const res = await axiosPublic.post(`/sell?discount=${discount}&due=${due}&totalPrice=${subtotal}`, product);
-          console.log(res);
+        console.log(res);
 
-       
+
+        if (res.status === 202) {
+            Swal.fire({
+                title: "Error",
+                text: `${res.data.message}`,
+                icon: "error",
+            }); setLoading(false);
+        }
+
         if (res.status === 200) {
             Swal.fire({
                 title: "Success",
@@ -126,7 +134,9 @@ const CheckOut = () => {
                 icon: "success",
             });
             navigate('/dsr'); setLoading(false);
-    }
+        }
+
+        
     };
 
     const subtotal = products?.reduce(
@@ -139,11 +149,11 @@ const CheckOut = () => {
 
     return (
         <div>
-             <Title title="Confirm Billing"></Title>
+            <Title title="Confirm Billing"></Title>
             <section className="py-12 sm:py-16 lg:pb-20 lg:pt-9">
                 <div className="mx-auto px-4 sm:px-6 ">
                     <div className="flex items-center justify-center">
-                   
+
                     </div>
                     <div className="mx-auto mt-8 max-w-2xl md:mt-12">
                         <div className="bg-white shadow">

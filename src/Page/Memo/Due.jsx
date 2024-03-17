@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { useEffect } from "react";
 
 
 const Due = () => {
@@ -32,6 +33,29 @@ const Due = () => {
         }
     })
 
+    const { data: orderNo = [] } = useQuery({
+        queryKey: ["OrderNo", id],
+        queryFn: async () => {
+            const response = await axiosSecure.get("/dsrRequ/OrderNo");
+            return response.data;
+        }
+    })
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const res = await axiosSecure.get(`/dsrRequ/UpdateOne?reqId=${id}&orderNo=${orderNo.length}`)
+            console.log(res);
+          } catch (error) {
+            console.error("Error fetching costs:", error);
+          }
+        };
+    
+        fetchData();
+      }, [axiosSecure, id, orderNo]);
+   
+  
+
     const res = data.requestedItems?.map((item)=>{
         totalCtn = totalCtn + item.product.perCartonQuantity;
         totalQty = totalQty + item.productQuentity;
@@ -56,7 +80,7 @@ const Due = () => {
                 <div className="flex mt-4 font-semibold">
                     <div className="w-1/2 flex">
                         <div>
-                            <h3 className="text-start">Do No : {allData?.length} </h3>
+                            <h3 className="text-start">Do No : {orderNo?.length + 1} </h3>
                         </div>
                     </div>
                     <div className="w-1/2 flex">
