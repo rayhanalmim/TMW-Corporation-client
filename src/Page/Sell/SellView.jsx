@@ -38,7 +38,7 @@ const SellView = () => {
           <tbody>
             {billData?.map((info, index) => (
               <tr className="text-center" key={index}>
-                <td>{index + 1}</td>
+                <td>{info?.orderNo}</td>
                 <td>{info?.shopInfo?.shopName}</td>
                 <td>{info?.dsrInfo?.displayName}</td>
                 <td className="text-success">{info?.orderDate}</td>

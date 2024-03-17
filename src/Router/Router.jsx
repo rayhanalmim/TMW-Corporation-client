@@ -45,7 +45,7 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: "/memo",
+    path: "/memo/:id",
     element: <Memo />,
   },
   {

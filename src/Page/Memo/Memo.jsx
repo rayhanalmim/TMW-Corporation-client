@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { useParams } from "react-router-dom";
 
 
 const Invoice = () => {
-  // const { id } = useParams();
+  const { id } = useParams();
   const axiosSecure = useAxiosSecure();
 
   // const { data = [] } = useQuery({
@@ -16,9 +16,9 @@ const Invoice = () => {
   // });
 
   const { data: demoData } = useQuery({
-    queryKey: ["demoData"],
+    queryKey: ["memoData"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/dsrRequ/order`);
+      const res = await axiosSecure.get(`/bill?billId=${id}`);
       return res.data;
     },
     // enabled: !!data?.agentEmail, // Enable the query only if agentEmail is available
