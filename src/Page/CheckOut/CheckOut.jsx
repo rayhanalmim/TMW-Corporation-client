@@ -109,14 +109,14 @@ const CheckOut = () => {
 
     const handleCheckout = async () => {
 
-        console.log(products);
+      
+        product.requestedItems = products;
         console.log(discount, due, subtotal);
-        // setLoading(true);
-        // products.forEach((item) => {
+        console.log(product);
 
-        // });
-        // const res = await axiosPublic.post(`/sell?sellerEmail=${user.email}&buyerId=${selectedUserId}&discount=${discount}&due=${due}&totalPrice=${subtotal}`, products);
-        //   console.log(res);
+        // setLoading(true);
+        const res = await axiosPublic.post(`/sell?discount=${discount}&due=${due}&totalPrice=${subtotal}`, product);
+          console.log(res);
 
         // if (res.status === 201) {
         //     Swal.fire({
@@ -154,7 +154,7 @@ const CheckOut = () => {
 
     return (
         <div>
-             <Title title="Confirm Order Request"></Title>
+             <Title title="Confirm Billing"></Title>
             <section className="py-12 sm:py-16 lg:pb-20 lg:pt-9">
                 <div className="mx-auto px-4 sm:px-6 ">
                     <div className="flex items-center justify-center">
