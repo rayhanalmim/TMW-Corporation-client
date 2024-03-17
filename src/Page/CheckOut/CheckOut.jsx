@@ -114,34 +114,19 @@ const CheckOut = () => {
         console.log(discount, due, subtotal);
         console.log(product);
 
-        // setLoading(true);
+        setLoading(true);
         const res = await axiosPublic.post(`/sell?discount=${discount}&due=${due}&totalPrice=${subtotal}`, product);
           console.log(res);
 
-        // if (res.status === 201) {
-        //     Swal.fire({
-        //         title: "Error",
-        //         text: "Please select a valid agent!",
-        //         icon: "error",
-        //     }); setLoading(false);
-        // }
-        // if (res.status === 202) {
-        //     Swal.fire({
-        //         title: "Error",
-        //         text: `${res?.data?.message}`,
-        //         icon: "error",
-        //     }); setLoading(false);
-        // }
-        // if (res.status === 200) {
-        //     const res = await axiosPublic.delete(`/card/deleteAllCard?user=${user.email}`);
-        //     console.log(res);
-        //     Swal.fire({
-        //         title: "Success",
-        //         text: "Products sell successfully",
-        //         icon: "success",
-        //     });
-        //     navigate('/'); setLoading(false);
-    // }
+       
+        if (res.status === 200) {
+            Swal.fire({
+                title: "Success",
+                text: "Bill products successfully",
+                icon: "success",
+            });
+            navigate('/dsr'); setLoading(false);
+    }
     };
 
     const subtotal = products?.reduce(
