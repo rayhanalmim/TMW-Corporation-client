@@ -3,7 +3,7 @@ import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
 const SingleShopInfo = () => {
-    const { id } = useParams();
+  const { id } = useParams();
 
   const axiosSecure = useAxiosSecure();
   const { data: shop = [] } = useQuery({
@@ -22,9 +22,9 @@ const SingleShopInfo = () => {
 
   return (
     <div className="bg-base-300   p-8 rounded-lg shadow-md">
-    
+
       <div className="flex flex-col lg:flex-row w-full">
-       
+
         <div className="w-full lg:w-1/2 text-left mt-4 lg:ml-8">
           <p className="text-xl border-b-2 border-black font-bold mb-4">Shop Details</p>
           <p className="">
@@ -45,10 +45,10 @@ const SingleShopInfo = () => {
           </p>
           <p>
             <span className="font-bold text-green-500">Total Buy Amount:{shop?.totalBuyAmout} </span>
-          </p> 
+          </p>
           <p>
             <span className="font-bold text-info">Total given :{shop?.totalPay} </span>{" "}
-          
+
           </p>
           <p>
             <span className="font-bold text-red-500">
@@ -65,7 +65,6 @@ const SingleShopInfo = () => {
             <h2>Purchase History</h2>
           </div>
           <div className="flex w-full  "></div>
-          <h4>Total Product: {shop.purchesProductCollection?.length}</h4>
 
           <div className="overflow-x-auto">
             <table className="table">
@@ -74,8 +73,10 @@ const SingleShopInfo = () => {
                   <th>No</th>
                   <th>Image</th>
                   <th>Name</th>
+                  <th>Purchase date</th>
                   <th>Quantity</th>
-                  <th>Price</th>
+                  <th>Unit price</th>
+                  <th>Total price</th>
                 </tr>
               </thead>
               <tbody>
@@ -91,15 +92,12 @@ const SingleShopInfo = () => {
                         </div>
                       </div>
                     </td>
-                    <Link
-                      className="text-blue-800 font-bold"
-                      to={`/product/${product?._id}`}
-                    >
-                      <td>{product?.productName}</td>
-                    </Link>
+                    <td>{product?.productName}</td>
+                    <td>{product?.purchaseDate}</td>
 
-                    <td>{product?.productQuantity}</td>
-                    <td>{product?.productPrice}</td>
+                    <td>{product?.quantity}</td>
+                    <td>{product?.unitPrice}</td>
+                    <td>{parseInt(product?.unitPrice) * parseInt(product?.quantity)}</td>
                   </tr>
                 ))}
               </tbody>
