@@ -1,30 +1,53 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 const Due = () => {
     const { id } = useParams();
+    const [doNumber, setDoNumber] = useState("");
     const axiosSecure = useAxiosSecure();
     let totalQty = 0;
     let totalCtn = 0;
+    
 
-    // const { data = [] } = useQuery({
-    //   queryKey: ["memo", id],
-    //   queryFn: async () => {
-    //     const res = await axiosSecure.get(`/sell/memo?memoId=${id}`);
-    //     return res.data;
-    //   },
-    // });
 
-    const { data: data = [], isLoading: reqLoading, refetch: reqRefetch } = useQuery({
+
+    const { data: data = [], isLoading: reqLoading, refetch } = useQuery({
         queryKey: ["memo", id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/dsrRequ/findOne?reqId=${id}`)
             return res.data;
         }
     })
+    
+    useEffect(() => {
+        // Generate a random 4-digit number
+        const generateRandomNumber = () => {
+            return Math.floor(1000 + Math.random() * 9000);
+        };
+
+        // Get the current date
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, "0");
+
+        // Concatenate date and random number to form DO number
+        const newDoNumber = `${day}${generateRandomNumber()}`;
+        setDoNumber(newDoNumber);
+        const fetchData = async () => {
+            try {
+              const res = await axiosSecure.get(`/dsrRequ/UpdateOne?reqId=${id}&orderNo=${doNumber}`)
+              console.log(res);
+            } catch (error) {
+              console.error("Error fetching costs:", error);
+            }
+          };
+      
+          fetchData();
+        refetch()
+    }, [refetch, data]);
+
     const { data: allData = [] } = useQuery({
         queryKey: ["allrequ", id],
         queryFn: async () => {
@@ -32,30 +55,7 @@ const Due = () => {
             return response.data;
         }
     })
-
-    const { data: orderNo = [] } = useQuery({
-        queryKey: ["OrderNo", id],
-        queryFn: async () => {
-            const response = await axiosSecure.get("/dsrRequ/OrderNo");
-            return response.data;
-        }
-    })
-
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const res = await axiosSecure.get(`/dsrRequ/UpdateOne?reqId=${id}&orderNo=${orderNo.length}`)
-            console.log(res);
-          } catch (error) {
-            console.error("Error fetching costs:", error);
-          }
-        };
-    
-        fetchData();
-      }, [axiosSecure, id, orderNo]);
    
-  
-
     const res = data.requestedItems?.map((item)=>{
         totalCtn = totalCtn + item.product.perCartonQuantity;
         totalQty = totalQty + item.productQuentity;
@@ -80,7 +80,7 @@ const Due = () => {
                 <div className="flex mt-4 font-semibold">
                     <div className="w-1/2 flex">
                         <div>
-                            <h3 className="text-start">Do No : {orderNo?.length + 1} </h3>
+                            <h3 className="text-start">Do No : {data?.orderNo} </h3>
                         </div>
                     </div>
                     <div className="w-1/2 flex">
@@ -117,11 +117,8 @@ const Due = () => {
                             <tr>
                                 <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
                                 <td colSpan="1" className="py-2 border-dotted border-4 font-bold text-center">Total Qty & Ctn</td>
-                                <td className="py-2 border-dotted border-4 text-center font-bold">
+                                <td  className="py-2 border-dotted border-4 text-center font-bold">
                                     {totalQty}
-                                </td>
-                                <td className="py-2 border-dotted border-4 text-center font-bold">
-                                    {totalCtn}
                                 </td>
                             </tr>
                         </tbody>

@@ -87,7 +87,7 @@ const Invoice = () => {
                   <td className="py-2 border-dotted border-4 text-center">{product?.product?.productPrice}</td>
 
                   <td className="py-2 border-dotted border-4 text-center">
-                    {product?.product?.perCartonQuantity + product?.product?.productPrice}
+                    {product?.quantity * product?.product?.productPrice}
                   </td>
                 </tr>
               ))}
