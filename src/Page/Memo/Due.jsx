@@ -1,12 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
-import { useEffect, useState } from "react";
 
 
 const Due = () => {
     const { id } = useParams();
-    const [doNumber, setDoNumber] = useState("");
     const axiosSecure = useAxiosSecure();
     let totalQty = 0;
     let totalCtn = 0;
@@ -22,31 +20,7 @@ const Due = () => {
         }
     })
     
-    useEffect(() => {
-        // Generate a random 4-digit number
-        const generateRandomNumber = () => {
-            return Math.floor(1000 + Math.random() * 9000);
-        };
 
-        // Get the current date
-        const currentDate = new Date();
-        const day = String(currentDate.getDate()).padStart(2, "0");
-
-        // Concatenate date and random number to form DO number
-        const newDoNumber = `${day}${generateRandomNumber()}`;
-        setDoNumber(newDoNumber);
-        const fetchData = async () => {
-            try {
-              const res = await axiosSecure.get(`/dsrRequ/UpdateOne?reqId=${id}&orderNo=${doNumber}`)
-              console.log(res);
-            } catch (error) {
-              console.error("Error fetching costs:", error);
-            }
-          };
-      
-          fetchData();
-        refetch()
-    }, [refetch, data]);
 
     const { data: allData = [] } = useQuery({
         queryKey: ["allrequ", id],
