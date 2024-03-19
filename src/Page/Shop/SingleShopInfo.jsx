@@ -14,11 +14,6 @@ const SingleShopInfo = () => {
     },
   });
 
-  const convertToBdTime = (timestamp) => {
-    const gmt6Time = new Date(timestamp);
-    const options = { timeZone: "Asia/Dhaka" };
-    return gmt6Time.toLocaleString("en-US", options);
-  };
 
   return (
     <div className="bg-base-300   p-8 rounded-lg shadow-md">
