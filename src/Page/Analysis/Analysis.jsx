@@ -13,7 +13,7 @@ const Analysis = () => {
     },
   });
 
-  const { totalSellAmmount, monthlySellAmount, yearlySellAmount, dailySellAmmount } = sellData;
+  const { totalSellAmount, monthlySellAmount, yearlySellAmount, dailySellAmmount,  } = sellData;
 
 
   const formatMonth = (monthString) => {
@@ -46,7 +46,7 @@ const Analysis = () => {
         <table className="table-auto border-collapse w-full">
           <tbody>
             <tr>
-              <td className="border px-4 py-2">{totalSellAmmount}</td>
+              <td className="border px-4 py-2">{totalSellAmount}</td>
             </tr>
           </tbody>
         </table>
