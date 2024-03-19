@@ -2,17 +2,13 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
-import Swal from "sweetalert2";
-
 const SingleProduct = () => {
   const axiosSecure = useAxiosSecure();
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { id } = useParams();
-  const { user } = useContext(AuthContext);
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -41,27 +37,6 @@ const SingleProduct = () => {
     );
   }
 
-  const handleClick = async (product) => {
-    const res = await axiosSecure.post(
-      `/card?userEmail=${user.email}`,
-      product
-    );
-
-    if (res.status == 200 || res.status == 201) {
-      Swal.fire({
-        title: "Success",
-        text: "Congratulations! your product added successfully",
-        icon: "success",
-      });
-    }
-    if (res.status == 202) {
-      Swal.fire({
-        title: "Error",
-        text: "Item Already added!",
-        icon: "error",
-      });
-    }
-  };
 
   return (
     <div className="container mx-auto my-8 text-white  p-2">
@@ -151,31 +126,17 @@ const SingleProduct = () => {
                   <th>To</th>
                   <th>Quentity</th>
                   <th>via</th>
-                  <th>Price</th>
+                  <th>Total Price</th>
                 </tr>
               </thead>
               <tbody>
-                {product?.purchesProductCollection?.map((product, index) => (
+                {product?.sellCollections?.map((product, index) => (
                   <tr className="  border-gray-300" key={index}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <div className="flex items-center gap-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle w-12 h-12">
-                            <img src={product?.imageURL} alt="Product Image" />
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <Link
-                      className="text-blue-800 font-bold"
-                      to={`/product/${product?._id}`}
-                    >
-                      <td>{product?.productName}</td>
-                    </Link>
-
-                    <td>{product?.productQuantity}</td>
-                    <td>{product?.productPrice}</td>
+                    <td>{product?.date}</td>
+                    <td>{product?.to?.shopName}</td> 
+                    <td>{product?.quantity}</td>
+                    <td>{product?.via?.displayName}</td> 
+                    <td>{parseInt(product?.quantity) * parseInt(product?.unitPrice)}</td> 
                   </tr>
                 ))}
               </tbody>
