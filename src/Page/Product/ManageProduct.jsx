@@ -115,7 +115,7 @@ const ManageProduct = () => {
           <thead className="bg-gray-200">
             <tr>
               <th className="py-2 px-4 border">Inventory</th>
-              <th className="py-2 px-4 border">QUENTITY</th>
+              <th className="py-2 px-4 border">QUANTITY</th>
             </tr>
           </thead>
           <tbody>
@@ -129,7 +129,7 @@ const ManageProduct = () => {
             </tr>
             {
               isAdmin && <tr>
-              <td className="py-2 px-4 border font-bold">Net value of productssi</td>
+              <td className="py-2 px-4 border font-bold">Net value of products</td>
               <td className="py-2 px-4 border">{inventory?.totalAmountOProduct} BDT</td>
             </tr>
             }
