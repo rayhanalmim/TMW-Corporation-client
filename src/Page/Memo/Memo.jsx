@@ -7,21 +7,12 @@ const Invoice = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
 
-  // const { data = [] } = useQuery({
-  //   queryKey: ["memo", id],
-  //   queryFn: async () => {
-  //     const res = await axiosSecure.get(`/sell/memo?memoId=${id}`);
-  //     return res.data;
-  //   },
-  // });
-
   const { data: demoData } = useQuery({
     queryKey: ["memoData"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/bill/findOne?billId=${id}`);
       return res.data;
     },
-    // enabled: !!data?.agentEmail, // Enable the query only if agentEmail is available
   });
 
   console.log(demoData);
