@@ -104,23 +104,49 @@ const Invoice = () => {
                   <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
                   <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Due:</td>
                   <td className="py-2 border-dotted border-4 text-center font-bold">
-                    {demoData?.discount}
+                    {demoData?.due}
                   </td>
                 </tr>
               }
 
-              <tr>
-                <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
-                <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
-                <td className="py-2 border-dotted border-4 text-center font-bold">
-                  {demoData?.totalPrice - (parseInt(demoData?.discount) + parseInt(demoData?.discount))}
-                </td>
-              </tr>
+              {
+                demoData?.discount > 0 ? <>
+                  {
+                    demoData?.due > 0 ? <tr>
+                      <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
+                      <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
+                      <td className="py-2 border-dotted border-4 text-center font-bold">
+                        {demoData?.totalPrice - (parseInt(demoData?.discount) + parseInt(demoData?.due))}
+                      </td>
+                    </tr> : <tr>
+                      <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
+                      <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
+                      <td className="py-2 border-dotted border-4 text-center font-bold">
+                        {demoData?.totalPrice - parseInt(demoData?.discount)}
+                      </td>
+                    </tr>
+                  }
+                </> : <tr>
+                  <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
+                  <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
+                  <td className="py-2 border-dotted border-4 text-center font-bold">
+                    {demoData?.totalPrice}
+                  </td>
+                </tr>
+              }
+
+
             </tbody>
           </table>
         </div>
       </div>
-
+      {/* <tr>
+        <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
+        <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
+        <td className="py-2 border-dotted border-4 text-center font-bold">
+          {demoData?.totalPrice - parseInt(demoData?.discount)}
+        </td>
+      </tr> */}
 
 
 
