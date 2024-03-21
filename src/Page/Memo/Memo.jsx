@@ -30,7 +30,7 @@ const Invoice = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white  rounded-md relative">
 
-<div className="w-24 mx-auto block rounded-full  absolute top-5 right-10">
+      <div className="w-24 mx-auto block rounded-full  absolute top-5 right-10">
         <img className="" src='https://i.ibb.co/Qrc1Vvq/Black-And-White-Modern-Vintage-Retro-Brand-Logo-3.png' />
       </div>
       <div className="text-center">
@@ -94,9 +94,35 @@ const Invoice = () => {
               {/* Total row */}
               <tr>
                 <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
-                <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total:</td>
+                <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total bill:</td>
                 <td className="py-2 border-dotted border-4 text-center font-bold">
                   {demoData?.totalPrice}
+                </td>
+              </tr>
+              {
+                demoData?.discount > 0 && <tr>
+                  <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
+                  <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Discount:</td>
+                  <td className="py-2 border-dotted border-4 text-center font-bold">
+                    {demoData?.discount}
+                  </td>
+                </tr>
+              }
+              {
+                demoData?.due > 0 && <tr>
+                  <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
+                  <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Due:</td>
+                  <td className="py-2 border-dotted border-4 text-center font-bold">
+                    {demoData?.discount}
+                  </td>
+                </tr>
+              }
+
+              <tr>
+                <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
+                <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
+                <td className="py-2 border-dotted border-4 text-center font-bold">
+                  {demoData?.totalPrice - (parseInt(demoData?.discount) + parseInt(demoData?.discount))}
                 </td>
               </tr>
             </tbody>
@@ -125,7 +151,7 @@ const Invoice = () => {
         <p className="text-left mt-4 border-t-2 border-dotted">Received by</p>
         <p className="text-left mt-4 border-t-2 border-dotted">TMW Corporation</p>
       </div>
-      
+
 
     </div>
   );
