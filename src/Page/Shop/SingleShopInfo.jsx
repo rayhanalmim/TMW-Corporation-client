@@ -27,39 +27,56 @@ const SingleShopInfo = () => {
   return (
     <div className="bg-base-300   p-8 rounded-lg shadow-md">
 
-      <div className="flex flex-col lg:flex-row w-full">
+      <div className="grid grid-cols-2">
+        <div className="flex flex-col lg:flex-row w-full">
 
-        <div className="w-full lg:w-1/2 text-left mt-4 lg:ml-8">
-          <p className="text-xl border-b-2 border-black font-bold mb-4">Shop Details</p>
-          <p className="">
-            <span className="font-bold text-blue-500">Shop Name:</span>{" "}
-            {shop?.shopName}
-          </p>
-          <p>
-            <span className="font-bold text-blue-500">Shop Area:</span>{" "}
-            {shop?.shopArea}
-          </p>
-          <p>
-            <span className="font-bold text-blue-500">Owner Name:</span>{" "}
-            {shop?.shopOwner}
-          </p>
-          <p>
-            <span className="font-bold text-blue-500">Phone No:</span>{" "}
-            +880{shop?.contractNumber}
-          </p>
-          <p>
-            <span className="font-bold text-green-500">Total Buy Amount:{shop?.totalBuyAmout} </span>
-          </p>
-          <p>
-            <span className="font-bold text-info">Total given :{shop?.totalPay} </span>{" "}
+          <div className="w-full  text-left mt-4 lg:ml-8">
+            <p className="text-xl border-b-2 border-black font-bold mb-4">Shop Details</p>
+            <p className="">
+              <span className="font-bold text-blue-500">Shop Name:</span>{" "}
+              {shop?.shopName}
+            </p>
+            <p>
+              <span className="font-bold text-blue-500">Shop Area:</span>{" "}
+              {shop?.shopArea}
+            </p>
+            <p>
+              <span className="font-bold text-blue-500">Owner Name:</span>{" "}
+              {shop?.shopOwner}
+            </p>
+            <p>
+              <span className="font-bold text-blue-500">Phone No:</span>{" "}
+              +880{shop?.contractNumber}
+            </p>
+            <p>
+              <span className="font-bold text-green-500">Total Buy Amount:{shop?.totalBuyAmout} </span>
+            </p>
+            <p>
+              <span className="font-bold text-info">Total given :{shop?.totalPay} </span>{" "}
 
-          </p>
-          <p>
-            <span className="font-bold text-red-500">
-              Total Duo: {shop?.totalDue}
+            </p>
+            <p>
+              <span className="font-bold text-red-500">
+                Total Duo: {shop?.totalDue}
+              </span>
+            </p>
+            <div className="flex gap-4 mt-4 justify-end"></div>
+          </div>
+        </div>
+        <div className="mt-3">
+          <h3 className="text-gray-800 font-semibold mb-2">Add paid amounts: </h3>
+          <input
+            type="number"
+            name="paid"
+            className="w-1/2 bg-white text-black px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+          />
+          {/* Submit Button */}
+          <br />
+          <button className="mt-2 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Add amount
             </span>
-          </p>
-          <div className="flex gap-4 mt-4 justify-end"></div>
+          </button>
         </div>
       </div>
 
@@ -92,11 +109,11 @@ const SingleShopInfo = () => {
                     <td>{product?.orderTime}</td>
                     <td>{product?.dsrInfo?.displayName}</td>
                     <td className="flex justify-center">
-                     <div className="">
-                     <Link to={`/memo/${product?._id}`}>
-                        <FaDownload className="text-xl cursor-pointer hover:text-rose-700"></FaDownload>
-                      </Link>
-                     </div>
+                      <div className="">
+                        <Link to={`/memo/${product?._id}`}>
+                          <FaDownload className="text-xl cursor-pointer hover:text-rose-700"></FaDownload>
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 ))}
