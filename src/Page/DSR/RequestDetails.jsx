@@ -19,9 +19,7 @@ const RequestDetails = () => {
         }
     })
 
-  
-    console.log("products : ",products);
-    console.log("product : ",product);
+
 
     useEffect(() => {
         if (!productLoading && product) {
@@ -102,6 +100,9 @@ const RequestDetails = () => {
         }
 
     }
+
+     
+    console.log("products : ",products);
 
     return (
         <div className="container mx-auto my-8 text-white  p-2">
