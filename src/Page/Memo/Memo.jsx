@@ -27,7 +27,7 @@ const Invoice = () => {
       <div className="text-center">
 
 
-        <h1 className="text-3xl text-red-600 font-black font-mono">TMW Corporation</h1>
+        <h1 className="text-3xl text-red-600 font-black">TMW Corporation</h1>
         {/* <div className="flex justify-end">
           <p className="pr-32 mt-3 font-extrabold">T. Ch. No: </p>
         </div> */}
@@ -35,7 +35,7 @@ const Invoice = () => {
         <div>
           <h2 className="text-xl font-semibold">Bill</h2>
           <div className="border-dashed border-2 border-orange-800">
-            <h3 className="text-2xl text-blue-800 font-semibold">{demoData?.shopInfo?.shopOwner}</h3>
+            <h3 className="text-2xl text-blue-800 font-semibold">{demoData?.shopInfo?.shopName}</h3>
           </div>
         </div>
 

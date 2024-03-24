@@ -42,15 +42,15 @@ const Due = () => {
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white  rounded-md">
             <div className="text-center">
-                <h1 className="text-3xl text-red-600 font-black font-mono">TMW Corporation</h1>
+                <h1 className="text-2xl text-red-600 font-black">TMW Corporation</h1>
                 {/* <div className="flex justify-end">
           <p className="pr-32 mt-3 font-extrabold">T. Ch. No: </p>
         </div> */}
                 <div>
-                        <h3 className="text-xl font-semibold">{data?.shopInfo?.shopOwner}</h3>
+                        <h3 className="text-xl font-semibold">{data?.shopInfo?.shopName}</h3>
                    
                 </div>
-                <h3 className="text-start font-semibold">Store Name : <span className="text-rose-600">{data?.shopInfo?.shopName}</span> </h3>
+                <h3 className="text-start font-semibold">Owner Name : <span className="text-rose-600">{data?.shopInfo?.shopOwner}</span> </h3>
                 <div className="flex mt-4 font-semibold">
                     <div className="w-1/2 flex">
                         <div>
