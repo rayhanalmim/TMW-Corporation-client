@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { FaDownload } from "react-icons/fa";
 
 const SingleShopInfo = () => {
   const { id } = useParams();
@@ -14,6 +15,14 @@ const SingleShopInfo = () => {
     },
   });
 
+  const { data: bill = [] } = useQuery({
+    queryKey: ["shopbasebill", id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/bill/shop?shopId=${id}`);
+      return res.data;
+    },
+  });
+  console.log(bill);
 
   return (
     <div className="bg-base-300   p-8 rounded-lg shadow-md">
@@ -63,36 +72,32 @@ const SingleShopInfo = () => {
 
           <div className="overflow-x-auto">
             <table className="table">
-              <thead className=" text-sm">
+              <thead className=" text-sm text-center text-black font-semibold">
                 <tr>
                   <th>No</th>
-                  <th>Image</th>
-                  <th>Name</th>
+                  <th>Bill No</th>
                   <th>Purchase date</th>
-                  <th>Quantity</th>
-                  <th>Unit price</th>
-                  <th>Total price</th>
+                  <th>Time</th>
+                  <th>VIA</th>
+                  <th>Invoice</th>
                 </tr>
               </thead>
               <tbody>
-                {shop?.purchesProductCollection?.map((product, index) => (
-                  <tr className="  border-gray-300" key={index}>
+                {bill?.slice().reverse().map((product, index) => (
+                  <tr className=" text-center border-gray-300" key={index}>
                     <td>{index + 1}</td>
-                    <td>
-                      <div className="flex items-center gap-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle w-12 h-12">
-                            <img src={product?.imageURL} alt="Product Image" />
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>{product?.productName}</td>
-                    <td>{product?.purchaseDate}</td>
+                    <td>{product?.orderNo}</td>
+                    <td>{product?.orderDate}</td>
 
-                    <td>{product?.quantity}</td>
-                    <td>{product?.unitPrice}</td>
-                    <td>{parseInt(product?.unitPrice) * parseInt(product?.quantity)}</td>
+                    <td>{product?.orderTime}</td>
+                    <td>{product?.dsrInfo?.displayName}</td>
+                    <td className="flex justify-center">
+                     <div className="">
+                     <Link to={`/memo/${product?._id}`}>
+                        <FaDownload className="text-xl cursor-pointer hover:text-rose-700"></FaDownload>
+                      </Link>
+                     </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
