@@ -9,18 +9,25 @@ const AdminMenu = () => {
   const axiosSecure = useAxiosSecure();
   const [infos, setInfo] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosSecure.get("/dsrRequ");
-        setInfo(response.data);
-      } catch (error) {
-        console.error("Error fetching costs:", error);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const response = await axiosSecure.get("/dsrRequ");
+      setInfo(response.data);
+    } catch (error) {
+      console.error("Error fetching costs:", error);
+    }
+  };
 
+  useEffect(() => {
+    // Call the API immediately when the component mounts
     fetchData();
-  }, [axiosSecure]);
+
+    // Set up an interval to call the API every 10 seconds
+    const interval = setInterval(fetchData, 10000);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(interval);
+  }, []); // Empty dependency array ensures the effect runs only once on mount
 
   return (
     <div>
