@@ -1,8 +1,26 @@
 import { Link } from "react-router-dom";
 import {  FaBeer,  FaShoppingCart } from "react-icons/fa";
 import { FaShop } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 const AgentMenu = () => {
+
+  const axiosSecure = useAxiosSecure();
+  const [infos, setInfo] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosSecure.get("/dsrRequ");
+        setInfo(response.data);
+      } catch (error) {
+        console.error("Error fetching costs:", error);
+      }
+    };
+
+    fetchData();
+  }, [axiosSecure]);
   return (
     <div className="flex flex-col gap-4">
       <Link to="/">
@@ -15,7 +33,7 @@ const AgentMenu = () => {
         <Link to="/dsr">
           <button className="btn bg-sky-800  hover:text-black text-white w-full ">
             <FaShoppingCart className="mr-2" />
-            DSR Order Request
+            DSR Order Request ({infos.length})
           </button>
         </Link>
 
