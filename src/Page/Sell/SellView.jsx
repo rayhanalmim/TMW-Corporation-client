@@ -71,7 +71,7 @@ const SellView = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredBillData.map((info, index) => (
+            {filteredBillData.slice(0,30).reverse().map((info, index) => (
               <tr className="text-center" key={index}>
                 <td>{info?.orderNo}</td>
                 <td>{info?.shopInfo?.shopName}</td>

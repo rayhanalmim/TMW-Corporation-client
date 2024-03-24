@@ -45,7 +45,7 @@ const DsrRequest = () => {
             <th>Details</th>
           </thead>
           <tbody>
-            {infos.map((info, index) => (
+            {infos.slice().reverse().map((info, index) => (
               <tr className="text-center" key={index}>
                 <td>{index + 1}</td>
                 <td>{info.orderDate}</td>
