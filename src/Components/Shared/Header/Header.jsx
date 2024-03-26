@@ -7,6 +7,7 @@ import useGetCardData from "../../../Hook/useGetCardata";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import AddToCard from "../../../Page/Card/AddToCard";
 
 const showSuccessAlert = () => {
   Swal.fire({
@@ -75,6 +76,9 @@ const Header = () => {
           </Link>
         </div>
         <div className="navbar-end">
+          <div>
+            <AddToCard></AddToCard>
+          </div>
           <div className="hidden md:block">
             {
               user && <a className="btn btn-ghost normal-case text-xl">{user.displayName}</a>

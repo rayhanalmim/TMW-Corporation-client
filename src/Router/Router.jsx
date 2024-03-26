@@ -10,7 +10,7 @@ import AllProduct from "../Page/Product/AllProduct";
 import SingleProduct from "../Page/Product/SingleProduct";
 import ShowCost from "../Page/Cost/ManageCost";
 import ManageProduct from "../Page/Product/ManageProduct";
-import AddCost from "../Page/Cost/AddCost";;
+import AddCost from "../Page/Cost/AddCost";
 import CheckOut from "../Page/CheckOut/CheckOut";
 import ManageUser from "../Page/User/ManageUser";
 import Profile from "../Page/Profile/Profile";
@@ -34,6 +34,8 @@ import SingleShopInfo from "../Page/Shop/SingleShopInfo";
 import DsrRequest from "../Page/DSR/DsrRequest";
 import RequestDetails from "../Page/DSR/RequestDetails";
 import Due from "../Page/Memo/Due";
+import AddToCard from "../Page/Card/AddToCard";
+import RequestPage from "../Page/Card/RequestPage";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/invalidAdmin",
         element: <InvaliodAdmin />,
+      },
+      {
+        path: "/request",
+        element: <RequestPage></RequestPage>
       },
       {
         path: "/",
