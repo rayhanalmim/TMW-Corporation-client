@@ -11,7 +11,7 @@ const AddToCard = () => {
     <div>
       <Link to="/request">
         <div className="cursor-pointer">
-          <FiShoppingCart className={`text-4xl ${isRequestRoute ? 'text-5xl' : ''} hover:text-5xl`} />
+          <FiShoppingCart className={`text-4xl text-gray-400 ${isRequestRoute ? 'text-5xl text-white' : ''} hover:text-5xl`} />
         </div>
       </Link>
     </div>
