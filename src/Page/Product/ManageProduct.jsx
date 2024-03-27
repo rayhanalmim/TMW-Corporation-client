@@ -10,12 +10,15 @@ import { FaDeleteLeft } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
 import { TbShoppingCartCheck } from "react-icons/tb";
 import { TbShoppingCartOff } from "react-icons/tb";
+import useAdminCard from "../../Hook/useAdminCard";
 
 
 const ManageProduct = () => {
   const [products, setProducts] = useState([]);
   const axiosPublic = useAxiosPublic();
   const [isAdmin] = useAdmin();
+
+  const {adminCard, cardLoading, cardRefetch} = useAdminCard();
 
 
   const { data: productData = [], isLoading: productLoading, refetch: productRefetch } = useQuery({
@@ -107,6 +110,7 @@ const ManageProduct = () => {
           timer: 1500
         });
         productRefetch();
+        cardRefetch();
       }
   }
 
@@ -122,6 +126,7 @@ const ManageProduct = () => {
           timer: 1500
         });
         productRefetch();
+        cardRefetch();
       }
   }
 
