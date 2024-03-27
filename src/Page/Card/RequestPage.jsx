@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 const RequestPage = () => {
     const axiosSecure = useAxiosSecure();
     const [products, setProducts] = useState([]);
+    const [shopData, setShopData] = useState([]);
     const [dsr, setDsr] = useState('');
     const [shop, setShop] = useState('');
 
@@ -69,7 +70,20 @@ const RequestPage = () => {
         );
     };
 
-    console.log(products);
+    const handleDsr = async(e) =>{
+        setDsr(e.target.value)
+        console.log(e.target.value);
+        if(e.target.value != ""){
+            const res = await axiosSecure.get(`/dsrRequ/shopById?dsrId=${e.target.value}`)
+            console.log(res.data);
+            setShopData(res.data);
+        }else{
+            setShopData([]);
+        }
+    }
+
+
+    console.log(shopData);
 
     return (
         <div>
@@ -163,7 +177,7 @@ const RequestPage = () => {
             <div className="space-y-1 flex text-sm mt-5">
                 
                 <select
-                    onChange={(e) => setDsr(e.target.value)}
+                    onChange={(e) => handleDsr(e)}
                     value={dsr}
                     name="dsr"
                     className="w-1/4 border px-4 py-3 rounded-md focus:dark-border-violet-400"
@@ -172,6 +186,23 @@ const RequestPage = () => {
                     {dsrData?.map((dsr) => (
                         <option key={dsr?._id} value={dsr?._id}>
                             {dsr?.displayName}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            
+            <div className="space-y-1 flex text-sm mt-5">
+                
+                <select
+                    onChange={(e) => setShop(e.target.value)}
+                    value={shop}
+                    name="shop"
+                    className="w-1/4 border px-4 py-3 rounded-md focus:dark-border-violet-400"
+                >
+                    <option value="">Select shop</option>
+                    {shopData?.map((shop) => (
+                        <option key={shop?._id} value={shop?._id}>
+                            {shop?.shopName}
                         </option>
                     ))}
                 </select>
