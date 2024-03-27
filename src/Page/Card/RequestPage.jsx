@@ -3,6 +3,9 @@ import Title from "../../Components/Shared/Title";
 import useAdminCard from "../../Hook/useAdminCard";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { GrDisabledOutline } from "react-icons/gr";
 
 const RequestPage = () => {
     const axiosSecure = useAxiosSecure();
@@ -10,8 +13,7 @@ const RequestPage = () => {
     const [shopData, setShopData] = useState([]);
     const [dsr, setDsr] = useState('');
     const [shop, setShop] = useState('');
-
-    console.log(dsr);
+    const navigate = useNavigate();
 
     const { data: dsrData = [], isLoading: dsrLoading } = useQuery({
         queryKey: ["dsr"],
@@ -82,8 +84,33 @@ const RequestPage = () => {
         }
     }
 
+    const handleSubmit = async () => {
+        console.log("shopID: ", shop, "DSR ID: ", dsr, 'Products: ', products);
 
-    console.log(shopData);
+        const res = await axiosSecure.post(`/dsrRequ/adminRequest?dsrID=${dsr}&shopId=${shop}`, products);
+        console.log(res.data);
+
+        if (res.status == '201') {
+            Swal.fire({
+                title: "Invite DSR?",
+                text: "Please select a valid DSR!",
+                icon: "question"
+            });
+        }
+        if (res.status == '202') {
+            Swal.fire({
+                title: "Invite Shop?",
+                text: "Please select a valid Shop!",
+                icon: "question"
+            });
+        }
+        if (res.status == 200) {
+            cardRefetch();
+            navigate('/dsr');
+        }
+
+    }
+
 
     return (
         <div>
@@ -180,7 +207,7 @@ const RequestPage = () => {
                 </div>
 
                 {
-                    shopData.length != 0 && 
+                    shopData.length != 0 &&
                     <div className="space-y-1 flex text-sm mt-5">
 
                         <select
@@ -202,12 +229,22 @@ const RequestPage = () => {
 
             <div className="flex justify-end mt-6">
                 <div className="flex gap-4">
-                    <button
-                        type="button"
-                        className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                    >
-                        Send DSR request
-                    </button>
+                    {
+                        adminCard.length === 0 ? <button
+                            type="button"
+                            className="focus:outline-none text-white bg-gray-600   font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 inline-flex items-center"
+                        >
+                            Disabled
+                            <GrDisabledOutline className="pl-2 pb-1 text-2xl"></GrDisabledOutline>
+                        </button> : <button
+                            onClick={handleSubmit}
+                            type="button"
+                            className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                        >
+                            Send DSR request
+                        </button>
+                    }
+
                 </div>
             </div>
         </div>
