@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Title from "../../Components/Shared/Title";
 import useAdminCard from "../../Hook/useAdminCard";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -15,7 +14,7 @@ const RequestPage = () => {
     const [shop, setShop] = useState('');
     const navigate = useNavigate();
 
-    const { data: dsrData = [], isLoading: dsrLoading } = useQuery({
+    const { data: dsrData = []} = useQuery({
         queryKey: ["dsr"],
         queryFn: async () => {
             const res = await axiosSecure.get(`/dsrRequ/dsr`)
