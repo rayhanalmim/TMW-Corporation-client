@@ -70,14 +70,14 @@ const RequestPage = () => {
         );
     };
 
-    const handleDsr = async(e) =>{
+    const handleDsr = async (e) => {
         setDsr(e.target.value)
         console.log(e.target.value);
-        if(e.target.value != ""){
+        if (e.target.value != "") {
             const res = await axiosSecure.get(`/dsrRequ/shopById?dsrId=${e.target.value}`)
             console.log(res.data);
             setShopData(res.data);
-        }else{
+        } else {
             setShopData([]);
         }
     }
@@ -157,55 +157,58 @@ const RequestPage = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="flex justify-end mt-6">
-                        <div className="flex gap-4">
-                            <button
-                                type="button"
-                                className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                            >
-                                Accept due
-                            </button>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
-            <label htmlFor="dsr" className="block text-start text-white">
-                    DSR Name
-                </label>
+            <div className="flex gap-3">
+                <div className="space-y-1 flex text-sm mt-5">
 
-            <div className="space-y-1 flex text-sm mt-5">
-                
-                <select
-                    onChange={(e) => handleDsr(e)}
-                    value={dsr}
-                    name="dsr"
-                    className="w-1/4 border px-4 py-3 rounded-md focus:dark-border-violet-400"
-                >
-                    <option value="">Select DSR</option>
-                    {dsrData?.map((dsr) => (
-                        <option key={dsr?._id} value={dsr?._id}>
-                            {dsr?.displayName}
-                        </option>
-                    ))}
-                </select>
+                    <select
+                        onChange={(e) => handleDsr(e)}
+                        value={dsr}
+                        name="dsr"
+                        className="w-full border px-4 py-3 rounded-md focus:dark-border-violet-400"
+                    >
+                        <option value="">Select DSR</option>
+                        {dsrData?.map((dsr) => (
+                            <option key={dsr?._id} value={dsr?._id}>
+                                {dsr?.displayName}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                {
+                    shopData.length != 0 && 
+                    <div className="space-y-1 flex text-sm mt-5">
+
+                        <select
+                            onChange={(e) => setShop(e.target.value)}
+                            value={shop}
+                            name="shop"
+                            className="w-full border px-4 py-3 rounded-md focus:dark-border-violet-400"
+                        >
+                            <option value="">Select shop</option>
+                            {shopData?.map((shop) => (
+                                <option key={shop?._id} value={shop?._id}>
+                                    {shop?.shopName}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                }
             </div>
-            
-            <div className="space-y-1 flex text-sm mt-5">
-                
-                <select
-                    onChange={(e) => setShop(e.target.value)}
-                    value={shop}
-                    name="shop"
-                    className="w-1/4 border px-4 py-3 rounded-md focus:dark-border-violet-400"
-                >
-                    <option value="">Select shop</option>
-                    {shopData?.map((shop) => (
-                        <option key={shop?._id} value={shop?._id}>
-                            {shop?.shopName}
-                        </option>
-                    ))}
-                </select>
+
+            <div className="flex justify-end mt-6">
+                <div className="flex gap-4">
+                    <button
+                        type="button"
+                        className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                    >
+                        Send DSR request
+                    </button>
+                </div>
             </div>
         </div>
     );
