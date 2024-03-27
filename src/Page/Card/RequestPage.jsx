@@ -1,9 +1,24 @@
 import { useEffect, useState } from "react";
 import Title from "../../Components/Shared/Title";
 import useAdminCard from "../../Hook/useAdminCard";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const RequestPage = () => {
+    const axiosSecure = useAxiosSecure();
     const [products, setProducts] = useState([]);
+    const [dsr, setDsr] = useState('');
+    const [shop, setShop] = useState('');
+
+    console.log(dsr);
+
+    const { data: dsrData = [], isLoading: dsrLoading } = useQuery({
+        queryKey: ["dsr"],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/dsrRequ/dsr`)
+            return res.data;
+        }
+    })
 
     const { adminCard, cardLoading, cardRefetch } = useAdminCard();
 
@@ -139,6 +154,27 @@ const RequestPage = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <label htmlFor="dsr" className="block text-start text-white">
+                    DSR Name
+                </label>
+
+            <div className="space-y-1 flex text-sm mt-5">
+                
+                <select
+                    onChange={(e) => setDsr(e.target.value)}
+                    value={dsr}
+                    name="dsr"
+                    className="w-1/4 border px-4 py-3 rounded-md focus:dark-border-violet-400"
+                >
+                    <option value="">Select DSR</option>
+                    {dsrData?.map((dsr) => (
+                        <option key={dsr?._id} value={dsr?._id}>
+                            {dsr?.displayName}
+                        </option>
+                    ))}
+                </select>
             </div>
         </div>
     );
