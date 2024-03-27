@@ -76,7 +76,10 @@ const Header = () => {
           </Link>
         </div>
         <div className="navbar-end">
-          <div>
+          <div className="flex">
+            {/* <div className="flex justify-center items-center">
+              <h3 className={``}>4</h3>
+            </div> */}
             <AddToCard></AddToCard>
           </div>
           <div className="hidden md:block">
@@ -92,11 +95,11 @@ const Header = () => {
             </div>
           </label>
           {
-            user ?  <button onClick={handleSignOut} className="btn text-white bg-gray-900 border-black mr-5 btn-sm btn-error px-8">
-            Log-out
-          </button> : <Link to='/login' > <button  className="btn text-white mr-5 btn-sm btn-error px-8">
-                  Log-In
-                </button></Link>
+            user ? <button onClick={handleSignOut} className="btn text-white bg-gray-900 border-black mr-5 btn-sm btn-error px-8">
+              Log-out
+            </button> : <Link to='/login' > <button className="btn text-white mr-5 btn-sm btn-error px-8">
+              Log-In
+            </button></Link>
           }
 
         </div>
