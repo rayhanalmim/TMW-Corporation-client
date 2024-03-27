@@ -95,6 +95,36 @@ const ManageProduct = () => {
     });
   };
 
+  const addToCard = async(productId) =>{
+      const res = await axiosPublic.put(`/card/addToAdminCard?productId=${productId}`);
+      console.log(res);
+      if(res.data){
+        Swal.fire({
+          position: "top-start",
+          icon: "success",
+          title: "Added In Card",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        productRefetch();
+      }
+  }
+
+  const removeToCard = async(productId) =>{
+      const res = await axiosPublic.put(`/card/removeToAdminCard?productId=${productId}`);
+      console.log(res);
+      if(res.data){
+        Swal.fire({
+          position: "top-start",
+          icon: "success",
+          title: "Removed From Card",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        productRefetch();
+      }
+  }
+
   return (
     <div className="bg-base-200 p-0 m-0 lg:p-4 lg:m-4 rounded-xl">
       <div className="text-3xl py-2 ">
@@ -194,10 +224,16 @@ const ManageProduct = () => {
                   <MdDeleteForever  className="text-3xl m-1 cursor-pointer"
                     onClick={() => handleDeleteProduct(product?._id)}></MdDeleteForever>
                 </td>
-                <td className="flex justify-center">
+                {
+                  product?.isAddedInCard ?  <td className="flex justify-center">
+                  <TbShoppingCartOff  className="text-2xl m-1 cursor-pointer text-red-700"
+                    onClick={() => removeToCard(product?._id)}></TbShoppingCartOff>
+                </td> :  <td className="flex justify-center">
                   <TbShoppingCartCheck  className="text-2xl m-1 cursor-pointer"
-                    onClick={() => handleDeleteProduct(product?._id)}></TbShoppingCartCheck>
+                    onClick={() => addToCard(product?._id)}></TbShoppingCartCheck>
                 </td>
+                }
+               
               </tr>
             ))}
           </tbody>
