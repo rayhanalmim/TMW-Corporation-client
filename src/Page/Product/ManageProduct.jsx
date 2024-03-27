@@ -6,6 +6,11 @@ import Title from "../../Components/Shared/Title";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import useAdmin from "../../Hook/useAdmin";
+import { FaDeleteLeft } from "react-icons/fa6";
+import { MdDeleteForever } from "react-icons/md";
+import { TbShoppingCartCheck } from "react-icons/tb";
+import { TbShoppingCartOff } from "react-icons/tb";
+
 
 const ManageProduct = () => {
   const [products, setProducts] = useState([]);
@@ -146,13 +151,15 @@ const ManageProduct = () => {
             <tr>
               <th>No</th>
               <th>Image</th>
-              <th className="pl-8">Name</th>
+              <th className="text-center">Name</th>
               <th>Quantity</th>
-              <th>Unit Price (tk)</th>
+              <th>Price</th>
               {/* <th>Category</th> */}
               <th>Color</th>
               <th>Type</th>
               <th>Action</th>
+              <th>To Card</th>
+
             </tr>
           </thead>
           <tbody>
@@ -184,18 +191,12 @@ const ManageProduct = () => {
 
 
                 <td className="   ">
-
-                  {/* <Link to={`/UpdateProduct/${product?._id}`} className="m-1">
-                    <button className="btn btn-warning btn-sm marker: ">
-                      Edit
-                    </button>
-                  </Link> */}
-                  <button
-                    className="btn btn-sm btn-error m-1"
-                    onClick={() => handleDeleteProduct(product?._id)}
-                  >
-                    Delete
-                  </button>
+                  <MdDeleteForever  className="text-3xl m-1 cursor-pointer"
+                    onClick={() => handleDeleteProduct(product?._id)}></MdDeleteForever>
+                </td>
+                <td className="flex justify-center">
+                  <TbShoppingCartCheck  className="text-2xl m-1 cursor-pointer"
+                    onClick={() => handleDeleteProduct(product?._id)}></TbShoppingCartCheck>
                 </td>
               </tr>
             ))}
