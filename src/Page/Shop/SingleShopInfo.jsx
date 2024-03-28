@@ -26,6 +26,8 @@ const SingleShopInfo = () => {
     },
   });
 
+  console.log(bill);
+
   const handleDue = async (e) => {
     e.preventDefault();
     const paidAmount = parseInt(paid);
