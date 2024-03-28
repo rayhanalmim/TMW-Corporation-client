@@ -87,21 +87,30 @@ const SingleShopInfo = () => {
               <span className="font-bold text-blue-500">Phone No:</span>{" "}
               +880{shop?.contractNumber}
             </p>
-            <p>
-              <span className="font-bold text-green-500">Total Buy Amount:{shop?.totalBuyAmout} </span>
-            </p>
-            <p>
-              <span className="font-bold text-info">Total given :{shop?.totalPay} </span>{" "}
-
-            </p>
-            <p>
-              <span className="font-bold text-red-500">
-                Total Duo: {shop?.totalDue}
-              </span>
-            </p>
             <div className="flex gap-4 mt-4 justify-end"></div>
           </div>
         </div>
+        <div className="ml-10 mt-4 mb-3">
+          <h2 className="text-xl font-bold mb-4 border-b-2 border-black">Shop Summary</h2>
+          <table className="border-collapse border border-gray-300">
+            <tbody>
+              <tr>
+                <td className="border border-gray-300 px-4 py-2 font-semibold  text-blue-500 w-1/2">Total Buy Amount:</td>
+                <td className="border border-gray-300 px-4 py-2 font-bold">{shop?.totalBuyAmout}</td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 text-start px-4 py-2 font-semibold text-green-500 ">Total Given:</td>
+                <td className="border border-gray-300 px-4 py-2 font-bold">{shop?.totalPay}</td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 text-start px-4 py-2 font-semibold text-red-500">Total Due:</td>
+                <td className="border border-gray-300 px-4 py-2 font-bold">{shop?.totalDue}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
       </div>
 
       <div className="bg-base-300">
@@ -135,14 +144,16 @@ const SingleShopInfo = () => {
                     <td>
 
                       {parseInt(product?.due) > 0 ?
-                        <div className="flex gap-3 justify-center">
-                          <input
-                            id="paidAmount"
-                            onChange={(e) => setPaid(e.target.value)}
-                            type="number"
-                            name="paid"
-                            className="w-1/2 bg-white text-black px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-                          />
+                        <div className="flex gap-3  justify-center">
+                          <div>
+                            <input
+                              id="paidAmount"
+                              onChange={(e) => setPaid(e.target.value)}
+                              type="number"
+                              name="paid"
+                              className="bg-white px-4 text-black py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+                            />
+                          </div>
                           <div className="flex items-center">
 
                             <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add</button>
