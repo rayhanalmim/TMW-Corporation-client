@@ -7,8 +7,7 @@ import { faSearch,faExclamationCircle  } from "@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useGetCardData from "../../Hook/useGetCardata";
 const AllProducts = () => {
-  
-  const {product  } = useGetCardData();
+
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const [allProduct, setAllProduct] = useState();
