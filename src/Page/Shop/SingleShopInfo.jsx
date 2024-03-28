@@ -119,9 +119,9 @@ const SingleShopInfo = () => {
                   <th>Bill No</th>
                   <th>Purchase date</th>
                   <th>DUE</th>
-                  <th>Add paid</th>
+                  <th>Add paid amount</th>
                   <th>VIA</th>
-                 
+
                   <th>Invoice</th>
                 </tr>
               </thead>
@@ -133,21 +133,31 @@ const SingleShopInfo = () => {
                     <td>{product?.orderDate}</td>
                     <td>{product?.due}</td>
                     <td>
-                      <div className="flex gap-3 justify-center">
-                            <input
-                              id="paidAmount"
-                              onChange={(e) => setPaid(e.target.value)}
-                              type="number"
-                              name="paid"
-                              className="w-1/2 bg-white text-black px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-                            />
-                          <div className="">
-                          <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add</button>
+
+                      {parseInt(product?.due) > 0 ?
+                        <div className="flex gap-3 justify-center">
+                          <input
+                            id="paidAmount"
+                            onChange={(e) => setPaid(e.target.value)}
+                            type="number"
+                            name="paid"
+                            className="w-1/2 bg-white text-black px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+                          />
+                          <div className="flex items-center">
+
+                            <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add</button>
+
                           </div>
-                      </div>
+                        </div> : <div className="flex items-center justify-center bg-gray-300 rounded-full p-2">
+                          <h4 className="text-xs font-semibold text-green-600">Paid</h4>
+                        </div>
+
+
+                      }
+
                     </td>
                     <td>{product?.dsrInfo?.displayName}</td>
-                    
+
                     <td className="flex justify-center">
                       <div className="">
                         <Link to={`/memo/${product?._id}`}>
