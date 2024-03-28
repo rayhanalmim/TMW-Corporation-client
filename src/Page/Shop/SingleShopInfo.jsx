@@ -140,7 +140,7 @@ const SingleShopInfo = () => {
                   <th>No</th>
                   <th>Bill No</th>
                   <th>Purchase date</th>
-                  <th>Time</th>
+                  <th>Paid</th>
                   <th>VIA</th>
                   <th>DUE</th>
                   <th>Invoice</th>
