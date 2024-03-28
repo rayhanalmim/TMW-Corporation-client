@@ -25,7 +25,6 @@ const SingleShopInfo = () => {
       return res.data;
     },
   });
-  console.log(bill);
 
   const handleDue = async (e) => {
     e.preventDefault();
