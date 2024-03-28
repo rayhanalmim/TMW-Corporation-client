@@ -34,7 +34,6 @@ import SingleShopInfo from "../Page/Shop/SingleShopInfo";
 import DsrRequest from "../Page/DSR/DsrRequest";
 import RequestDetails from "../Page/DSR/RequestDetails";
 import Due from "../Page/Memo/Due";
-import AddToCard from "../Page/Card/AddToCard";
 import RequestPage from "../Page/Card/RequestPage";
 
 const router = createBrowserRouter([
