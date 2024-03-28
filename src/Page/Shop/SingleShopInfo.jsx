@@ -102,28 +102,6 @@ const SingleShopInfo = () => {
             <div className="flex gap-4 mt-4 justify-end"></div>
           </div>
         </div>
-        <div className="mt-3">
-          <h3 className="text-gray-800 font-semibold mb-2">Add paid amounts: </h3>
-          <form className="space-y-6" onSubmit={handleDue}>
-            <input
-              onChange={(e) => setPaid(e.target.value)}
-              type="number"
-              name="paid"
-              className="w-1/2 bg-white text-black px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
-            />
-            {/* Submit Button */}
-            <br />
-            <button
-              type="submit"
-              className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                Add amount
-              </span>
-            </button>
-
-          </form>
-
-        </div>
       </div>
 
       <div className="bg-base-300">
@@ -140,9 +118,10 @@ const SingleShopInfo = () => {
                   <th>No</th>
                   <th>Bill No</th>
                   <th>Purchase date</th>
-                  <th>Paid</th>
-                  <th>VIA</th>
                   <th>DUE</th>
+                  <th>Add paid</th>
+                  <th>VIA</th>
+                 
                   <th>Invoice</th>
                 </tr>
               </thead>
@@ -152,9 +131,9 @@ const SingleShopInfo = () => {
                     <td>{index + 1}</td>
                     <td>{product?.orderNo}</td>
                     <td>{product?.orderDate}</td>
-
+                    <td>{product?.due}</td>
                     <td>
-                      <div className="flex gap-3">
+                      <div className="flex gap-3 justify-center">
                             <input
                               id="paidAmount"
                               onChange={(e) => setPaid(e.target.value)}
@@ -162,17 +141,13 @@ const SingleShopInfo = () => {
                               name="paid"
                               className="w-1/2 bg-white text-black px-4 py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
                             />
-                          <button
-                            type="submit"
-                            className="relative btn-xs inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                              Add
-                            </span>
-                          </button>
+                          <div className="">
+                          <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add</button>
+                          </div>
                       </div>
                     </td>
                     <td>{product?.dsrInfo?.displayName}</td>
-                    <td>{product?.due}</td>
+                    
                     <td className="flex justify-center">
                       <div className="">
                         <Link to={`/memo/${product?._id}`}>
