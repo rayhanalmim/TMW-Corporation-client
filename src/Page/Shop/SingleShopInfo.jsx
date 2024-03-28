@@ -142,6 +142,7 @@ const SingleShopInfo = () => {
                   <th>Purchase date</th>
                   <th>Time</th>
                   <th>VIA</th>
+                  <th>DUE</th>
                   <th>Invoice</th>
                 </tr>
               </thead>
@@ -154,6 +155,7 @@ const SingleShopInfo = () => {
 
                     <td>{product?.orderTime}</td>
                     <td>{product?.dsrInfo?.displayName}</td>
+                    <td>{product?.due}</td>
                     <td className="flex justify-center">
                       <div className="">
                         <Link to={`/memo/${product?._id}`}>
