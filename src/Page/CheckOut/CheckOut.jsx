@@ -182,6 +182,9 @@ const CheckOut = () => {
                                                             <p className="text-base font-semibold text-gray-900">
                                                                 Unit price: {item?.product?.productPrice}
                                                             </p>
+                                                            <p className="text-base font-semibold text-gray-900">
+                                                                In stock: {item?.product?.productQuantity}
+                                                            </p>
 
                                                         </div>
 
