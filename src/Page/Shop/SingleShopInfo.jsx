@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { FaDownload } from "react-icons/fa";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { TbH3 } from "react-icons/tb";
 
 const SingleShopInfo = () => {
   const { id } = useParams();
