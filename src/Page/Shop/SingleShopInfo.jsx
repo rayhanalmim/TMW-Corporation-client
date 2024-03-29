@@ -28,10 +28,10 @@ const SingleShopInfo = () => {
 
   console.log(bill);
 
-  const handleDue = async (e, productId, paidAmount) => {
+  const handleDue = async (e, billID, paidAmount) => {
     e.preventDefault();
-    console.log(productId, paidAmount);
-    // const res = await axiosSecure.post(`/bill/paid?amount=${paidAmount}&id=${productId}`);
+    console.log(billID, paidAmount, id);
+    const res = await axiosSecure.post(`/bill/paid?amount=${paidAmount}&billId=${billID}&shopId=${id}`);
     // if (res.data) {
     //   Swal.fire({
     //     position: "top-start",
@@ -43,6 +43,7 @@ const SingleShopInfo = () => {
     //   setPaid('');
       // refetch();
     // }
+    e.target.paid.value = '';
   };
 
   return (
