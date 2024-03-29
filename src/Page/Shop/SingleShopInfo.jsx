@@ -28,40 +28,22 @@ const SingleShopInfo = () => {
 
   console.log(bill);
 
-  const handleDue = async (e) => {
+  const handleDue = async (e, productId, paidAmount) => {
     e.preventDefault();
-    const paidAmount = parseInt(paid);
-
-    if (paid !== '') {
-      const res = await axiosSecure.post(`/bill/paid?amout=${paidAmount}&id=${id}`);
-      if (res.data) {
-        Swal.fire({
-          position: "top-start",
-          icon: "success",
-          title: "Amount added successfully",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        setPaid('')
-        e.target.paid.value = '';
-        refetch();
-      }
-    } else {
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-      });
-      swalWithBootstrapButtons.fire({
-        title: "Error",
-        text: "Please add a valid amout",
-        icon: "error"
-      });
-    }
-
-  }
+    console.log(productId, paidAmount);
+    // const res = await axiosSecure.post(`/bill/paid?amount=${paidAmount}&id=${productId}`);
+    // if (res.data) {
+    //   Swal.fire({
+    //     position: "top-start",
+    //     icon: "success",
+    //     title: "Amount added successfully",
+    //     showConfirmButton: false,
+    //     timer: 1500
+    // //   });
+    //   setPaid('');
+      // refetch();
+    // }
+  };
 
   return (
     <div className="bg-base-300   p-8 rounded-lg shadow-md">
@@ -141,25 +123,27 @@ const SingleShopInfo = () => {
                     <td>{product?.orderNo}</td>
                     <td>{product?.orderDate}</td>
                     <td>{product?.due > 0 ? <h3 className="text-red-600 font-semibold">{product?.due}</h3> : <h3 className="text-green-500">{product?.due}</h3>}</td>
-                    <td>
+                    <td className="">
 
                       {parseInt(product?.due) > 0 ?
-                        <div className="flex gap-3  justify-center">
-                          <div>
+                      <form onSubmit={(e) => handleDue(e, product._id, parseInt(paid))}>
+                        <div className="flex gap-2  justify-center">
+
+                          
                             <input
                               id="paidAmount"
                               onChange={(e) => setPaid(e.target.value)}
                               type="number"
                               name="paid"
-                              className="bg-white px-4 text-black py-2.5 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
+                              className="bg-white max-w-24 px-4 btn-sm text-black rounded-md dark-border-gray-700 focus:dark-border-violet-400"
                             />
-                          </div>
-                          <div className="flex items-center">
-
-                            <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Add</button>
-
-                          </div>
-                        </div> : <div className="flex items-center justify-center bg-gray-300 rounded-full p-2">
+                            <button type="submit" className="text-white btn-sm bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 text-center ">
+                              Add
+                            </button>
+                          
+                        </div>
+                        </form>
+                        : <div className="flex items-center justify-center bg-gray-300 rounded-full p-2">
                           <h4 className="text-xs font-semibold text-green-600">Paid</h4>
                         </div>
 
