@@ -75,7 +75,6 @@ const Due = () => {
                                 <th className="py-2 border text-center">No</th>
                                 <th className="py-2 border text-center">Product Name</th>
                                 <th className="py-2 border text-center">Qty</th>
-                                <th className="py-2 border text-center">Ctn</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,7 +83,6 @@ const Due = () => {
                                     <td className="py-2 border-dotted border-4 text-center">{idx + 1}</td>
                                     <td className="py-2 border-dotted border-4 text-center">{items?.product?.productName}</td>
                                     <td className="py-2 border-dotted border-4 text-center">{items?.productQuentity}</td>
-                                    <td className="py-2 border-dotted border-4 text-center">{items?.product?.perCartonQuantity}</td>
                                 </tr>
                             ))}
                             {/* Total row */}
