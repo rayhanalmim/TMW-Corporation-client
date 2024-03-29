@@ -83,7 +83,7 @@ const Invoice = () => {
               {/* Total row */}
               <tr>
                 <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
-                <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total bill:</td>
+                <td colSpan="2" className="py-2 border-dotted border-4 font-bold text-center">Total bill:</td>
                 <td className="py-2 border-dotted border-4 text-center font-bold">
                   {demoData?.totalPrice}
                 </td>
@@ -91,7 +91,7 @@ const Invoice = () => {
               {
                 demoData?.discount > 0 && <tr>
                   <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
-                  <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Discount:</td>
+                  <td colSpan="2" className="py-2 border-dotted border-4 font-bold text-center">Discount:</td>
                   <td className="py-2 border-dotted border-4 text-center font-bold">
                     {demoData?.discount}
                   </td>
@@ -100,7 +100,7 @@ const Invoice = () => {
               {
                 demoData?.due > 0 && <tr>
                   <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
-                  <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Due:</td>
+                  <td colSpan="2" className="py-2 border-dotted border-4 font-bold text-center">Due:</td>
                   <td className="py-2 border-dotted border-4 text-center font-bold">
                     {demoData?.due}
                   </td>
@@ -112,13 +112,13 @@ const Invoice = () => {
                   {
                     demoData?.due > 0 ? <tr>
                       <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
-                      <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
+                      <td colSpan="2" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
                       <td className="py-2 border-dotted border-4 text-center font-bold">
                         {demoData?.totalPrice - (parseInt(demoData?.discount) + parseInt(demoData?.due))}
                       </td>
                     </tr> : <tr>
                       <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
-                      <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
+                      <td colSpan="2" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
                       <td className="py-2 border-dotted border-4 text-center font-bold">
                         {demoData?.totalPrice - parseInt(demoData?.discount)}
                       </td>
@@ -126,7 +126,7 @@ const Invoice = () => {
                   }
                 </> : <tr>
                   <td className="py-2 border-dotted border-l-white border-y-white border-4"></td>
-                  <td colSpan="3" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
+                  <td colSpan="2" className="py-2 border-dotted border-4 font-bold text-center">Total payable:</td>
                   <td className="py-2 border-dotted border-4 text-center font-bold">
                     {demoData?.totalPrice}
                   </td>
