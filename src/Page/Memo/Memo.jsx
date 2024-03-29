@@ -64,7 +64,6 @@ const Invoice = () => {
               <tr className="bg-gray-200">
                 <th className="py-2 border text-center">Product Name</th>
                 <th className="py-2 border text-center">Qty</th>
-                <th className="py-2 border text-center">Ctn</th>
                 <th className="py-2 border text-center">Price</th>
                 <th className="py-2 border text-center">Amount</th>
               </tr>
@@ -74,7 +73,6 @@ const Invoice = () => {
                 <tr key={idx}>
                   <td className="py-2 border-dotted border-4 text-center">{product?.product?.productName}</td>
                   <td className="py-2 border-dotted border-4 text-center">{product?.quantity}</td>
-                  <td className="py-2 border-dotted border-4 text-center">{product?.product?.perCartonQuantity}</td>
                   <td className="py-2 border-dotted border-4 text-center">{product?.product?.productPrice}</td>
 
                   <td className="py-2 border-dotted border-4 text-center">
