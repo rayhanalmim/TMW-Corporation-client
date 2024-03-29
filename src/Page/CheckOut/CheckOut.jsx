@@ -179,6 +179,10 @@ const CheckOut = () => {
                                                             <p className="text-base font-semibold text-gray-900">
                                                                 {item?.product?.productName}
                                                             </p>
+                                                            <p className="text-base font-semibold text-gray-900">
+                                                                Unit price: {item?.product?.productPrice}
+                                                            </p>
+
                                                         </div>
 
                                                         <div className="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
