@@ -170,7 +170,7 @@ const SignUp = () => {
         <div className=" bg-sky-800 w-full  mx-auto max-w-md p-8 pb-16 space-y-3 rounded-xl border my-5  ">
           <Link to="/">
             <div className="w-24 mx-auto block rounded-full  ">
-              <img src="https://i.ibb.co/f87HCm4/Black-And-White-Modern-Vintage-Retro-Brand-Logo-2.png" />
+              <img src="https://i.ibb.co/SKQbk36/Black-And-White-Modern-Vintage-Retro-Brand-Logo-7-removebg-preview.png" />
             </div>
           </Link>
           <h1 className="text-2xl font-bold text-center pb-2  text-white">

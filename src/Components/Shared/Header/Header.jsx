@@ -67,7 +67,7 @@ const Header = () => {
           </div>
           <Link to="/" className="text-2xl font-bold flex gap-4 ml-4">
             <div className="w-16 mx-auto block rounded-full  ">
-              <img src='https://i.ibb.co/f87HCm4/Black-And-White-Modern-Vintage-Retro-Brand-Logo-2.png' />
+              <img src='https://i.ibb.co/SKQbk36/Black-And-White-Modern-Vintage-Retro-Brand-Logo-7-removebg-preview.png' />
             </div>
             <p className=" hidden lg:flex  lg:text-2xl  my-auto  ">
               {" "}
