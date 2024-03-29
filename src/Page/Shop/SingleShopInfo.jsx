@@ -18,7 +18,7 @@ const SingleShopInfo = () => {
     },
   });
 
-  const { data: bill = [] } = useQuery({
+  const { data: bill = [], refetch: billRefatch } = useQuery({
     queryKey: ["shopbasebill", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/bill/shop?shopId=${id}`);
@@ -32,17 +32,31 @@ const SingleShopInfo = () => {
     e.preventDefault();
     console.log(billID, paidAmount, id);
     const res = await axiosSecure.post(`/bill/paid?amount=${paidAmount}&billId=${billID}&shopId=${id}`);
-    // if (res.data) {
-    //   Swal.fire({
-    //     position: "top-start",
-    //     icon: "success",
-    //     title: "Amount added successfully",
-    //     showConfirmButton: false,
-    //     timer: 1500
-    // //   });
-    //   setPaid('');
-      // refetch();
-    // }
+
+    console.log(res);
+
+    if(res.status == "201"){
+      Swal.fire({
+        position: "top-start",
+        icon: "error",
+        title: "Invalid amout",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+
+    if (res.status == '200') {
+      Swal.fire({
+        position: "top-start",
+        icon: "success",
+        title: "Amount added successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setPaid('');
+      refetch();
+      billRefatch();
+    }
     e.target.paid.value = '';
   };
 
@@ -127,10 +141,10 @@ const SingleShopInfo = () => {
                     <td className="">
 
                       {parseInt(product?.due) > 0 ?
-                      <form onSubmit={(e) => handleDue(e, product._id, parseInt(paid))}>
-                        <div className="flex gap-2  justify-center">
+                        <form onSubmit={(e) => handleDue(e, product._id, parseInt(paid))}>
+                          <div className="flex gap-2  justify-center">
 
-                          
+
                             <input
                               id="paidAmount"
                               onChange={(e) => setPaid(e.target.value)}
@@ -141,8 +155,8 @@ const SingleShopInfo = () => {
                             <button type="submit" className="text-white btn-sm bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 text-center ">
                               Add
                             </button>
-                          
-                        </div>
+
+                          </div>
                         </form>
                         : <div className="flex items-center justify-center bg-gray-300 rounded-full p-2">
                           <h4 className="text-xs font-semibold text-green-600">Paid</h4>
