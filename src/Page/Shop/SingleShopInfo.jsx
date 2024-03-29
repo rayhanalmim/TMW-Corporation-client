@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaDownload } from "react-icons/fa";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { TbH3 } from "react-icons/tb";
 
 const SingleShopInfo = () => {
   const { id } = useParams();
@@ -140,7 +141,7 @@ const SingleShopInfo = () => {
                     <td>{index + 1}</td>
                     <td>{product?.orderNo}</td>
                     <td>{product?.orderDate}</td>
-                    <td>{product?.due}</td>
+                    <td>{product?.due > 0 ? <h3 className="text-red-600 font-semibold">{product?.due}</h3> : <h3 className="text-green-500">{product?.due}</h3>}</td>
                     <td>
 
                       {parseInt(product?.due) > 0 ?
