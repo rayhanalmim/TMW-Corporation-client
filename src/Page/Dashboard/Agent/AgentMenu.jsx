@@ -45,20 +45,6 @@ const AgentMenu = () => {
           </button>
         </Link>
 
-        {/* <Link to="/sellView">
-          <li className="btn bg-sky-800  hover:text-black text-white w-full">
-            <FaListUl className="mr-2" />
-            Sell List
-          </li>
-        </Link>
-
-        <Link to="/memberlist ">
-          <li className="btn bg-sky-800  hover:text-black text-white w-full">
-            <FaUsers className="mr-2" />
-            List of Due
-          </li>
-        </Link> */}
-
         <Link to="/manageProduct">
           <li className="btn bg-sky-800  hover:text-black text-white w-full">
             <FaBeer className="mr-2" />

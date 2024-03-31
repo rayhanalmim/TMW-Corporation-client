@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import AddToCard from "../../../Page/Card/AddToCard";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import useAdmin from "../../../Hook/useAdmin";
 
 const showSuccessAlert = () => {
   Swal.fire({
@@ -21,6 +22,7 @@ const showSuccessAlert = () => {
 const Header = () => {
   const { product } = useGetCardData();
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
   const navigate = useNavigate();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const drawerRef = useRef(null);
@@ -108,8 +110,12 @@ const Header = () => {
                 <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/sellView' onClick={handleMenuItemClick}>Billing Management</NavLink></li>
                 <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/manageProduct' onClick={handleMenuItemClick}>Product Management</NavLink></li>
                 <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/shop' onClick={handleMenuItemClick}>Client Shop Management</NavLink></li>
-                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/user' onClick={handleMenuItemClick}>Employee Management</NavLink></li>
-                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/analysis' onClick={handleMenuItemClick}>Sell Analysis</NavLink></li>
+               {
+                isAdmin &&  <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/user' onClick={handleMenuItemClick}>Employee Management</NavLink></li>
+               }
+                {
+                  isAdmin && <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/analysis' onClick={handleMenuItemClick}>Sell Analysis</NavLink></li>
+                }
               </ul>
             </div>
           </div>
