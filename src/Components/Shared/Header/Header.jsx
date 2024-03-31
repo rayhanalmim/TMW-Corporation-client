@@ -90,7 +90,7 @@ const Header = () => {
         <div className="navbar-start">
           <div className="text-center lg:hidden">
             <button className="" type="button" onClick={toggleDrawer}>
-              {isDrawerOpen ? "Close Navigation" : <><AiOutlineMenuUnfold className="text-3xl ml-3 mt-2"></AiOutlineMenuUnfold></>}
+              {isDrawerOpen ? <><AiOutlineMenuUnfold className="text-3xl ml-3 mt-2"></AiOutlineMenuUnfold></> : <><AiOutlineMenuUnfold className="text-3xl ml-3 mt-2"></AiOutlineMenuUnfold></>}
             </button>
           </div>
           <div ref={drawerRef} id="drawer-navigation" className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform ${isDrawerOpen ? '' : '-translate-x-full'} bg-slate-700 w-64 dark:bg-gray-800 lg:hidden`} tabIndex="-1" aria-labelledby="drawer-navigation-label">
