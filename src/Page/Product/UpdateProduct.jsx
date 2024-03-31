@@ -17,7 +17,7 @@ const UpdateProduct = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isAdmin] = useAdmin();
-  const [isAgent] = useAgent();  //Dsr
+  const [isAgent] = useAgent();  
 
   useEffect(() => {
     const fetchProduct = async () => {
