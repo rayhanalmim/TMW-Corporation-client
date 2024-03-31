@@ -101,8 +101,8 @@ const RequestDetails = () => {
 
     }
 
-     
-    console.log("products : ",products);
+
+    console.log("products : ", products);
 
     return (
         <div className="container mx-auto my-8 text-white  p-2">
@@ -171,20 +171,18 @@ const RequestDetails = () => {
                                         <td className="text-center">
 
                                             <div className="sm:order-1">
-                                                <div className="mx-auto flex h-8 items-stretch text-gray-600">
+                                                <div className="mx-auto flex items-center h-8 text-gray-600">
                                                     <button
-                                                           onClick={() => decrementQuantity(pro.product?._id)}
-                                                        className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
+                                                        onClick={() => decrementQuantity(pro.product?._id)}
+                                                        className="flex items-center justify-center rounded-l-md bg-gray-200 px-2 sm:px-4 transition hover:bg-black hover:text-white text-xs sm:text-base"
                                                     >
                                                         -
                                                     </button>
                                                     <input
                                                         type="number"
                                                         value={pro?.quantity}
-                                                           onChange={(e) =>
-                                                               handleQuantityChange(e, pro.product?._id)
-                                                           }
-                                                        className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase"
+                                                        onChange={(e) => handleQuantityChange(e, pro.product?._id)}
+                                                        className="flex w-16 sm:w-full items-center justify-center bg-gray-100 text-xs uppercase sm:text-base px-2 sm:px-4"
                                                         style={{
                                                             "-moz-appearance": "textfield",
                                                             appearance: "textfield",
@@ -197,13 +195,14 @@ const RequestDetails = () => {
                                                         }}
                                                     />
                                                     <button
-                                                           onClick={() => incrementQuantity(pro?.product?._id)}
-                                                        className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
+                                                        onClick={() => incrementQuantity(pro?.product?._id)}
+                                                        className="flex items-center justify-center rounded-r-md bg-gray-200 px-2 sm:px-4 transition hover:bg-black hover:text-white text-xs sm:text-base"
                                                     >
                                                         +
                                                     </button>
                                                 </div>
                                             </div>
+
 
 
 

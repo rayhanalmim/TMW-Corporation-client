@@ -148,14 +148,14 @@ const CheckOut = () => {
     console.log(products?.dsrInfo);
 
     return (
-        <div>
+        <div className="pt-2">
             <Title title="Confirm Billing"></Title>
-            <section className="py-12 sm:py-16 lg:pb-20 lg:pt-9">
+            <section className="py-2 lg:py-16 lg:pb-20 lg:pt-9">
                 <div className="mx-auto px-4 sm:px-6 ">
                     <div className="flex items-center justify-center">
 
                     </div>
-                    <div className="mx-auto mt-8 max-w-2xl md:mt-12">
+                    <div className="mx-auto mt-4  max-w-2xl md:mt-12">
                         <div className="bg-white shadow">
                             <div className="px-4 py-6 sm:px-8 sm:py-10">
                                 <div className="flow-root">
