@@ -73,23 +73,23 @@ const Header = () => {
               {isDrawerOpen ? "Close Navigation" : "Open Navigation"}
             </button>
           </div>
-          <div id="drawer-navigation" className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform ${isDrawerOpen ? '' : '-translate-x-full'} bg-white w-64 dark:bg-gray-800 lg:hidden`} tabIndex="-1" aria-labelledby="drawer-navigation-label">
-            <h5 id="drawer-navigation-label" className="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>
+          <div id="drawer-navigation" className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform ${isDrawerOpen ? '' : '-translate-x-full'} bg-sky-700 w-64 dark:bg-gray-800 lg:hidden`} tabIndex="-1" aria-labelledby="drawer-navigation-label">
+            <h5 id="drawer-navigation-label" className="text-base font-semibold text-white uppercase dark:text-gray-400">Menu</h5>
             <button type="button" onClick={closeDrawer} data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white">
               <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
               </svg>
               <span className="sr-only text-black">Close menu</span>
             </button>
-            <div className="py-4 overflow-y-auto text-black">
-              <ul className="space-y-2 font-medium">
-                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/'>Home</NavLink></li>
-                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/dsr'>DSR Order Request ({infos.length})</NavLink></li>
-                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/sellView'>Billing Management</NavLink></li>
-                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/manageProduct'>Product Management</NavLink></li>
-                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/shop'>Client Shop Management</NavLink></li>
-                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/user'>Employee Management</NavLink></li>
-                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/analysis'>Sell Analysis</NavLink></li>
+            <div className="py-4 overflow-y-auto text-white">
+              <ul className="space-y-3 font-medium">
+                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/'>Home</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/dsr'>DSR Order Request ({infos.length})</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/sellView'>Billing Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/manageProduct'>Product Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/shop'>Client Shop Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/user'>Employee Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/analysis'>Sell Analysis</NavLink></li>
               </ul>
             </div>
           </div>
