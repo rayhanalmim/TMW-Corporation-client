@@ -1,13 +1,13 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
-
-import logo from "../../../assets/logo.png";
-
-import "./header.css";
-import useGetCardData from "../../../Hook/useGetCardata";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { FaChartBar, FaBeer, FaUser, FaShoppingCart, FaListUl, FaUsers } from "react-icons/fa";
+import { FaShop } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import useGetCardData from "../../../Hook/useGetCardata";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import AddToCard from "../../../Page/Card/AddToCard";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 const showSuccessAlert = () => {
   Swal.fire({
@@ -21,7 +21,30 @@ const Header = () => {
   const { product } = useGetCardData();
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+  const axiosSecure = useAxiosSecure();
+  const [infos, setInfo] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axiosSecure.get("/dsrRequ");
+      setInfo(response.data);
+    } catch (error) {
+      console.error("Error fetching costs:", error);
+    }
+  };
+
+  useEffect(() => {
+    // Call the API immediately when the component mounts
+    fetchData();
+
+    // Set up an interval to call the API every 10 seconds
+    const interval = setInterval(fetchData, 10000);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(interval);
+  }, []); // Empty dependency array ensures the effect runs only once on mount
 
   const handleSignOut = async () => {
     try {
@@ -33,75 +56,73 @@ const Header = () => {
     }
   };
 
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
 
-  const menu = (
-    <>
-      <li className="flex">
-        <NavLink to="/" className="flex items-center px-8 py-3 font-semibold  ">
-          Home
-        </NavLink>
-      </li>
-    </>
-  );
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
+
   return (
     <div className="bg-sky-800 ">
       <div className="navbar  text-white container mx-auto">
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
+          <div className="text-center lg:hidden">
+            <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" onClick={toggleDrawer}>
+              {isDrawerOpen ? "Close Navigation" : "Open Navigation"}
+            </button>
+          </div>
+          <div id="drawer-navigation" className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform ${isDrawerOpen ? '' : '-translate-x-full'} bg-white w-64 dark:bg-gray-800 lg:hidden`} tabIndex="-1" aria-labelledby="drawer-navigation-label">
+            <h5 id="drawer-navigation-label" className="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>
+            <button type="button" onClick={closeDrawer} data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white">
+              <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
               </svg>
+              <span className="sr-only text-black">Close menu</span>
+            </button>
+            <div className="py-4 overflow-y-auto text-black">
+              <ul className="space-y-2 font-medium">
+                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/'>Home</NavLink></li>
+                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/dsr'>DSR Order Request ({infos.length})</NavLink></li>
+                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/sellView'>Billing Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/manageProduct'>Product Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/shop'>Client Shop Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/user'>Employee Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/analysis'>Sell Analysis</NavLink></li>
+              </ul>
             </div>
           </div>
-          <Link to="/" className="text-2xl font-bold flex gap-4 ml-4">
-            <div className="w-16 mx-auto block rounded-full  ">
-              <img src='https://i.ibb.co/SKQbk36/Black-And-White-Modern-Vintage-Retro-Brand-Logo-7-removebg-preview.png' />
+          <NavLink to="/" className="text-2xl font-bold flex gap-4 ml-4">
+            <div className="w-16 mx-auto block rounded-full">
+              <img src='https://i.ibb.co/SKQbk36/Black-And-White-Modern-Vintage-Retro-Brand-Logo-7-removebg-preview.png' alt="Logo" />
             </div>
-            <p className=" hidden lg:flex  lg:text-2xl  my-auto  ">
-              {" "}
+            <p className="hidden lg:flex lg:text-2xl  my-auto">
               TMW CORPORATION
             </p>
-          </Link>
+          </NavLink>
         </div>
         <div className="navbar-end">
           <div className="flex">
-            {/* <div className="flex justify-center items-center">
-              <h3 className={``}>4</h3>
-            </div> */}
-            <AddToCard></AddToCard>
+            <AddToCard />
           </div>
           <div className="hidden md:block">
-            {
-              user && <a className="btn btn-ghost normal-case text-xl">{user.displayName}</a>
-            }
+            {user && <a className="btn btn-ghost normal-case text-xl">{user.displayName}</a>}
           </div>
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
             <div className="w-10 rounded-full">
-              {
-                user ? <img src={user.photoURL} alt="" /> : <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />
-              }
+              {user ? <img src={user.photoURL} alt="" /> : <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />}
             </div>
           </label>
-          {
-            user ? <button onClick={handleSignOut} className="btn text-white bg-gray-900 border-black mr-5 btn-sm btn-error px-8">
+          {user ? (
+            <button onClick={handleSignOut} className="btn text-white bg-gray-900 border-black mr-5 btn-sm btn-error px-8">
               Log-out
-            </button> : <Link to='/login' > <button className="btn text-white mr-5 btn-sm btn-error px-8">
-              Log-In
-            </button></Link>
-          }
-
+            </button>
+          ) : (
+            <NavLink to='/login'>
+              <button className="btn text-white mr-5 btn-sm btn-error px-8">Log-In</button>
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
