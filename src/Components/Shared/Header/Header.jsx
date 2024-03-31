@@ -83,9 +83,9 @@ const Header = () => {
             </button>
             <div className="py-4 overflow-y-auto text-black">
               <ul className="space-y-2 font-medium">
-                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/'>Home</NavLink></li>
-                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/dsr'>DSR Order Request ({infos.length})</NavLink></li>
-                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/sellView'>Billing Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/'>Home</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center' : ''}`}><NavLink to='/dsr'>DSR Order Request ({infos.length})</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center' : ''}`}><NavLink to='/sellView'>Billing Management</NavLink></li>
                 <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/manageProduct'>Product Management</NavLink></li>
                 <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/shop'>Client Shop Management</NavLink></li>
                 <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/user'>Employee Management</NavLink></li>

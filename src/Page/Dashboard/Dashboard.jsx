@@ -15,7 +15,7 @@ const Dashboard = () => {
       <Header />
       <div className="flex flex-col lg:flex-row w-full  mx-auto gap-5 relative">
         <div className="w-full lg:w-1/3 p-4 ">
-          <div className="justify-around  top-6 sticky p-6 lg:p-8 gap-9 text-center rounded-lg my-8 bg-sky-800 w-full mx-auto hidden md:block">
+          <div className="justify-around  top-6 sticky p-6 lg:p-8 gap-9 text-center rounded-lg my-8 bg-sky-800 w-full mx-auto hidden lg:block">
             <div>
               {isAdmin ? (
                 <AdminMenu />
