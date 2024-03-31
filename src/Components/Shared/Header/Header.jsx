@@ -103,7 +103,7 @@ const Header = () => {
             </button>
             <div className="py-4 overflow-y-auto text-white">
               <ul className="space-y-3 font-medium">
-                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/' onClick={handleMenuItemClick}>Home</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/' onClick={handleMenuItemClick}>Home Page</NavLink></li>
                 <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/dsr' onClick={handleMenuItemClick}>DSR Order Request ({infos.length})</NavLink></li>
                 <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/sellView' onClick={handleMenuItemClick}>Billing Management</NavLink></li>
                 <li className={`${isDrawerOpen ? 'border border-white rounded-md text-center py-1.5 hover:bg-black hover:text-white hover:border-rose-300' : ''}`}><NavLink to='/manageProduct' onClick={handleMenuItemClick}>Product Management</NavLink></li>

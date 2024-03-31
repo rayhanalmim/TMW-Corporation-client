@@ -14,7 +14,7 @@ const RequestPage = () => {
     const [shop, setShop] = useState('');
     const navigate = useNavigate();
 
-    const { data: dsrData = []} = useQuery({
+    const { data: dsrData = [] } = useQuery({
         queryKey: ["dsr"],
         queryFn: async () => {
             const res = await axiosSecure.get(`/dsrRequ/dsr`)
@@ -143,10 +143,10 @@ const RequestPage = () => {
                                         <td>{product?.product.productName}</td>
                                         <td className="text-center">
                                             <div className="sm:order-1">
-                                                <div className="mx-auto flex h-8 items-stretch text-gray-600">
+                                                <div className="mx-auto flex items-center h-8 text-gray-600">
                                                     <button
                                                         onClick={() => decrementQuantity(product?.product._id)}
-                                                        className="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
+                                                        className="flex items-center justify-center rounded-l-md bg-gray-200 px-2 sm:px-4 transition hover:bg-black hover:text-white text-xs sm:text-base"
                                                     >
                                                         -
                                                     </button>
@@ -154,7 +154,7 @@ const RequestPage = () => {
                                                         type="number"
                                                         value={product?.productQuentity}
                                                         onChange={(e) => handleQuantityChange(e, product?.product._id)}
-                                                        className="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase"
+                                                        className="flex w-16 sm:w-full items-center justify-center bg-gray-100 text-xs uppercase sm:text-base px-2 sm:px-4"
                                                         style={{
                                                             "-moz-appearance": "textfield",
                                                             appearance: "textfield",
@@ -168,13 +168,14 @@ const RequestPage = () => {
                                                     />
                                                     <button
                                                         onClick={() => incrementQuantity(product?.product._id)}
-                                                        className="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
+                                                        className="flex items-center justify-center rounded-r-md bg-gray-200 px-2 sm:px-4 transition hover:bg-black hover:text-white text-xs sm:text-base"
                                                     >
                                                         +
                                                     </button>
                                                 </div>
                                             </div>
                                         </td>
+
                                         <td className="text-center">{product?.product.productPrice} </td>
                                         <td className="text-center">{product?.product.lightColor}  </td>
                                         <td className="text-center">{product?.product.productType}  </td>
