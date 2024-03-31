@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaChartBar, FaBeer, FaUser, FaShoppingCart, FaListUl, FaUsers } from "react-icons/fa";
+import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { FaShop } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import useGetCardData from "../../../Hook/useGetCardata";
@@ -69,8 +70,8 @@ const Header = () => {
       <div className="navbar  text-white container mx-auto">
         <div className="navbar-start">
           <div className="text-center lg:hidden">
-            <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" onClick={toggleDrawer}>
-              {isDrawerOpen ? "Close Navigation" : "Open Navigation"}
+            <button className="" type="button" onClick={toggleDrawer}>
+              {isDrawerOpen ? "Close Navigation" : <><AiOutlineMenuUnfold className="text-3xl ml-3 mt-2"></AiOutlineMenuUnfold></>}
             </button>
           </div>
           <div id="drawer-navigation" className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform ${isDrawerOpen ? '' : '-translate-x-full'} bg-sky-700 w-64 dark:bg-gray-800 lg:hidden`} tabIndex="-1" aria-labelledby="drawer-navigation-label">
@@ -94,7 +95,7 @@ const Header = () => {
             </div>
           </div>
           <NavLink to="/" className="text-2xl font-bold flex gap-4 ml-4">
-            <div className="w-16 mx-auto block rounded-full">
+            <div className="w-10 pl-2 md:pl-0 md:w-16 mx-auto block rounded-full">
               <img src='https://i.ibb.co/SKQbk36/Black-And-White-Modern-Vintage-Retro-Brand-Logo-7-removebg-preview.png' alt="Logo" />
             </div>
             <p className="hidden lg:flex lg:text-2xl  my-auto">
@@ -103,7 +104,7 @@ const Header = () => {
           </NavLink>
         </div>
         <div className="navbar-end">
-          <div className="flex">
+          <div className="flex pr-4 lg:pr-1">
             <AddToCard />
           </div>
           <div className="hidden md:block">
