@@ -94,7 +94,7 @@ const ManageUser = () => {
       </div>
       <div className="flex w-full  ">
         
-          <button onClick={handleSignOut} className=" btn btn-primary">Add User</button>
+          <button onClick={handleSignOut} className=" btn btn-sm md:btn-md ml-3 lg:ml-0 mb-2 btn-primary">Add User</button>
        
       </div>
 
