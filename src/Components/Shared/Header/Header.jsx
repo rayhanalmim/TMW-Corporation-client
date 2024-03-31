@@ -87,8 +87,8 @@ const Header = () => {
                 <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/dsr'>DSR Order Request ({infos.length})</NavLink></li>
                 <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/sellView'>Billing Management</NavLink></li>
                 <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/manageProduct'>Product Management</NavLink></li>
-                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/shop'>Client Shop Management</NavLink></li>
-                <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/user'>Employee Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/shop'>Client Shop Management</NavLink></li>
+                <li className={`${isDrawerOpen ? 'border-2 border-black rounded-md text-center py-1' : ''}`}><NavLink to='/user'>Employee Management</NavLink></li>
                 <li className={`${isDrawerOpen ? 'hover:bg-white hover:rounded-md' : ''}`}><NavLink to='/analysis'>Sell Analysis</NavLink></li>
               </ul>
             </div>
