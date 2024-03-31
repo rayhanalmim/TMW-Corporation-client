@@ -41,17 +41,17 @@ const SellView = () => {
         <Title title="Bill History"></Title>
       </div>
 
-      <div className="flex justify-evenly">
+      <div className="flex justify-evenly flex-col md:flex-row">
         <h3>From</h3>
         <input
-        className="pl-1"
+        className="pl-1 mx-6 md:mx-0"
           type="date"
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
         />
         <h3>To</h3>
         <input
-        className="pl-1"
+        className="pl-1 mx-6 md:mx-0"
           type="date"
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}

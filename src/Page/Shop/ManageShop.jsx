@@ -89,7 +89,7 @@ const ManageShop = () => {
       </div>
       <div className="flex w-full  ">
         <Link to="/addShop">
-          <button className=" btn btn-primary">Add Shop</button>
+          <button className=" btn btn-sm md:btn-md ml-3 lg:ml-0 mb-2 btn-primary">Add Shop</button>
         </Link>
       </div>
       <div className="mb-4">

@@ -137,7 +137,7 @@ const ManageProduct = () => {
       </div>
       <div className="flex w-full  ">
         <Link to="/AddProduct">
-          <button className=" btn btn-primary">Add Product</button>
+          <button className=" btn btn-sm md:btn-md ml-3 lg:ml-0 mb-2 btn-primary">Add Product</button>
         </Link>
       </div>
 
