@@ -19,12 +19,12 @@ const PrintMemo = () => {
 
 
     return (
-        <div className="max-w-4xl mx-auto pt-1 bg-white rounded-md relative">
+        <div className="max-w-4xl mx-auto flex gap-2 pt-4 bg-white rounded-md ">
 
-            <div className="min-h-screen">
-                <div className="w-24 mx-auto block rounded-full absolute top-5 right-10">
+            <div className="min-h-screen relative">
+                {/* <div className="w-12 mx-auto block rounded-full absolute top-1 right-0">
                     <img className="" src='https://i.ibb.co/5G2QTGB/Black-And-White-Modern-Vintage-Retro-Brand-Logo-5.png' />
-                </div>
+                </div> */}
                 <div className="text-center">
 
 
@@ -142,11 +142,11 @@ const PrintMemo = () => {
                 </div>
             </div>
 
-            <div className="max-w-4xl mx-auto pt-1 bg-white rounded-md relative">
+            <div className="max-w-4xl mx-auto pt-0 bg-white rounded-md relative">
 
-                <div className="w-24 mx-auto block rounded-full absolute top-5 right-10 mb-1">
+                {/* <div className=" w-12  absolute top-1 right-0 mx-auto block rounded-full  mb-1">
                     <img className="" src='https://i.ibb.co/5G2QTGB/Black-And-White-Modern-Vintage-Retro-Brand-Logo-5.png' />
-                </div>
+                </div> */}
                 <div className="text-center">
 
 
