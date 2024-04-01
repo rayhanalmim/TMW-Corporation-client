@@ -91,7 +91,7 @@ const SellView = () => {
                   
                 </td>
                 <td className="flex justify-center py-2 border-dotted border-4 text-center">
-                  <NavLink to={`/memo/${info?._id}`}>
+                  <NavLink to={`/memoPrint/${info?._id}`}>
                     <MdOutlineFileDownload className="text-3xl"></MdOutlineFileDownload>
                   </NavLink>
                 </td>

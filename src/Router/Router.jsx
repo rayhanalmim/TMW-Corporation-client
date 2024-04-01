@@ -35,6 +35,7 @@ import DsrRequest from "../Page/DSR/DsrRequest";
 import RequestDetails from "../Page/DSR/RequestDetails";
 import Due from "../Page/Memo/Due";
 import RequestPage from "../Page/Card/RequestPage";
+import PrintMemo from "../Page/Memo/PrintMemo";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "/memo/:id",
     element: <Memo />,
+  },
+  {
+    path: "/memoPrint/:id",
+    element: <PrintMemo></PrintMemo>,
   },
   {
     path: "/due/:id",
