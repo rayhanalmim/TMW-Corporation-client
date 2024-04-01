@@ -82,11 +82,13 @@ const SellView = () => {
                 <td className="py-2 border-dotted border-4 text-center">{info?.dsrInfo?.displayName}</td>
                 <td className="text-success py-2 border-dotted border-4 text-center">{info?.orderDate}</td>
                 <td className="py-2 border-dotted border-4 text-center">
-                  <div className="flex justify-center py-2 border-dotted border-4 text-center">
+                 
                   <NavLink to={`/memo/${info?._id}`}>
+                  <div className="flex justify-center py-2 border-dotted border-4 text-center">
                     <FaFileDownload className="text-2xl">Invoice</FaFileDownload>
+                    </div>
                   </NavLink>
-                  </div>
+                  
                 </td>
                 <td className="flex justify-center py-2 border-dotted border-4 text-center">
                   <NavLink to={`/memo/${info?._id}`}>
