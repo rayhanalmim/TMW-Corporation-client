@@ -19,9 +19,9 @@ const PrintMemo = () => {
 
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-white rounded-md relative">
+        <div className="max-w-4xl mx-auto pt-1 bg-white rounded-md relative">
 
-            <div className="">
+            <div className="min-h-screen">
                 <div className="w-24 mx-auto block rounded-full absolute top-5 right-10">
                     <img className="" src='https://i.ibb.co/5G2QTGB/Black-And-White-Modern-Vintage-Retro-Brand-Logo-5.png' />
                 </div>
@@ -136,15 +136,15 @@ const PrintMemo = () => {
                         </table>
                     </div>
                 </div>
-                <div className="flex justify-between mx-8 mt-24">
+                <div className="flex justify-between mx-8 my-4">
                     <p className="text-left mt-4 border-t-2 border-dotted">Received by</p>
                     <p className="text-left mt-4 border-t-2 border-dotted">TMW Corporation</p>
                 </div>
             </div>
 
-            <div className="max-w-4xl mx-auto p-6 bg-white rounded-md relative mt-6">
+            <div className="max-w-4xl mx-auto pt-1 bg-white rounded-md relative">
 
-                <div className="w-24 mx-auto block rounded-full absolute top-5 right-10">
+                <div className="w-24 mx-auto block rounded-full absolute top-5 right-10 mb-1">
                     <img className="" src='https://i.ibb.co/5G2QTGB/Black-And-White-Modern-Vintage-Retro-Brand-Logo-5.png' />
                 </div>
                 <div className="text-center">
@@ -258,7 +258,7 @@ const PrintMemo = () => {
                         </table>
                     </div>
                 </div>
-                <div className="flex justify-between mx-8 mt-24">
+                <div className="flex justify-between mx-8 my-4">
                     <p className="text-left mt-4 border-t-2 border-dotted">Received by</p>
                     <p className="text-left mt-4 border-t-2 border-dotted">TMW Corporation</p>
                 </div>
