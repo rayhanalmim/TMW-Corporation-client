@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Title from "../../Components/Shared/Title";
+import { FaFileDownload } from "react-icons/fa";
+import { MdOutlineFileDownload } from "react-icons/md";
 
 const SellView = () => {
   const axiosSecure = useAxiosSecure();
@@ -41,7 +43,7 @@ const SellView = () => {
         <Title title="Bill History"></Title>
       </div>
 
-      <div className="flex justify-evenly flex-col md:flex-row">
+      <div className="flex justify-evenly py-1 md:py-4 flex-col md:flex-row">
         <h3>From</h3>
         <input
         className="pl-1 mx-6 md:mx-0"
@@ -62,24 +64,33 @@ const SellView = () => {
       <div className="overflow-x-auto">
         <table className="table">
           <thead className="text-sm text-center">
-            <tr>
-              <th>Bill No</th>
-              <th>Shop</th>
-              <th>DSR</th>
-              <th>Date</th>
-              <th>Download</th>
+            <tr className="">
+              <th className="py-2 border-dotted border-4 text-center">Bill No</th>
+              <th className="py-2 border-dotted border-4 text-center">Shop</th>
+              <th className="py-2 border-dotted border-4 text-center">DSR</th>
+              <th className="py-2 border-dotted border-4 text-center">Date</th>
+              <th className="py-2 border-dotted border-4 text-center">Invoice</th>
+
+              <th className="py-2 border-dotted border-4 text-center">Download</th>
             </tr>
           </thead>
           <tbody>
             {filteredBillData.slice().reverse().map((info, index) => (
               <tr className="text-center" key={index}>
-                <td>{info?.orderNo}</td>
-                <td>{info?.shopInfo?.shopName}</td>
-                <td>{info?.dsrInfo?.displayName}</td>
-                <td className="text-success">{info?.orderDate}</td>
+                <td className="py-2 border-dotted border-4 text-center">{info?.orderNo}</td>
+                <td className="py-2 border-dotted border-4 text-center">{info?.shopInfo?.shopName}</td>
+                <td className="py-2 border-dotted border-4 text-center">{info?.dsrInfo?.displayName}</td>
+                <td className="text-success py-2 border-dotted border-4 text-center">{info?.orderDate}</td>
                 <td className="">
+                  <div className="flex justify-center py-2 border-dotted border-4 text-center">
                   <NavLink to={`/memo/${info?._id}`}>
-                    <button className="btn btn-sm btn-info">Invoice</button>
+                    <FaFileDownload className="text-2xl">Invoice</FaFileDownload>
+                  </NavLink>
+                  </div>
+                </td>
+                <td className="flex justify-center py-2 border-dotted border-4 text-center">
+                  <NavLink to={`/memo/${info?._id}`}>
+                    <MdOutlineFileDownload className="text-3xl"></MdOutlineFileDownload>
                   </NavLink>
                 </td>
               </tr>
