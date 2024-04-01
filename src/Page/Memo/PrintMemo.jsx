@@ -19,7 +19,7 @@ const PrintMemo = () => {
 
 
     return (
-        <div className="max-w-4xl mx-auto flex gap-2 pt-4 bg-white rounded-md ">
+        <div className="max-w-4xl mx-auto flex gap-5 pt-4 bg-white rounded-md ">
 
             <div className="min-h-screen relative">
                 {/* <div className="w-12 mx-auto block rounded-full absolute top-1 right-0">
