@@ -46,7 +46,7 @@ const ManageProduct = () => {
     }
   };
 
-  const { data: inventory = [], isLoading: inventoryLoading, refetch: inventoryRefetch } = useQuery({
+  const { data: inventory = [], refetch: inventoryRefetch } = useQuery({
     queryKey: ["inventory"],
     queryFn: async () => {
       const res = await axiosPublic.get('/product/inventory')
