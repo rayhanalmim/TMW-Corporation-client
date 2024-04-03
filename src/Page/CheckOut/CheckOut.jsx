@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import useGetAllUserData from "../../Hook/useGetAllUserData";
 import { GrDisabledOutline } from "react-icons/gr";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import Swal from "sweetalert2";
