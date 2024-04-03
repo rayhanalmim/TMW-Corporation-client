@@ -17,7 +17,6 @@ const CheckOut = () => {
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [selectedUserId, setSelectedUserId] = useState("");
     const [due, setDue] = useState(0);
     const [discount, setDiscount] = useState(0);
     const [products, setProducts] = useState([]);
