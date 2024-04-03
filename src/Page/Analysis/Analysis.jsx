@@ -73,8 +73,8 @@ const Analysis = () => {
           <table className="table-auto border-collapse w-full">
             <tbody>
               <tr className="bg-white">
-                <td className="border px-4 py-2">Total</td>
-                <td className="border px-4 py-2">{totalSellAmount}</td>
+                <td className="border font-semibold px-4 py-2">Total Sales</td>
+                <td className="border font-semibold px-4 py-2">{totalSellAmount}</td>
               </tr>
             </tbody>
           </table>
