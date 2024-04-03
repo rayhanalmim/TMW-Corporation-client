@@ -46,6 +46,7 @@ const Analysis = () => {
 
   return (
     <div className="p-4 text-gray-800 bg-gradient-to-r from-sky-700 via-indigo-600 to-blue-600 rounded-lg shadow-md relative">
+
       <div className="relative">
         <div className="absolute top-0 left-0 w-full h-full  opacity-80 z-0"></div>
         <div className="relative z-10">
@@ -61,10 +62,10 @@ const Analysis = () => {
 
       <hr className="mb-6" />
 
-      <div className="mb-8">
+      <div className="mb-8 border p-4">
         <div className="flex justify-center">
           <div className="flex  mb-2 relative">
-            <h3 className="text-2xl font-bold text-white ml-8">Displays the total amount of sales: </h3>
+            <h3 className="text-2xl font-bold text-white ml-8">Displays the total amount of sales </h3>
             <div className="absolute -left-2 -top-1 bg-rose-400 w-8 h-8 rounded-full animate-ping"></div>
             <div className="absolute -left-2 -top-1 bg-rose-400 w-8 h-8 rounded-full animate-pulse"></div>
           </div>
@@ -81,10 +82,11 @@ const Analysis = () => {
         </div>
       </div>
 
-      <div className="mb-8">
+    <div className="grid grid-cols-2 gap-2">
+    <div className="mb-8 border p-4">
         <div className="flex justify-center">
           <div className="flex  mb-2 relative">
-            <h3 className="text-2xl font-bold text-white ml-8">Provides a breakdown of sales on a daily basist:</h3>
+            <h3 className="text-2xl font-bold text-white ml-8">Provides a breakdown of sales on a daily basist</h3>
             <div className="absolute -left-2 -top-1 bg-blue-400 w-8 h-8 rounded-full animate-ping"></div>
             <div className="absolute -left-2 -top-1 bg-blue-400 w-8 h-8 rounded-full animate-pulse"></div>
           </div>
@@ -112,7 +114,7 @@ const Analysis = () => {
       </div>
 
 
-      <div className="mb-8 ">
+      <div className="mb-8 border p-4">
         <div className="flex justify-center">
           <div className="flex  mb-2 relative">
             <h3 className="text-2xl font-bold text-white ml-8">Shows the sales amount for each month</h3>
@@ -140,12 +142,13 @@ const Analysis = () => {
           </table>
         </div>
       </div>
+    </div>
 
 
-      <div className="mb-8">
+      <div className="mb-8 border p-4">
         <div className="flex justify-center">
           <div className="flex  mb-2 relative">
-            <h3 className="text-2xl font-bold text-white ml-8">Presents the total sales amount for each year:</h3>
+            <h3 className="text-2xl font-bold text-white ml-8">Presents the total sales amount for each year</h3>
             <div className="absolute -left-2 -top-1 bg-green-400 w-8 h-8 rounded-full animate-ping"></div>
             <div className="absolute -left-2 -top-1 bg-green-400 w-8 h-8 rounded-full animate-pulse"></div>
           </div>
