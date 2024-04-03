@@ -13,7 +13,6 @@ import TitleTwo from "../../Components/Shared/TitleTwo";
 const CheckOut = () => {
     const { user } = useContext(AuthContext)
     const { id } = useParams();
-    const { users } = useGetAllUserData();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
