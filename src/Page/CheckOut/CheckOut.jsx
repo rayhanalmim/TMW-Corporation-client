@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import useGetAllUserData from "../../Hook/useGetAllUserData";
 import { GrDisabledOutline } from "react-icons/gr";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
-import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
