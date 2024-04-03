@@ -5,7 +5,7 @@ import useAdminCard from "../../Hook/useAdminCard";
 const AddToCard = () => {
   const location = useLocation();
 
-  const {adminCard, cardLoading, cardRefetch} = useAdminCard();
+  const {adminCard} = useAdminCard();
 
   // Check if the current path matches '/request'
   const isRequestRoute = location.pathname === "/request";
