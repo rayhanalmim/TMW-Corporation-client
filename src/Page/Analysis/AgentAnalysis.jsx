@@ -4,7 +4,6 @@ import useAuth from "../../Hook/useAuth";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 const AgentAnalysis = () => {
-
     const { user,  } = useAuth();
     const axiosSecure = useAxiosSecure();
 
