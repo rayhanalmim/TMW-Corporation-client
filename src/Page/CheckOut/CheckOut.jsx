@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { GrDisabledOutline } from "react-icons/gr";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Title from "../../Components/Shared/Title";
-
 
 const CheckOut = () => {
     const { id } = useParams();
@@ -24,7 +23,6 @@ const CheckOut = () => {
             return res.data;
         }
     })
-
 
     console.log(products);
 
