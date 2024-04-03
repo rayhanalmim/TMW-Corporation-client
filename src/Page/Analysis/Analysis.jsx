@@ -5,7 +5,7 @@ import Marquee from "react-fast-marquee";
 const Analysis = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: sellData = [] } = useQuery({
+  const { data: sellData = {} } = useQuery({
     queryKey: ["sellInfo"],
     queryFn: async () => {
       const res = await axiosSecure.get("/sell/allSell");
@@ -30,10 +30,11 @@ const Analysis = () => {
     return `${day} ${month} ${year}`;
   };
 
-  const monthlySellData = monthlySellAmount.map(monthData => ({
+  // Calculate monthly sell data only if monthlySellAmount is defined
+  const monthlySellData = monthlySellAmount ? monthlySellAmount.map(monthData => ({
     month: monthData.month,
     totalAmmount: monthData.totalAmmount
-  }));
+  })) : [];
 
   // Calculate each month's sell value
   for (let i = 1; i < monthlySellData.length; i++) {
@@ -77,7 +78,7 @@ const Analysis = () => {
         <h3 className="text-lg font-semibold mb-2">Monthly Sell Amount:</h3>
         <table className="table-auto border-collapse w-full">
           <tbody>
-            {monthlySellData?.slice(0, 30).reverse().map(monthData => (
+            {monthlySellData.map(monthData => (
               <tr key={monthData.month}>
                 <td className="border px-4 py-2">{formatMonth(monthData.month)}</td>
                 <td className="border px-4 py-2">{monthData.totalAmmount}</td>
