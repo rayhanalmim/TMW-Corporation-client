@@ -95,15 +95,15 @@ const Analysis = () => {
           <table className="table-auto border-collapse w-full">
             <thead>
               <tr className="bg-white">
-                <th className="border px-4 py-2">Date</th>
-                <th className="border px-4 py-2">Amount</th>
+                <th className="border px-4 py-2">Transaction Date</th>
+                <th className="border px-4 py-2">Sales Amount</th>
               </tr>
             </thead>
             <tbody>
               {dailySellAmmount?.slice(0, 30).reverse().map((dayData, index) => (
                 <tr key={dayData.day}>
-                  <td className={`border px-4 py-2 ${index % 2 !== 0 ? 'bg-white' : 'text-gray-200'}`}>{formatDateForDaily(dayData.day)}</td>
-                  <td className={`border px-4 py-2 ${index % 2 !== 0 ? 'bg-white' : 'text-gray-200'}`}>{dayData.totalAmmount}</td>
+                  <td className={`border font-semibold  px-4 py-2 ${index % 2 !== 0 ? 'bg-white' : 'text-gray-200'}`}>{formatDateForDaily(dayData.day)}</td>
+                  <td className={`border font-semibold px-4 py-2 ${index % 2 !== 0 ? 'bg-white' : 'text-gray-200'}`}>{dayData.totalAmmount}</td>
                 </tr>
               ))}
             </tbody>
@@ -125,8 +125,8 @@ const Analysis = () => {
           <table className="table-auto border-collapse w-full">
             <thead>
               <tr className="bg-white">
-                <th className="border px-4 py-2">Month</th>
-                <th className="border px-4 py-2">Amount</th>
+                <th className="border px-4 py-2">Transaction Month</th>
+                <th className="border px-4 py-2">Sales Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -154,8 +154,8 @@ const Analysis = () => {
           <table className="table-auto border-collapse w-full">
             <thead>
               <tr className="bg-white">
-                <th className="border px-4 py-2">Year</th>
-                <th className="border px-4 py-2">Amount</th>
+                <th className="border px-4 py-2">Transaction Year</th>
+                <th className="border px-4 py-2">Sales Amount</th>
               </tr>
             </thead>
             <tbody>
