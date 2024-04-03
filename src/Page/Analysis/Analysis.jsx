@@ -50,7 +50,7 @@ const Analysis = () => {
         <div className="absolute top-0 left-0 w-full h-full  opacity-80 z-0"></div>
         <div className="relative z-10">
           <Marquee speed={100}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-4">Sell History</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-4">Sales Overview</h2>
           </Marquee>
         </div>
       </div>
@@ -64,7 +64,7 @@ const Analysis = () => {
       <div className="mb-8">
         <div className="flex justify-center">
           <div className="flex  mb-2 relative">
-            <h3 className="text-2xl font-bold text-gray-800 ml-8">Total Sell Amount:</h3>
+            <h3 className="text-2xl font-bold text-gray-800 ml-8">Displays the total amount of sales: </h3>
             <div className="absolute -left-2 -top-1 bg-rose-400 w-8 h-8 rounded-full animate-ping"></div>
             <div className="absolute -left-2 -top-1 bg-rose-400 w-8 h-8 rounded-full animate-pulse"></div>
           </div>
@@ -84,7 +84,7 @@ const Analysis = () => {
       <div className="mb-8">
         <div className="flex justify-center">
           <div className="flex  mb-2 relative">
-            <h3 className="text-2xl font-bold text-gray-800 ml-8">Daily Sell Amount:</h3>
+            <h3 className="text-2xl font-bold text-gray-800 ml-8">Provides a breakdown of sales on a daily basist:</h3>
             <div className="absolute -left-2 -top-1 bg-blue-400 w-8 h-8 rounded-full animate-ping"></div>
             <div className="absolute -left-2 -top-1 bg-blue-400 w-8 h-8 rounded-full animate-pulse"></div>
           </div>
@@ -115,7 +115,7 @@ const Analysis = () => {
       <div className="mb-8 ">
         <div className="flex justify-center">
           <div className="flex  mb-2 relative">
-            <h3 className="text-2xl font-bold text-gray-800 ml-8">Monthly Sell Amount</h3>
+            <h3 className="text-2xl font-bold text-gray-800 ml-8">Shows the sales amount for each month</h3>
             <div className="absolute -left-2 -top-1 bg-yellow-400 w-8 h-8 rounded-full animate-ping"></div>
             <div className="absolute -left-2 -top-1 bg-yellow-400 w-8 h-8 rounded-full animate-pulse"></div>
           </div>
@@ -145,7 +145,7 @@ const Analysis = () => {
       <div className="mb-8">
         <div className="flex justify-center">
           <div className="flex  mb-2 relative">
-            <h3 className="text-2xl font-bold text-gray-800 ml-8">Yearly Sell Amount:</h3>
+            <h3 className="text-2xl font-bold text-gray-800 ml-8">Presents the total sales amount for each year:</h3>
             <div className="absolute -left-2 -top-1 bg-green-400 w-8 h-8 rounded-full animate-ping"></div>
             <div className="absolute -left-2 -top-1 bg-green-400 w-8 h-8 rounded-full animate-pulse"></div>
           </div>
