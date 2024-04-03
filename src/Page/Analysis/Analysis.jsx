@@ -13,7 +13,7 @@ const Analysis = () => {
     },
   });
 
-  const { totalSellAmount, monthlySellAmount, yearlySellAmount, dailySellAmmount,  } = sellData;
+  const { totalSellAmount, monthlySellAmount, yearlySellAmount, dailySellAmmount } = sellData;
 
   const formatMonth = (monthString) => {
     const date = new Date(monthString);
@@ -30,7 +30,15 @@ const Analysis = () => {
     return `${day} ${month} ${year}`;
   };
 
+  const monthlySellData = monthlySellAmount.map(monthData => ({
+    month: monthData.month,
+    totalAmmount: monthData.totalAmmount
+  }));
 
+  // Calculate each month's sell value
+  for (let i = 1; i < monthlySellData.length; i++) {
+    monthlySellData[i].totalAmmount -= monthlySellData[i - 1].totalAmmount;
+  }
 
   return (
     <div className="p-4 text-white">
@@ -69,7 +77,7 @@ const Analysis = () => {
         <h3 className="text-lg font-semibold mb-2">Monthly Sell Amount:</h3>
         <table className="table-auto border-collapse w-full">
           <tbody>
-            {monthlySellAmount?.map(monthData => (
+            {monthlySellData?.slice(0, 30).reverse().map(monthData => (
               <tr key={monthData.month}>
                 <td className="border px-4 py-2">{formatMonth(monthData.month)}</td>
                 <td className="border px-4 py-2">{monthData.totalAmmount}</td>
@@ -92,10 +100,8 @@ const Analysis = () => {
           </tbody>
         </table>
       </div>
-
-    
     </div>
   );
 };
 
-export default Analysis; 
+export default Analysis;
