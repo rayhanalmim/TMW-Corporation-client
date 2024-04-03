@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Title from "../../Components/Shared/Title";
-import TitleTwo from "../../Components/Shared/TitleTwo";
 
 
 const CheckOut = () => {
