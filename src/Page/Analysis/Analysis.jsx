@@ -82,7 +82,7 @@ const Analysis = () => {
         </div>
       </div>
 
-    <div className="grid grid-cols-2 gap-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
     <div className="mb-8 border p-4">
         <div className="flex justify-center">
           <div className="flex  mb-2 relative">
