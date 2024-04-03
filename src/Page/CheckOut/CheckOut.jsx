@@ -109,7 +109,6 @@ const CheckOut = () => {
         console.log(res);
         setLoading(false);
 
-
         if (res.status === 202) {
             Swal.fire({
                 title: "Error",
@@ -132,10 +131,7 @@ const CheckOut = () => {
         (total, item) => total + item?.quantity * parseFloat(item?.product?.productPrice),
         0
     );
-
-    console.log(products?.requestedItems);
-    console.log(products?.dsrInfo);
-
+    
     return (
         <div className="pt-2">
             <Title title="Confirm Billing"></Title>
