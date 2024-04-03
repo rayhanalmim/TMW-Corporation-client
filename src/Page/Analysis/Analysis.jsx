@@ -3,8 +3,8 @@ import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Marquee from "react-fast-marquee";
 
 const Analysis = () => {
-
   const axiosSecure = useAxiosSecure();
+
   const { data: sellData = [] } = useQuery({
     queryKey: ["sellInfo"],
     queryFn: async () => {
@@ -14,7 +14,6 @@ const Analysis = () => {
   });
 
   const { totalSellAmount, monthlySellAmount, yearlySellAmount, dailySellAmmount,  } = sellData;
-
 
   const formatMonth = (monthString) => {
     const date = new Date(monthString);
