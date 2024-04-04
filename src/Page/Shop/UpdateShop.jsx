@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 const UpdateShop = () => {
     const axiosSecure = useAxiosSecure();
+    const {id} = useParams();
     const navigate = useNavigate();
     const {
         register,
@@ -12,6 +13,8 @@ const UpdateShop = () => {
         formState: { errors },
 
     } = useForm();
+
+    
 
     const onSubmit = async (data) => {
 
@@ -52,8 +55,8 @@ const UpdateShop = () => {
     };
     return (
         <div>
-        <div className="rounded-xl bg-base-200 p-8 ">
-            <h3 className="font-bold text-lg pb-4">Add Shop</h3>
+        <div className="rounded-xl text-white p-8 ">
+            <h3 className="font-bold text-lg pb-4">Update Shop</h3>
             <form className="space-y-6 " onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex w-full gap-4 flex-col lg:flex-row">
                     <div className="space-y-1 text-sm w-full lg:w-1/2">
@@ -62,6 +65,7 @@ const UpdateShop = () => {
                             {...register("shopName", {
                                 required: "Shop Name is required",
                             })}
+                            
                             type="text"
                             className="text-gray-900 w-full px-4 py-3 rounded-md dark-border-gray-700 focus:dark-border-violet-400"
                         />
@@ -104,7 +108,7 @@ const UpdateShop = () => {
                     <div className="space-y-1 text-sm w-full lg:w-1/2">
                         <label className="block dark-text-gray-400">Contract Number</label>
 
-                        <label className="input  flex items-center gap-2">
+                        <label className="input text-black  flex items-center gap-2">
                             +880
                             <input
                                 {...register("contractNumber", {
