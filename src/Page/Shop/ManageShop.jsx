@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Title from "../../Components/Shared/Title";
 import { useQuery } from "@tanstack/react-query";
+import { MdDeleteForever } from "react-icons/md";
 
 // Constant for API URL
 const MONEY_API_URL = "https://tmw-corpo-server.vercel.app/money";
@@ -109,17 +110,18 @@ const ManageShop = () => {
 
       <div className="overflow-x-auto">
         <table className="table">
-          <thead className="text-sm">
+          <thead className="text-sm text-center">
             <th>No</th>
             <th>Shop Name</th>
             <th>Shop Area</th>
             <th>Owner Name</th>
             <th>Contract</th>
-            <th>Action</th>
+            <th>Update</th>
+            <th>Delete</th>
           </thead>
           <tbody>
             {moneys?.map((money, index) => (
-              <tr className="border-b-1 border-gray-300" key={index}>
+              <tr className="border-b-1 text-center border-gray-300" key={index}>
                 <td>{index + 1}</td>
                 <div className="mt-2 ">
                   <Link
@@ -138,8 +140,15 @@ const ManageShop = () => {
                     className="btn btn-sm text-white btn-error"
                     onClick={() => handleDeleteProduct(money?._id)}
                   >
-                    Delete
+                    update
                   </button>
+                </td>
+                <td className="flex justify-center">
+                  <MdDeleteForever
+                    className="text-4xl cursor-pointer"
+                    onClick={() => handleDeleteProduct(money?._id)}
+                  >
+                  </MdDeleteForever>
                 </td>
               </tr>
             ))}
