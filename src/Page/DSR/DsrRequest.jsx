@@ -37,30 +37,30 @@ const DsrRequest = () => {
       <div className="overflow-x-auto">
         <table className="table">
           <thead className="text-sm text-center">
-            <th>No</th>
-            <th>Req Date</th>
-            <th>Req time</th>
-            <th>DSR Name</th>
-            <th>ShopName </th>
-            <th>Details</th>
+            <th className="py-2 border-dotted border-4 text-center">No</th>
+            <th className="py-2 border-dotted border-4 text-center">Req Date</th>
+            <th className="py-2 border-dotted border-4 text-center">Req time</th>
+            <th className="py-2 border-dotted border-4 text-center">DSR Name</th>
+            <th className="py-2 border-dotted border-4 text-center">ShopName </th>
+            <th className="py-2 border-dotted border-4 text-center">Details</th>
           </thead>
           <tbody>
             {infos.slice().reverse().map((info, index) => (
               <tr className="text-center" key={index}>
-                <td>{index + 1}</td>
-                <td>{info.orderDate}</td>
-                <td>{info.orderTime}</td>
+                <td className="py-2 border-dotted border-4 text-center">{index + 1}</td>
+                <td className="py-2 border-dotted border-4 text-center">{info.orderDate}</td>
+                <td className="py-2 border-dotted border-4 text-center">{info.orderTime}</td>
 
-                <td className="text-success">{info?.dsrInfo?.displayName}</td>
-                <td>{info?.shopInfo?.shopName}</td>
+                <td className="text-success py-2 border-dotted border-4 text-center">{info?.dsrInfo?.displayName}</td>
+                <td className="py-2 border-dotted border-4 text-center">{info?.shopInfo?.shopName}</td>
 
-                <td className="flex gap-2 pl-14">
+                <td className="flex gap-2 pl-14 py-2 border-dotted border-4 text-center">
                   {
-                    info?.orderStatus === "pending" ? <NavLink to={`/dsrReqDetails/${info._id}`}>
+                    info?.orderStatus === "pending" ? <NavLink className='' to={`/dsrReqDetails/${info._id}`}>
                       <AiFillEye className="text-2xl cursor-pointer hover:text-rose-700"></AiFillEye>
                     </NavLink>
                       :
-                      <div className="flex gap-10">
+                      <div className="flex gap-10 ">
                         <Link to={`/due/${info._id}`}>
                           <FaDownload className="text-xl cursor-pointer hover:text-rose-700"></FaDownload>
                         </Link>
