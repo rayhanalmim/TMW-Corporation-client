@@ -5,6 +5,9 @@ import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Title from "../../Components/Shared/Title";
 import { useQuery } from "@tanstack/react-query";
 import { MdDeleteForever } from "react-icons/md";
+import { TbShoppingBagEdit } from "react-icons/tb";
+import { FaRegEdit } from "react-icons/fa";
+import { FaUserEdit } from "react-icons/fa";
 
 // Constant for API URL
 const MONEY_API_URL = "https://tmw-corpo-server.vercel.app/money";
@@ -31,7 +34,7 @@ const ManageShop = () => {
     if (event === '') {
       shopRefetch();
     } else {
-      const regex = new RegExp(event, 'i'); 
+      const regex = new RegExp(event, 'i');
       const filteredResults = moneys.filter((product) => regex.test(product.shopName));
 
       console.log(filteredResults);
@@ -135,13 +138,16 @@ const ManageShop = () => {
                 <td>{money?.shopArea}</td>
                 <td>{money?.shopOwner}</td>
                 <td>0{money?.contractNumber}</td>
-                <td>
-                  <button
-                    className="btn btn-sm text-white btn-error"
-                    onClick={() => handleDeleteProduct(money?._id)}
-                  >
-                    update
-                  </button>
+                <td className="">
+                  <div className="flex justify-center ml-2">
+                    <Link to={`/updateShop/${money?._id}`}>
+                      <FaUserEdit
+                        className="text-3xl cursor-pointer"
+                      >
+
+                      </FaUserEdit>
+                    </Link>
+                  </div>
                 </td>
                 <td className="flex justify-center">
                   <MdDeleteForever

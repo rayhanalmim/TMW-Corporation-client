@@ -36,6 +36,7 @@ import RequestDetails from "../Page/DSR/RequestDetails";
 import Due from "../Page/Memo/Due";
 import RequestPage from "../Page/Card/RequestPage";
 import PrintMemo from "../Page/Memo/PrintMemo";
+import UpdateShop from "../Page/Shop/UpdateShop";
 
 const router = createBrowserRouter([
   {
@@ -176,6 +177,10 @@ const router = createBrowserRouter([
       {
         path: "/singleShopInfo/:id",
         element: <SingleShopInfo />,
+      },
+      {
+        path: "/UpdateShop/:id",
+        element: <UpdateShop />,
       },
       {
         path: "/memberlist",
