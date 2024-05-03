@@ -118,13 +118,26 @@ const CheckOut = () => {
         }
 
         if (res.status === 200) {
+            const response = await axiosPublic.post(`/sell/stockHandle`, product);
+            console.log(response);
+
             Swal.fire({
                 title: "Success",
                 text: "Bill products successfully",
                 icon: "success",
             });
-            navigate('/dsr'); setLoading(false);
+            if(response){
+                navigate('/dsr'); setLoading(false);
+            }
+            
         }  
+        else{
+            Swal.fire({
+                title: "Error",
+                text: `${res.data.message}`,
+                icon: "error",
+            }); setLoading(false);
+        }
     };
 
     const subtotal = products?.reduce(

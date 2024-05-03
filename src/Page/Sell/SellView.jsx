@@ -9,57 +9,35 @@ import { MdOutlineFileDownload } from "react-icons/md";
 const SellView = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: billData } = useQuery({
-    queryKey: ["billData"],
+  // Pagination state
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10); // Default limit
+
+  // Fetch data with pagination
+  const { data, isLoading, isError, refetch } = useQuery({
+    queryKey: ["billData", page, limit],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/bill`);
+      const res = await axiosSecure.get(`/bill?page=${page}&limit=${limit}`);
       return res.data;
     },
   });
 
-  const date = new Date().toISOString().substring(0, 10);
-
-  const [startDate, setStartDate] = useState("2024-03-11");
-  const [endDate, setEndDate] = useState(date);
-  const [filteredBillData, setFilteredBillData] = useState([]);
-
-  const filterData = () => {
-    if (!billData) return [];
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    return billData.filter(item => {
-      const orderDate = new Date(item.orderDate);
-      return orderDate >= start && orderDate <= end;
-    });
-  };
+  const billData = data?.billData || [];
+  const pagination = data?.pagination || {};
 
   useEffect(() => {
-    setFilteredBillData(filterData());
-  }, [billData, startDate, endDate]);
+    // Refetch when page or limit changes
+    refetch();
+  }, [page, limit, refetch]);
 
   return (
     <div className="bg-base-200 p-0 m-0 lg:p-4 lg:m-4 rounded-xl">
       <div className="text-3xl py-2">
-        <Title title="Bill History"></Title>
+        <Title title="Bill History" />
       </div>
 
-      <div className="flex justify-evenly py-1 md:py-4 flex-col md:flex-row">
-        <h3>From</h3>
-        <input
-        className="pl-1 mx-6 md:mx-0"
-          type="date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-        />
-        <h3>To</h3>
-        <input
-        className="pl-1 mx-6 md:mx-0"
-          type="date"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-        />
-      </div>
-      <hr className="py-2" />
+      {isLoading && <div>Loading...</div>}
+      {isError && <div>Error loading data</div>}
 
       <div className="overflow-x-auto">
         <table className="table">
@@ -70,25 +48,22 @@ const SellView = () => {
               <th className="py-2 border-dotted border-4 text-center">DSR</th>
               <th className="py-2 border-dotted border-4 text-center">Date</th>
               <th className="py-2 border-dotted border-4 text-center">Invoice</th>
-
               <th className="py-2 border-dotted border-4 text-center">Download</th>
             </tr>
           </thead>
           <tbody>
-            {filteredBillData.slice().reverse().map((info, index) => (
+            {billData.map((info, index) => (
               <tr className="text-center" key={index}>
                 <td className="py-2 border-dotted border-4 text-center">{info?.orderNo}</td>
                 <td className="py-2 border-dotted border-4 text-center">{info?.shopInfo?.shopName}</td>
                 <td className="py-2 border-dotted border-4 text-center">{info?.dsrInfo?.displayName}</td>
                 <td className="text-success py-2 border-dotted border-4 text-center">{info?.orderDate}</td>
                 <td className="py-2 border-dotted border-4 text-center">
-                 
                   <NavLink to={`/memo/${info?._id}`}>
-                  <div className="flex justify-center py-2 border-dotted border-4 text-center">
-                    <FaFileDownload className="text-2xl">Invoice</FaFileDownload>
+                    <div className="flex justify-center py-2 border-dotted border-4 text-center">
+                      <FaFileDownload className="text-2xl">Invoice</FaFileDownload>
                     </div>
                   </NavLink>
-                  
                 </td>
                 <td className="flex justify-center py-2 border-dotted border-4 text-center">
                   <NavLink to={`/memoPrint/${info?._id}`}>
@@ -100,6 +75,30 @@ const SellView = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Pagination controls */}
+      <div className="flex justify-between items-center my-4">
+        <button
+          className={`px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 
+                rounded-md transition duration-150 ease-in-out
+                ${page <= 1 ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={page <= 1}
+          onClick={() => setPage(page - 1)}
+        >
+          Previous
+        </button>
+
+        <button
+          className={`px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 
+                rounded-md transition duration-150 ease-in-out
+                ${page >= pagination.totalPages ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={page >= pagination.totalPages}
+          onClick={() => setPage(page + 1)}
+        >
+          Next
+        </button>
+      </div>
+
     </div>
   );
 };
