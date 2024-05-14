@@ -5,8 +5,6 @@ import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Title from "../../Components/Shared/Title";
 import { useQuery } from "@tanstack/react-query";
 import { MdDeleteForever } from "react-icons/md";
-import { TbShoppingBagEdit } from "react-icons/tb";
-import { FaRegEdit } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
 
 // Constant for API URL
