@@ -84,6 +84,8 @@ const ManageShop = () => {
     });
   };
 
+  console.log(moneys);
+
 
 
   return (

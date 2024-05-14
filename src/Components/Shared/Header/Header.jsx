@@ -124,7 +124,7 @@ const Header = () => {
               <img src='https://i.ibb.co/SKQbk36/Black-And-White-Modern-Vintage-Retro-Brand-Logo-7-removebg-preview.png' alt="Logo" />
             </div>
             <p className="hidden lg:flex lg:text-2xl  my-auto">
-              TMW CORPORATION
+              TMW CORPORATION 
             </p>
           </NavLink>
         </div>

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosPublic = axios.create({
   //   baseURL:
-  baseURL: "https://tmw-server.vercel.app",
+  baseURL: "https://tmw-corpo-server.vercel.app",
   // baseURL: "http://localhost:5000",
 });
 

@@ -75,7 +75,7 @@ const Signin = () => {
           <div className="space-y-1 text-sm">
             <label className="block  text-white ">Password</label>
             <input
-              type="password"
+              type="text"
               name="password"
               id="password"
               placeholder="Password"
